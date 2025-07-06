@@ -1,0 +1,14 @@
+DML
+===
+=> To handle the data
+
+a)INSERT
+
+b)UPDATE
+
+c)DELETE
+
+Diff between Delete and Truncate
+
+auto increment example
+

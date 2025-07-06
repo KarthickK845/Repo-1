@@ -1,0 +1,35 @@
+static - communication between user and server
+dynamic - communication between user, server and database
+
+SQL - Structured Query Language
+
+Structured - format to store data
+Query - question
+Language - for communication purpose
+
+=> SQL is the most popular language to communicate between user and the database.
+=> Database is the are to store the collection of information in a processed way - organized format
+=> There are two types of database
+1) DBMS - Database Management System
+2) RDBMS - Relational Database Management System
+
+DBMS is not secured as it allows data redundancy.
+1 Hari 123
+
+If we add info of Gokul of ID 1, it will replace Hari's info
+1 Gokul 1234
+
+RDBMS is secured as it does not allow data redundancy. By using constraints like Primary key, etc. RDBMS overcomes data redundancy issues.
+
+In RDBMS, Normalization (Query optimization) is reducing query execution time by using index
+
+DBMS - adding file, creating file done using ORM - Object Oriented Relational Mapping, So SQL is not used here.
+
+DBMS - supported in MongoDB, Firebase
+
+MySQL - open source, supports custom features
+
+MySQL port number - 3307
+If we enter 3306, it is already in use error comes
+
+In MySQL Installer, Accounts and Roles window -> Root Account Password. It asked me only for Current Root password. I entered 'root' and Check success.

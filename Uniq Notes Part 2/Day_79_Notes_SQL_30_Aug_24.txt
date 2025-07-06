@@ -1,0 +1,85 @@
+Looping logic in Stored Procedure
+
+FOR LOOP :
+==========
+
+delimiter &&
+create procedure forloop()
+begin
+
+declare i int default 1;	-- iterator variable initialised as 1
+-- we give directly as loop, there is no keyword like for loop 
+
+label:loop -- here label is the loop name or label name
+if i>10 then
+leave label; -- works just like break in java, it will end the loop
+end if;
+
+select i;
+set i=i+1;
+end loop;
+
+end &&
+delimiter ;
+
+call forloop;
+
+
+above stored proc prints each value of i in different result tabs
+so we can concat each value of i into a string
+print the string outside the loop to print as a single string in same tab
+
+...
+declare s char(30);
+set s='';
+
+...
+set s=concat(s,' ',i);
+...
+end loop;
+
+select s;
+
+WHILE / DO WHILE LOOP
+=====================
+
+delimiter &&
+create procedure whileloop()
+begin
+
+declare i int default 1;
+
+while i<=10
+do
+
+select i;
+set i=i+1;
+end while;
+
+end &&
+delimiter ;
+
+call whileloop;
+
+-- Above also gives same output as for loop, the values in different result tabs
+-- if condition is true, do part will run
+
+REPEAT
+======
+
+-- REPEAT is rarely used, mostly LOOP, WHILE LOOP are used
+
+delimiter &&
+create procedure repeatloop()
+begin
+
+declare i int default 1;
+
+repeat			-- start of the loop
+select i;
+set i=i+1;
+until i>=10
+end repeat;		-- loop logic ends here
+
+end &&
+delimiter ;

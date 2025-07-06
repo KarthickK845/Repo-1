@@ -1,0 +1,60 @@
+; - semicolon is called as delimiter, marking the end of a statement/SQL query, to differentiate from following query
+select the query and run every time by using Thunder icon or shortcut Ctrl+Enter
+
+show databases; - returns all the existing databases
+use mysql; - to enter/use the 'mysql' database
+show tables; - to view the tables in a database, here 'mysql' database
+select * from employee; - to just view the employee table, temporary query
+desc employee; - to view the fields, types, constraints of employee table
+
+create database uniq_tech; - create a database
+use uniq_tech; - to enter/use the database uniq_tech
+create table stu_det(stu_id int primary key, stu_name char(30),stu_num bigint(10));
+select * from stu_det;
+
+ALTER
+
+ALTER COLUMN
+
+alter table stu_det add column stu_age int(3) check(stu_age<18); - adds the column stu_age as the last column of the table
+
+first keyword used to add a column at the first position in a table
+alter table stu_det add stu_gender char(1) first;
+
+after keyword - to add a column in between, after a particular column
+alter table stu_det add stu_address text(100) after stu_name;
+
+ALTER CONSTRAINT
+
+alter table stu_det add constraint unique(stu_name);
+
+MODIFY
+
+alter table stu_det modify stu_name varchar(50) not null;
+
+alter table stu_det drop constraint stu_name;
+
+to change the position of an existing column using modify
+alter table stu_det add stu_gender char(1) after stu_num;
+
+CHECK IF BELOW REPLACES UNIQUE CONSTRAINT TO NOT NULL FOR STU_NAME COLUMN 
+alter table stu_det modify constraint not null(stu_name);
+
+RENAME
+
+alter table stu_det rename stu_info;
+
+alter table stu_info rename column stu_id to stu_rollno;
+
+DROP
+
+alter table stu_det drop stu_gender; - drop a single column
+
+alter table stu_det drop stu_address,drop stu_age,drop stu_num; - drop multiple columns
+
+alter table stu_det drop constraint stu_name;
+
+
+TRUNCATE AND DROP cannot be rolled back in MySQL
+
+CREATE TABLE Persons (PersonID int, PersonName char(5), Address varchar(255));

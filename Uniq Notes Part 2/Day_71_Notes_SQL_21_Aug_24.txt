@@ -1,0 +1,13 @@
+Subquery
+==========
+
+Also known as Inner query or Nested query
+
+Single row subquery
+Multi row subquery
+
+Tasks
+=====
+WAQTD details of the employee with first maximum salary without using ORDER BY, LIMIT, OFFSET Clauses.
+
+WAQTD details of the employee with fourth maximum salary without using ORDER BY, LIMIT, OFFSET Clauses.

@@ -1,0 +1,23 @@
+Aggregate functions
+===================
+
+i) 		min()
+ii) 	max()
+iii)	sum()
+iv) 	avg()
+v) 		count()
+vi) 	round()
+
+select * from emp;
+select name,salary from emp where deptno=20;
+select distinct(deptno) from emp;
+
+select min(salary) as mininimum_sal,max(salary) 
+as maximum_salary,deptno from emp where deptno=10;
+
+select sum(salary) from emp where deptno=20;
+
+select count(comm) from emp;
+
+select round(avg(salary)) from emp where deptno=30;
+

@@ -1,0 +1,134 @@
+HashMap	
+- key can be null but only one null allowed
+- can have multiple null values
+- no particular order
+- does not allow duplicate key
+
+Linked HashMap
+- key can be null but only one null allowed
+- can have multiple null values
+- maintains insertion order
+- does not allow duplicate key
+
+TreeMap
+- key cannot be null
+- can have multiple null values
+- maintains ascending order
+- does not allow duplicate key
+
+JAVA REVISION INTERVIEW QUESTIONS
+
+try{
+int a = 10/0;
+sop (a);
+}
+catch(Exception e)
+{ sop("Hi"); }
+catch(ArithmeticException e)
+{ sop("Hello"); }
+
+Above snippet will throw error - Unreachable catch block exception will be thrown since child class exception given after parent class catch
+
+class A
+{
+void method1()
+{
+sop("method1");
+method2();
+}
+void method2()
+{
+sop("method2");
+method3();
+}
+void method3()
+{
+sop("method3");
+method4();
+}
+void method4()
+{
+int a = 10/0;
+sop("method4");
+
+}
+PSVM()
+{
+A obj=new A();
+try{
+obj.method1();
+}
+catch(Exception e)
+{ sop("Handled"); }
+sop("end");
+}
+
+O/P :
+method1
+
+
+StringBuffer sb = new StringBuffer("Good noon");
+StringBuffer sb1 = new StringBuffer("Good");
+sb1.append("noon");
+sop(sb.equals(sb1));
+
+O/P : false
+
+Garbage collector
+When will be called?
+Why is it called ?
+How object becomes unreferenced ?
+
+Collections.sort VS Comparable and Comparator
+
+What happens if we add class objects to a Treeset?
+ANS : Error thrown during runtime
+
+class A{
+final int a;
+A()
+{ a = 10; }
+A(int b)
+{ sop("Hi");
+}
+A(String s)
+{ sop("Hello");
+}
+main()
+{
+A obj = new A();
+sop(obj.a);
+}
+
+Errro thrown for above 
+since we have mulitple constructors, each constructors should have initialized that final variable
+
+since if we cal like below
+A ob = new A(5);
+ob will not have any value for a 
+
+Constructor cannot be recursed
+
+A()
+{
+this(5);
+a =10;
+}
+A(int b)
+{ 
+this("A");
+sop("Hi");
+}
+A(String s)
+this();
+{ sop("Hello");
+}
+
+Above is recursion but error will be thrown since 2nd stmt in each constructor will be unreachable
+
+Java 8
+Collections
+Map
+Exception 
+
+All above concepts thorough before Spring classes

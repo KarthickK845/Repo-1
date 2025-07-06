@@ -1,0 +1,12 @@
+JOINS
+=====
+Joins is used to combine two or more tables to retrieve the records which are then shown in a single table.
+
+There are five types of joins.
+1) Left join
+2) Right join
+3) Cross join
+4) Inner join
+5) Self join
+
+#Refer written notes

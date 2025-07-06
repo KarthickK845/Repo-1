@@ -1,0 +1,192 @@
+STORED PROCEDURE
+
+we can have business logic written in stored procedure
+conditional logic
+looping logic
+
+STORED PROCEDURE PARAMETERS
+
+We have 3 parameters used here in stored procedure
+
+1) in
+2) out
+3) inout
+
+1) in
+=====
+=> in is an input parameter. 
+=> used to get the input from the user to the procedure.
+
+2) out
+======
+=> out is an output parameter.
+=> used to get the output data from the stored procedure.
+
+3) inout
+========
+=> inout is a input and output parameter.
+=> used to get the input and return output in the same variable.
+
+DECLARING A VARIABLE IN A PROCEDURE
+
+delimiter &&
+create procedure variable()
+begin
+
+declare tot int default 0; 	-- setting default value as 0 for the variable 'tot'; if defaut value is not set, it will be null
+
+OR
+
+declare tot int;
+set tot=0; 	-- another way to set value
+
+select count(*) into tot from emp where job='manager';  -- storing count 'into' tot variable
+end &&
+delimiter ;
+
+call variable;    -- call the stored procedure
+
+select tot; 	-- to view the value stored in tot outside the procedure. Error thrown as 'tot' is unknown. So, we have to get the value of  local variable 'tot' inside procedure itself like below
+
+delimiter &&
+create procedure variable()
+begin
+declare tot int;
+set tot=0;
+select count(*) into tot from emp where job='manager';
+select tot;		-- call tot inside the procedure itself
+end &&
+delimiter ;
+
+tot local variable is of block scope only
+
+to create a variable of session scope which we can access anywhere even outside the procedure as well just like instance and static variables in java
+
+delimiter &&
+create procedure variable()
+begin
+
+select count(*) into @total from emp where job='manager';
+set @total=0;			-- considered as direct declaration
+
+end &&
+delimiter ;
+
+call variable;
+
+select @total; 		-- accessing outside the procedure
+
+USING PARAMETERS WE CAN CREATE LOGIC JUST LIKE METHODS
+
+IN PARAMETER :
+
+since we may need count of different jobs in emp table, we have to modify the query in procedure and drop the existing procedure and create new procedure each time. Instead of modifying the query each time, we can give that job as an input paramter and use the stored procedure dynamically during runtime.
+'getjob'
+
+using below expression 
+in getjob char(30)
+
+delimiter &&
+create procedure inparam(in getjob char(30))
+begin
+select count(*) from emp where job=getjob;
+
+end && 
+delimiter ;
+
+call inparam;		-- if we don't pass parameter, error thrown
+
+call inparam('clerk');	-- we can have any job passed and call any number of times which will assign the value of job in runtime
+
+OUT PARAMETER :
+
+delimiter &&
+create procedure outparam(in getjob char(30),out tot int)
+begin
+
+select count(*) into tot from emp where job=getjob;
+
+end && 
+delimiter ;
+
+call outparam('clerk',@total);	-- we can get tht output value as session variable value
+
+select @total;		-- to view the value
+
+INOUT PARAMETER :
+
+we have a variable as inout parameter - which means we will give an input and also get the 
+
+delimiter &&
+create procedure inoutparam(inout a int,in b int)
+begin
+
+set a = a+b;
+
+end && 
+delimiter ;
+
+call inoutparam(@a,5);
+
+set @a=10;		-- setting value to inout parameter 'a' 
+select @a;		-- getting the value
+
+Output is 15.
+
+
+Mostly important logic and basic logic written in stored procedure just to reduce network traffic
+
+IF ELSE LOGIC DEMO
+
+
+delimiter $$
+create procedure ifelsedemo(in a int)
+begin
+
+if a=10 then
+select 'accounting';			-- acts like print statement
+elseif a=20 then
+select 'it';
+elseif a=30 then
+select 'marketing';
+else
+select 'please give correct input';
+end if; 		-- 'if' logic must be closed else error thrown
+
+end $$
+delimiter ;
+
+call ifelsedemo(30);
+
+Output is 'marketing'.
+
+if a%2==0 then
+select 'even number';
+else
+select 'odd number';
+end if;
+
+SWITCH
+
+We must use case keyword here, do not use 'switch' keyword
+
+delimiter $$
+create procedure switchdemo(in a int)
+begin
+
+case a
+when 10 then
+select 'accounting';
+when 20 then
+select 'it';
+when 30 then
+select 'marketing';
+else		-- used instead of default
+select 'please check input';
+
+end case; 		-- close the case mandatorily
+
+end $$
+call switchdemo(10);
+
+

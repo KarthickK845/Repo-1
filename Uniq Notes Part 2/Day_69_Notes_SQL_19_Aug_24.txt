@@ -1,0 +1,23 @@
+MySQL Operators Tasks, Aggregate functions Tasks completion and revision
+
+-- operators
+select * from emp where ename like 's%' and deptno in (10,20,30) and mgr NOT IN (7566,7698,7782) 
+and (year(hiredate) between '1986' and '1988') and job in ('CLERK','ANALYST','SALESMAN') 
+AND (SAL>3000 AND COMM IS NOT NULL) AND JOB LIKE '%*_*_%' escape "*";
+
+-- aggregate functions
+select count(*) from emp where sal<2000 and deptno=10;
+select sum(sal) from emp where job='clerk';
+select avg(sal) from emp;
+select count(*) from emp where ename like 'a%';
+select count(*) from emp where job in ('clerk','manager');
+select sum(sal) from emp where month(hiredate)='02';
+select count(*) from emp where mgr=7839;
+select count(*) from emp where comm is not null and deptno=30;
+select avg(sal),sum(sal),count(*),max(sal) from emp where job='president';
+select count(*) from emp where ename like '%A%';
+select count(*),sum(sal) from emp where ename like '%ll%';
+select count(distinct(deptno)) from emp;
+select count(*) from emp where ename like '%*_%*_%' escape '*' and deptno=20;
+select sum(sal) from emp where job='manager';
+select sum(comm) from emp where job='salesman';

@@ -1,0 +1,165 @@
+MySQL
+Cursor Tasks
+
+1.Write a stored procedure that uses a cursor to iterate over all the records in a table and prints each record's id and name.
+2.Write a stored procedure that uses a cursor to find all employees whose salary is greater than 2500 and increases their salary by 10%.
+3.Write a stored procedure that uses a cursor to calculate the total salary of employees by department and store the result in another table.
+4.Write a stored procedure that calculates the total salary paid to employees in each department and updates a corresponding total_salary field in the departments table.
+5.Write a stored procedure that finds the highest-paid employee in each department and stores their details in another table.
+
+-- 1
+delimiter &&
+create procedure printIDNAME()
+begin
+
+declare eid int;
+declare empname char(30);
+declare count int default 0;
+
+declare pincur cursor for select empno,ename from emp;
+declare exit handler for not found set count=1;
+open pincur;
+
+iter:loop
+if count=1 then
+leave iter;
+end if;
+
+fetch pincur into eid,empname;
+select eid,empname;
+end loop;
+close pincur;
+
+end &&
+delimiter ;
+
+call printIDNAME;
+drop procedure printIDNAME;
+
+-- 2
+create table empsalary(salary long);
+select * from empsalary;
+
+delimiter $$
+create procedure hikesalary1()
+begin
+
+declare salary long;
+declare count int default 0;
+
+declare hsal cursor for select sal+sal*10/100 from emp where sal>2500;
+declare exit handler for not found set count=1;
+open hsal;
+
+iter:loop
+if count=1 then
+leave iter;
+end if;
+
+fetch hsal into salary;
+insert into empsalary values (salary);
+end loop;
+close hsal;
+
+end $$
+delimiter ;
+
+call hikesalary1;
+drop procedure hikesalary1;
+
+select * from empsalary;
+truncate table empsalary;
+--
+
+delimiter $$
+create procedure hikesalary()
+begin
+
+declare emp_no,mgr_id,com,dno int;
+declare salary long;
+declare hdate date;
+declare empname,ejob char(30);
+declare count int default 0;
+
+declare hsal cursor for select * from emp where sal>2500;
+declare exit handler for not found set count=1;
+open hsal;
+
+iter:loop
+if count=1 then
+leave iter;
+end if;
+
+fetch hsal into emp_no,empname,ejob,mgr_id,hdate,salary,com,dno;
+select emp_no,empname,ejob,mgr_id,hdate,salary+salary*10/100,com,dno;
+end loop;
+close hsal;
+
+end $$
+delimiter ;
+
+call hikesalary;
+drop procedure hikesalary;
+
+-- 3
+
+create table totsaldept (deptno int,totsal int);
+select * from totsaldept;
+
+delimiter $$
+create procedure tsaldpt()
+begin
+
+declare tsal,dno int;
+declare count int default 0;
+
+declare tsal cursor for select deptno,sum(sal) from emp group by deptno;
+declare exit handler for not found set count=1;
+open tsal;
+
+iter:loop
+if count=1 then
+leave iter;
+end if;
+
+fetch tsal into dno,tsal;
+insert into totsaldept values(dno,tsal);
+end loop;
+close tsal;
+
+end $$
+delimiter ;
+
+call tsaldpt;
+drop procedure tsaldpt;
+
+-- 4
+
+alter table dept add total_salary int;
+select * from dept;
+
+delimiter $$
+create procedure totsaldpt()
+begin
+
+declare dn,tsal int;
+declare count int default 0;
+declare tds cursor for select deptno,sum(sal) from emp group by deptno;
+declare exit handler for not found set count=1;
+open tds;
+
+iter:loop
+if count=1 then
+leave iter;
+end if;
+
+fetch tds into dn,tsal;
+update dept set total_salary=tsal where deptno=dn;
+
+end loop;
+close tds;
+
+end $$
+delimiter ;
+
+call totsaldpt;

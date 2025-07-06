@@ -1,0 +1,144 @@
+Datatypes
+=========
+=> Datatypes are used to specify the size and the value for the columns. There are three types of datatypes.
+i) Numeric datatype
+ii) String datatype
+iii) Date datatype
+
+1) Numeric datatype
+===================
+i) int
+ii) integer
+iii) BigInt (is like Long type)
+iv) double
+v) decimal
+vi) blob (Binary Large Object) - to store image file
+vii) float
+
+=> No need to mention size i.e. number of digits for these numeric types
+
+2) String datatype
+==================
+i) char() - range less than 255 characters
+ii) varchar() - range higher than 255  characters
+iii) text(); - for higher range of characters and for special symbols
+iv) tinytext(); - for special symbols
+
+=> must mention the size/length
+=> must use the value within single quotes
+
+=>char() and varchar() stores each character like array
+
+char(5)
+=> static
+=> fixed memory size
+=> returns size as 5 for input value 'HI'
+H | I |  |  |  |
+
+varchar(5)
+=> dynamic
+=> releases extra memory
+=> returns size as 2 for input 'HI'
+H | I |  |  |  |
+
+3) Date datatype
+================
+i) date - 'yyyy-mm-dd'
+ii) time - HH:MM
+iii) year - 'yyyy'
+iv) datetime - 'yyyy-mm-dd HH:MM'
+v) timestamp
+
+=> if needed, we can change the format of date using dateformat() function
+
+Constraints
+===========
+=> Constraints are a set of rules for columns in a table
+=> Using constraints, we can restrict the user to avoid the data redundancy
+=> There are seven types of constraints
+
+i)not null
+ii) unique
+iii) primary key
+iv) foreign key
+v) check
+vi) auto increment
+vii) default
+
+1) NOT NULL
+===========
+NOT NULL constraint restricts the user from entering null values. It allows n number of duplicate values.
+Eg: can be used for Employee_Name column
+
+2) UNIQUE
+=========
+UNIQUE constraint does not allow duplicate values but it allows n number of null values.
+Eg: mobile number and email id columns
+
+3) PRIMARY KEY
+==============
+PRIMARY KEY constraint is a combination of NOT NULL and UNIQUE constraints. So, it does not allow duplicate and null values.
+Eg: Employee_ID
+=> A table must have only one primary key column
+=> collection of primary keys is known as composite key
+
+4) FOREIGN KEY
+==============
+=> FOREIGN KEY is used to combine two or more tables
+=> A table can have n number of foreign key columns but the foreign key column should act as primary key of another table.
+=> provides permanent relationship between tables in RDBMS
+
+5) CHECK
+========
+=> CHECK constraint is used to check the condition based on the values.
+=> If it returns true, it will allow the record else it won't allow the record further.
+
+6) AUTO INCREMENT
+=================
+=> AUTO INCREMENT is used to increment the value by one automatically when the record is inserted.
+=> We can give auto increment constraint for only primary key column.
+
+7) DEFAULT
+==========
+=> DEFAULT constraint is used to set a default value for a column.
+=> Whenever a new record is inserted, default value will be automatically set in that column for that record.
+
+In MySQL, technically :
+Table is called as Entity
+Column is called as Field
+Row is called as Record
+Data is called as Attributes
+
+SQL Commands
+============
+=> Each SQL command is a level of access.
+
+1) DDL - Data Definition Language - Entity level access
+-> CREATE
+-> ALTER
+	-> ADD
+	-> MODIFY
+	-> RENAME
+	-> DROP
+-> DROP
+-> TRUNCATE
+
+2) DML - Data Manipulation Language - Record level access
+-> INSERT
+-> UPDATE
+-> DELETE
+
+3) DQL - Data Query Language
+-> SELECT
+-> ALIAS
+-> DISTINCT
+-> CALL
+
+4) DCL - Data Control Language
+-> GRANT
+-> REVOKE
+
+5) TCL - Transaction Control Language
+-> COMMIT
+-> ROLLBACK
+-> SAVEPOINT

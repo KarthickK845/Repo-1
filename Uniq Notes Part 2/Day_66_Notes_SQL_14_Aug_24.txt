@@ -1,0 +1,11 @@
+DQL
+===
+Data Query Language
+
+=> to retrieve data from the table
+
+a) SELECT
+
+b) ALIAS
+
+c) DISTINCT

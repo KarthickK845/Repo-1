@@ -1,0 +1,79 @@
+FOREIGN KEY
+===========
+	QUERY
+	------
+	alter table emp add constraint foreign key(deptno) references dept(deptno);
+
+=> adding foreign key constraint to deptno column in emp table.
+=> We must mention 'references' to which primary key column of another table is it referring to. i.e. deptno primary key column of dept table.
+=> When we retrieve the records using foreign key, it acts like 'Inner Join' only.
+	
+	QUERY
+	------
+	select emp.*,dept.* from emp,dept where emp.deptno=dept.deptno and emp.ename='smith';
+
+=> We can match and retrieve the records like above only if the given tables have primary key-foreign key relationship.
+
+	QUERY
+	-----
+	select emp.*,dept.*,dept2.* from emp,dep,dept2 where emp.deptno=dept.deptno and emp.deptno=dept2.deptno;
+	
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Transaction Control Language (TCL)
+==================================
+=> TCL is used to transact the records to the database.(or in other words, transaction the changes made in the database.)
+=> TCL is mostly used to transact the DML queries.
+=> DML queries are auto-commit by default. 
+To switch off auto-commit => query is 
+set autocommit=0;
+To switch on auto-commit => query is 
+set autocommit=1;
+
+=> rollback is used to undo the query/changes that are temporarily saved in database.
+
+=> commit query permanently saves the changes done upto last query in the database.
+
+=> rollback after commit will not undo/remove the permanent changes from the database.
+
+=> savepoint is used to store/save a group of data/records/changes under a name.
+
+create table person(id int primary key,name char(30));
+select * from person;
+
+insert into person values(1,'Arun'),(2,'Bala'),(3, 'Chinnu');
+
+savepoint a; --above 3 records stored in this savepoint a
+
+insert into person values(4,'Chella'),(5,'Chinna'),(6, 'Naruto'); 
+
+savepoint b; --above 6 records stored in b
+
+insert into person values(7,'Veni'),(8,'Venu'),(9, 'Rani'); 
+
+savepoint c; --above 9 records stored in c
+
+rollback to b; --savepoint c will get deleted so only 6 records will be stored in database
+
+rollback to a; --only 3 records will be stored
+
+--rollback to savepoint will work only for temporary changes; if we commit, savepoints will be stored permanently
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+SELF JOIN TASKS
+
+#1 WAQTD names of the employees, names of their managers.
+
+select employee.ename as EmpName,manager.ename as MgrName from emp as employee, emp as manager 
+where employee.mgr=manager.empno;
+
+#2 WAQTD names of the employees, names of their managers and the names of manager's managers.
+
+select employee.ename,manager1.ename,manager2.ename from emp as employee, emp as manager1, emp as manager2 
+where employee.mgr=manager1.empno and manager1.mgr=manager2.empno;
+
+Above gives output in the correct expected order and though there is slight difference, below query gives in different order.
+
+select employee.ename,manager1.ename,manager2.ename from emp as employee, emp as manager1, emp as manager2 
+where employee.empno=manager1.mgr and manager1.empno=manager2.mgr;

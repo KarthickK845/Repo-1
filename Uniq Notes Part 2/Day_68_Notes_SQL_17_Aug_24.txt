@@ -1,0 +1,25 @@
+Operators in MySQL
+
+Special operators
+
+1) and
+2) or
+3) is
+4) is not
+5) in
+6) not in
+7) between
+8) not between
+9) like
+10) not like 
+
+-- like operator tasks
+select ename from emp where ename like 'a%';
+select ename,deptno from emp where ename like 'm%';
+select * from emp where ename like '%r';
+select sal from emp where empno like '%2';
+select *,sal*12 from emp where ename like '%ll%';
+select empno,sal from emp where ename like '%l%l%';
+select ename from emp where ename like '_d%';
+select * from emp where job like '_a%';
+select ename,sal from emp where ename like '%A_';

@@ -1,0 +1,23 @@
+Functions
+
+String functions
+
+Numeric functions
+1) sqrt
+2) ceiling
+3) floor
+4) greatest
+5) least
+6) power
+
+Date functions
+1) now
+2) current_date
+3) current_time
+4) current_timestamp
+5) add_date
+6) sub_date
+7) datediff
+8) dateformat
+
+1) now 

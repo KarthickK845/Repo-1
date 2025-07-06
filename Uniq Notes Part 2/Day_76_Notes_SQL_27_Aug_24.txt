@@ -1,0 +1,85 @@
+Index
+=====
+=> Index is used to optimize the query
+=> Without index, if we fetch data from a table, it starts to search the record from first record of the table.
+=> If we search the records using index, it will create a virtual table then it will check the records from the table
+=> By default, it creates an index for primary key, foreign key and unique constraint columns. Other than that, we can add index for other fields as well.
+
+show index from emp; -- to view the indexes in emp table
+
+If we add primary key constaint to a column, index name will be PRIMARY KEY (keyname) for that column
+
+drop index a on emp; -- to drop an index
+
+View
+====
+=> Like virtual table
+=> In some cases, we may have to write single query with multiple no.of lines (say 40 to 50) which is consistently used in our project, we can store such a query in view.
+=> Mostly select queries used here.
+=> Used for retrieving data from multiple tables in a single database.
+=> Only one query stored in a view; cannot store multiple queries
+
+create view get_view as 
+select max(sal) from emp;
+
+select * from get_view; -- to run a view
+
+alter view get_view as
+select min(sal) from emp; -- to alter view
+
+drop view get_view;
+
+For retrieval from multiple databases, we have to use Stored PRocedure.
+
+Stored procedure
+================
+=> we can store multiple queries in a stored procedure
+=> main advantage is that it reduce network traffic
+i.e. when run query from Java to server to DB, there occurs network traffic when multiple queries are executed at a time. It directly executes within DB, does not come through server.
+=> we can write business logics in stored proc like if..else, etc
+
+delimiter &&
+create procedure get_procedure()
+begin
+select * from emp;
+select max(sal) from emp;
+select min(sal) from emp;
+end &&
+delimiter ;
+
+select all the above statements and run to create the stored proc
+results of each of the queries are shown in different tabs in output console
+
+QUERIES
+
+use dql;
+select * from emp;
+show index from emp;
+alter table emp add constraint primary key (empno);
+
+create view get_view as
+select max(salary) from emp;
+
+drop index a on emp;
+
+create index a on emp(name,mgr,salary);
+
+select * from get_view;
+
+alter view get_view as
+select min(salary) from emp;
+
+
+drop view get_view;
+
+
+delimiter &&
+create procedure get_procedure()
+begin
+select * from emp;
+select max(salary) from emp;
+select min(salary) from emp;
+end &&
+delimiter ;
+
+call get_procedure();
