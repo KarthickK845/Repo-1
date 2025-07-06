@@ -1,0 +1,222 @@
+Spring Security
+
+Most common security questions
+
+All softwares will have security in general
+
+Application that we develop must have enhanced security 
+
+Using Spring Security, we can provide basic level security
+
+Terms in Security
+=================
+security
+passwords
+authentication(main term)
+authorization(main term)
+jwt,oauth2,openID
+csrf,cors
+preventing attacks
+method level , api level security
+
+Bank Security example
+why banks are well secured
+
+Banking related application - is an Enterprise Application - highly secured - data should not be exposed to third party
+
+Web Application - less secured mostly
+
+--
+
+authentication:
+-how should user authenticate into the application
+-what are different methods available (using username,password, or any other methods?)
+
+authorization:
+-setting roles like admin,user,etc
+-based on roles assigned - to access certain functionality
+
+method level security:
+-how can I implement secured at method level of my application using authorization rules
+
+cross site resource forgery (CSRF) attacks :
+-session token shared across all links in same application domain
+-csrf attacks are based on javascript mostly
+-shares cookie details once we click on a malicious link inside an application, a javascript file is called and it fetches identity from cookies itself
+-write security to handle these csrf attacks
+
+cross origin resource (CORS) restrictions :
+Cross origin:
+- front end in different origin(port)
+- backend in different origin
+allowing application to access another application - security based on origin
+
+
+JSON Web Token JWT:
+Network - Header - Bearer
+
+attach cookies or use JWT
+
+Session Token - Reference Token - reference ID that will fetch all the history of a customer issue ticket
+
+JWT = value token - will not maintain at server side
+digital signature - provided to concerned user
+next time login - authenticate based on the provided digital signature
+
+if application is microservices based or scalable, we use different instances
+
+cloud = multiple instances
+solutions:
+sticky session (equivalent to legacy)
+shared cache
+
+OAuth2 :
+Open AUTHorize 2 (2-version) supports authorization
+SSO - single sign on application
+Example : Gmail account once registered, we can access all of the Google applications whether in mobile or web application
+
+stackoverflow
+Login with Google (oauth2)
+Google says your info will be shared with stackoverflow - do you continue?
+
+openID
+similar to OAuth2
+
+supports both authentication and authorization
+
+===========================
+we will learn
+JWT, Spring Security
+===========================
+
+What is security ? protect data and business logic inside our web applications
+Security is a non functional requirement (like scalability,performance,availability)
+-high level security
+-scalability - vertical and horizontal scaling
+VERTICAL - increasing processing power (Ex. RAM power, hardware level increase)
+HORIZONTAL - increase in number of machines (more better, works based on demand)
+
+Microservice = horizontal scaling based
+
+---
+
+deploy using Docker/Container
+deploy legacy webserver
+
+each layer has a set of security:
+Cloud Environment
+Virtual machines
+Operating sytem
+Container OR App server
+Web Apps/Services - authentication,authorization,protection from csrf,cors,etc
+
+DevSecOps - Developer Security Operations team 
+
+---
+
+OAuth :
+Open Authorization
+-open standard for access delegation
+-allows third party applications to access 
+authorization server created using OAuth
+
+User entered credentials -> Spring Security Filters -> Authentication -> Authentication manager -> Authentication providers -> UserDetails Manager/Service(just like Database) and Password Encoder
+
+isAuthenticated = false ==> Authentication manager 
+Before giving response to client, Security Context (isAuthenticated = true)
+
+all are predefined only
+
+Example for above flow:
+end user provides credentials Client/Business person provid requirements -> Business Analyst/Product owners play the role of filters -> User Story (functionality description, with flows explanation) -> Delivery manager -> Team Leads -> Developers/QAs and Security Guy
+before delivering to client, track through/update in JIRA about task completion
+
+Spring boot created by using servlet 
+Security built based on filters
+
+Servlet and filters - basic understanding
+ServletRequest converted internally to HttpServletRequest
+
+=-------=----------=-------------=---------------=
+
+Adding Security to our Spring Boot project
+
+add Spring Security dependency while creating project
+
+creates login form automatically for our project when run in browser
+validation taken care
+
+default username - user
+password - genearates a hashCode value for password in console
+
+spring doc site - spring boot - appendix - common application properties
+security properties
+#changing username and password for login
+spring.security.user.name = ${USERNAME:uniq}
+spring.security.user.password = ${PASSWORD:uniq@123}
+
+Eclipse
+Run Configurations - Arguments - VM arguments - specify port 
+Run As - Run Configurations - Environment
+Add Username and password
+USERNAME_DEV Tech
+PASSWORD_DEV Tech123
+
+spring.security.user.name = ${USERNAME_DEV}
+spring.security.user.password = ${PASSWORD_DEV}
+
+difference between VM arguments and Environment variables?
+
+VM arguments or Environment variables - both high priority than application.properties
+-Dserver.port=8081
+
+---
+
+filters
+
+Authentication filters :
+AuthorizationFilter
+DefaultLoginPageGeneratingFilter
+AbstractionAuthenticationProcessingFilter
+UsernamePasswordAuthenticationFilter
+
+Eclipse:
+Ctr+Shift+R - to open JAVA files
+Ctr+Shift+T - to access/read .class files
+
+Eclipse marketplace - Dcompiler download and add to read .class files
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled=true)
+class WebSecurityConfig extends WebSecurityConfigurerAdapter
+
+configure(HttpSecurity httpsecurity) method is overridden
+
+//we dont need CSRF for this example
+httpsecurity.csrf().disable()
+//dont authenticate this particular request
+.authorizeRequests().antMatchers("/authenticate").permitAll()
+//all other requests need to be authenticated
+.anyRequest().authenticated().and().
+//make sure we use stateless session, session wont be used to store user's state
+exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
+.sessionCreationPolicy(...)
+
+AuthenticationEntryPoint interface
+commence() method
+
+Filter that will be called first =>
+OncePerRequestFilter (Before DispatcherServlet)
+Override doFilterInternal(HttpServletRequest req,HttpServletResponse resp, FilterChain chain) method 
+
+UserDetailsService
+override loadUserByUsername method
+
+UserDetailsService internally calls Password Encoder to decode password
+
+In your Controller mark the annotation
+@CrossOrigin
+to allow particular endpoint
+
+Spring_JWT in rameshuniq repository

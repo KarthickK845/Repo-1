@@ -1,0 +1,235 @@
+--Revision--
+Web service
+
+SOAP - strictly xml message format
+service definition - WSDL
+
+REST - any type of format
+service definition - WADL, Swagger
+
+Spring project
+
+web.xml
+
+Autoconfiguration
+spring vs springboot
+
+positive matches - classes for which objects are created and used
+negative matches - classes for which objects are not created
+
+configuration can be done via
+.prop,yaml,env variable and even a java class
+
+Controller - just receive request and send response - @Controller
+Business Layer - service layer - business logic - @Service
+Data Layer - connects to DB - @Repository
+
+3 annotations used for above - all use @Component
+
+why use webservice?
+frontend could be anything - from whichever app we access the webservice
+language independent
+reusable
+
+Spring demo project - project name is mainpackage in workspace
+
+--Practical--
+
+http://localhost:8080/api/test/method1
+
+request comes to Dispatcherservlet first, once above endpoint is hit
+then checks handlermapping to find the matching endpoint
+
+if not found, 404 error thrown
+
+response Status code 
+<400 - positive
+>400 - negative (error) code
+
+@Controller
+@RequestMapping(value ="/api")
+public class HelloWorldController {
+
+@RequestMapping(value="/test/method1",method=RequestMethod.GET)
+	public String getHelloWorld1()
+	{
+
+
+if we used @Controller annotation in class level, we should use @ResponseBody in the methods of that class
+means that method generates some response
+
+We will mostly use @RestController (explain later) which do not need @ResponseBody
+
+Bean class - private variables, default constructor, getters,setters, toString
+
+
+4employees in a list
+
+/employee
+return list
+
+/1
+if employee 1 is present
+
+Chrome extension
+JSON viewer plugin
+
+---
+
+Task 1
+
+Bean class
+
+package com.coupling.demo.mainpackage.bean;
+
+public class HelloWorld {
+ private String msg;
+ private int num;
+public HelloWorld() {
+	// TODO Auto-generated constructor stub
+}
+
+public HelloWorld(String msg, int num) {
+	this.msg = msg;
+	this.num = num;
+}
+
+public String getMsg() {
+	return msg;
+}
+public void setMsg(String msg) {
+	this.msg = msg;
+}
+public int getNum() {
+	return num;
+}
+public void setNum(int num) {
+	this.num = num;
+}
+@Override
+public String toString() {
+	return "msg=" + msg + ", num=" + num;
+}
+
+ 
+}
+
+
+Controller la indha method ->
+
+@ResponseBody
+	@RequestMapping(value="/beanmtd",method=RequestMethod.GET)
+	public HelloWorld getHW()
+	{
+		return service.getHWSvc();
+	}
+	
+Service la indha method ->
+
+public HelloWorld getHWSvc()
+	{
+		return new HelloWorld("HelloWorld",123); 
+	}
+	
+---
+
+Task 2
+
+Below 4 methods in HelloWorldController class
+
+@ResponseBody
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public Integer add()
+	{
+		return service.getOpr("add",1,2);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/sub",method=RequestMethod.GET)
+	public Integer sub()
+	{
+		return service.getOpr("sub",5,3);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/mul",method=RequestMethod.GET)
+	public Integer multiply()
+	{
+		return service.getOpr("mul",5,5);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/div",method=RequestMethod.GET)
+	public Integer div()
+	{
+		return service.getOpr("div",49,7);
+	}
+
+Below 1 method HelloWorldService class
+
+public Integer getOpr(String str,int a,int b)
+	{
+		Integer opr = 0;
+		if(str.equals("add"))
+			opr = a+b;
+		else if(str.equals("sub"))
+			opr = a-b;
+		else if(str.equals("mul"))
+			opr = a*b;
+		else if(str.equals("div"))
+			opr = a/b;
+		
+		return opr;
+	}
+	
+---
+
+Task 3
+
+In HelloWorldController
+
+@ResponseBody
+	@RequestMapping(value="/emp",method=RequestMethod.GET)
+	public List<Employee> getEmployees()
+	{
+		return service.getEmployeesSvc();
+	}
+
+HelloWorldService
+
+public List<Employee> getEmployeesSvc()
+	{
+		List<Employee> el=new ArrayList<>();
+		el.add(new Employee(101,"Arun",12));
+		el.add(new Employee(102,"Eswar",5));
+		el.add(new Employee(103,"Charan",7));
+		return el;
+	}
+	
+---
+
+Task 4
+
+In HelloWorldController
+
+@ResponseBody
+	@RequestMapping(value="/emp/101",method=RequestMethod.GET)
+	public Employee getEmp()
+	{
+		return service.getEmpSvc(101);
+	}
+
+In HelloWorldService
+
+public Employee getEmpSvc(Integer id)
+	{
+		List<Employee> el=new ArrayList<>(Arrays.asList(new Employee(101,"Arun",12),new Employee(102,"Eswar",5),new Employee(103,"Charan",7)));
+		for(Employee e:el)
+		{
+			if(e.getId()==id)
+			{
+				return e;
+			}
+		}
+		return null;
+	}

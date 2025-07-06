@@ -1,0 +1,369 @@
+SPRING FRAMEWORK :
+==================
+
+Spring core
+Spring MVC
+Spring Boot
+Spring Security / JWT
+Spring Data JPA/Hibernate
+Webservice SOAP/RESTFul
+
+Log4j
+Cronjob / Schedular
+
+Spring cloud
+Microservice
+
+AWS cloud
+
+EC2
+S3
+RDS
+docker
+kubernetes
+
+In above topics, mostly asked are Microservice and cloud, asked in interviews mostly
+
+Dividing Spring
+and 
+Microservice
+
+95% of companies using Spring framework
+
+JSP Servlets provide basic understanding only before learning Spring
+
+group of many number of class and interfaces - package - jar file
+
+using a predefined template in Spring
+
+Spring is most popular framework
+
+is called framework of frameworks
+
+framework for DB, 
+framework for Security, like that.
+
+We work mostly in these frameworks only.
+
+Core Java - Java Standard Edition
+Advanced Java JSP and Servlets - Java Enterprise Edition
+
+Spring Core - completely core functionalities, all fundamentals
+Spring MVC - complete MVC flows
+
+Spring Boot - designed on top of Core and MVC frameworks
+
+We use Spring to create a reusable software. Code Reusability.
+Framework - to remove boiler plate code.duplicate code.
+
+We write code and convert into jar file which other user can import and reuse.
+But for that the language must be Java in both sides which is a disadvantage of reusing code through JAR files.
+We cannot have up-to-date data if we make changes at the code writer side. Each time we have to share updated jar. Also a disadvantage.
+Also, we have to give them access to our data. Not secure.
+
+Example TicketNew - a consumer app
+which has PVR and AGS data
+we can book PVR or AGS thru TicketNew or thru PVR app or AGS app
+Views/format shown might differ but no.of seats will be same/shared
+
+Java Archive File - JAR
+Web Archive File - WAR
+above are before Docker
+
+We cannot reuse JSP Servlet code unless we share them as a jar
+
+We can either communicate and reuse code using JAR or as web services.
+
+JAR file mostly preferred when we use within same organisation
+since they share same DB Data.
+
+
+User viewing page - User Interface
+
+Presentation Layer (user interface)
+|
+Business Layer (business logic - comparison logic where we compare front end data with DB data
+|
+Data Layer (Data Access Layer)
+|
+DataBase
+
+
+Consider AGS app has above layers in their side
+also TicketNew app has similar layers but different presentation layer according to them in their side
+
+TicketNew - shows the list of theatres in Presentation layer
+Enter the Theatre and check the business logic in business layer
+which redirects to Business Layer and Data layer of AGS app
+
+mostly jar files are not allowed to take outside the provider app
+
+Web service 
+===========
+used for interaction between app to app
+can be language independent
+also platform independent
+
+all the requests coming to Business layer of TicketNew app connected thru API to Business layer of AGS app
+
+Web Application - JAR file only to be shared and reused
+Web Service based Application - Easy to use with just referring dependencies
+
+Reusability provided to those only who can access my code 
+
+Web Services - Producers and Consumers
+AGS, PVR - Producers - Data providers
+TicketNew - Consumers - Data consumers
+
+Both could be consumer of another app and provider to another app
+
+Spring - to achieve loosely coupled code app
+JSP Servlet - tightly coupled app only
+
+PVR app - Front end, Backend, DB
+app is developed and is live.
+
+After 10 yrs, if I have to modify Front end layer alone as per client's needs
+or any layer alone
+
+changes in one layer shouldn't affect another layer
+
+loosely coupled
+===============
+example :
+front angular
+backend springboot
+database mysql
+
+remove dependencies between a code and another code
+
+Class A
+Class B
+
+TIGHTLY COUPLED (Iteration 1)
+
+declaring another class refernce inside a class makes it tightly coupled
+depending on another class object directly
+as in Aggregation concept
+
+class gameRunner {
+
+freeFire ob; 	//aggregation
+
+gameRunner(freeFire ob){	//constuctor expects freeFire class object only, not any other class object
+this.ob=ob;
+}
+
+...
+
+---
+
+LOOSELY COUPLED (Iteration 2)
+
+using Interface
+
+---
+
+achieve LOOSELY COUPLED application using Spring framwork (Iteration 3)
+by default
+
+for code reusability
+
+use 
+Aggregation
+Composition
+or
+Interface
+
+Eclipse must be JEE
+
+Preferences JDK
+JDK 17+
+
+SpringBoot doesnt work JDK <8
+
+start.spring.io
+spring initializer website
+
+to download readymade spring
+
+-----------------------
+
+Introduction to Web Services
+============================
+
+Web Application - not reusable
+Webservice - reusable - service delivered over the web
+
+Both are accessed in browser only
+
+Web Layer
+|
+Business
+|
+Data
+
+Is CRUD Application a Webservice
+
+It delivers HTML output only - not consumable by other applications
+
+HTML input and HTML output - Web Application
+
+Can I reuse Business Layer by creating the JAR
+- Not platform independent
+- communication of changes
+- managing dependencies like DB
+
+If some other person must consumer my application, then we use web service
+
+Web Service 
+W3C
+
+software system designed to support machine- to-machine interaction
+should be interoperable - not platform independent
+should allow communication over a network
+
+In simple words, service accessed over network is a Webservice
+
+Web Application
+- accessed in browser having human readable format HTML
+- use HTTP/HTTPS protocol
+- meant for reusability
+- capable to maintain user session
+
+Webservices
+- meant for apps to access data in the format of XML,JSON etc
+- use SOAP protocol
+- REST is popular architectural style, almost runs on HTTP/HTTPS protocol all times
+- a single web service can be used by different kinds of apps
+- stateless
+
+SOAP - supports only XML format request and response
+REST - supports XML,JSON or any format
+
+Example :
+Java producer and Python Consumer
+conversion of Java to XML at Producer side and send to Consumer
+XML to Python conversion at Consumer end and output in Python
+
+Java - XML - XML - Python
+
+XML - XML => web service
+
+http://www.pvrcinemas.com/login/method1
+http://www.pvrcinemas.com/login/method2
+
+providing the URL+ URI to consumers which is nothing but the web service
+Endpoint
+
+localhost:8080 - URL Uniform Resource Locator
+/login/method1 - URI Uniform Resource Identifier
+
+@RequestMapping("/login")
+class LoginController{
+
+@RequestMapping("/method1")
+boolean validate(String username,String password)
+{
+}
+
+@RequestMapping("/method2")
+boolean validate1(String username,String password)
+{
+}
+
+Example: makemytrip website - consumer
+SpiceJEt,indigo, vistara - producers
+
+data exchange between applications take place
+
+XML format
+
+<getCourseDetailsRequest></
+
+JSON format
+
+Employee object (Java object) convert to JSON
+convert to XML
+
+{
+{"id":1,
+"name":"Even",
+"dob":"2014-07-07"}
+}
+
+3 jars for JSON conversion
+
+ObjectMapper - object to JSON conversion
+XmlMapper - object to XML conversion
+
+In spring we use jackson for these conversions
+
+JavaBean class is mandatory in Spring
+
+Class Employee
+getter,setters
+Constructor default constructor
+toString
+
+are mandatory inside Bean class
+
+class Main{
+
+method()
+{
+ObjectMapper objectMapper = new ObjectMapper();	//from jackson - a third party library
+}
+}
+
+always check the return type and method parameters of the method used from any library
+
+Maven / Gradle
+-Project building tools
+-convert to jar or war file
+
+Maven
+
+pom.xml - project object model
+
+we can create a maven project directly
+we can just add the required dependencies in the pom.xml instead of manually downloading the jars
+
+Eclipse -> create -> new Maven project
+
+google maven archetype quickstart
+
+mvn repository offl website
+
+copy the dependency to create quickstart application
+
+<dependency>
+    <groupId>org.apache.maven.archetypes</groupId>
+    <artifactId>maven-archetype-quickstart</artifactId>
+    <version>1.5</version>
+</dependency>
+
+In Eclipse, add archetype, fill the above values in respective fields
+
+after download, search and select the quickstart archetype
+
+enter y in console after download
+Y : y
+
+BUILD SUCCESS
+
+We should store the info such as group id, artifactId, version
+in a central repository for consumers to access 
+like the Maven Repository
+
+<dependencies> tag
+
+we can add the required dependencies here
+example mysql dependency
+
+Tasks:
+Object to JSON - we can copy the required dependency
+Object to XML
+
+read from JSON file and convert to Object
+convert Object to XML and store in another file

@@ -1,0 +1,235 @@
+JUnit 
+
+-testing framework for Java to write and run unit tests
+-testing each method and proceed further
+-focuses on testing code logic directly
+-standalone testing framework
+
+-Test Driven Development TDD followed by most companies
+
+Example - Login - correct username, pswd - success test case
+if incorrectly entered - failure test case
+
+similarly for any application we should have different test cases
+
+Example:
+
+class Sample {
+
+void add(int a,int b){
+try{
+
+if(a>b){
+
+}
+else if (b>a)
+{
+
+}
+else if (a==b)
+{}
+else{
+}
+}
+catch(Exception e)
+{
+}
+
+Write test cases to cover all the lines of code
+pass different values for a and b in above Example
+to execute each of the code blocks
+
+Developer must ensure all the code are covered
+---
+Pipelines 
+
+Code building
+No error then create jar
+
+Test cases building
+write test cases to acheive max code coverage
+calculates code coverage percent
+75-80% then only code will pass
+---
+Write test cases before development
+---
+Features of JUnit
+1. Annotations - @Test,@BeforeEach,@AfterEach
+
+2. Assertions - methods to verify expected outcomes (assertEquals, assertTrue, assertThrows etc)
+
+3. Test Runners
+
+4. Parameterized Tests
+---
+There are many other testing frameworks - Mockito,EasyMock
+Other testing frameworks are written based on JUnit mostly
+---
+
+Write unit test cases for all the .java files
+
+Test case class for above class Sample
+
+
+class SampleTest{
+
+@Test			//annotation to mark this as a Test case
+void addTest(){
+Sample s = new Sample();	//create object for Sample class to call the mthod
+s.add(10,5);			//10,5 are test data dummy values only
+}
+
+@Test			//annotation to mark this as a Test case
+void addTest2(){
+Sample s = new Sample();	//create object for Sample class to call the mthod
+s.add(5,10);			//5,10 are test data dummy values only
+}
+}
+
+instead of creating object inside each method, create a method for ObjectCreation()
+
+@BeforeEach		//annotation to ensure that this method (Normal method for ObjectCreation) should run before running any Test case
+void ObjectCreation()
+{
+Sample s = new Sample();
+}
+
+---
+
+assertEquals(null,expected,actual)
+
+int result = calc.add(2,3);
+assertEquals(5,result);				//if expected = actual after testing, test case success
+
+---
+
+Mocking objects - creating dummy objects only for testing purpose
+Eg. There may not be database, but we have dummy values for Connection objects
+
+-
+
+Mockito framework (based on JUnit only)
+-mocking framework
+-used for creating mock objects and mocking behavior
+-focuses on isolating dependecies to test specific units
+-typically used alongside JUnit (Development) or TestNG
+
+-----
+
+Add JUnit jupiter dependency in pom.xml but spring-test already must have added junit dependency #CHECK THIS
+
+---
+
+Write testcases inside src/test/java
+
+create testcase like CalculatorTest.java for Calculator.java
+
+Add JUnit in buildpath (right click on project)
+
+add library
+select JUnit 5
+
+Run test case
+run only particular Java test case class - right click on the classname and right click Run As - Junit Test
+also we can right click on method to run a particular test case -  Run As - Junit Test
+
+Coverage As added in RightClick menu to check lines coverage for test
+percent and build
+colour difference in test case to show code coverage
+---
+errors depends on number of test cases written and tested before production
+
+---
+Mockito
+
+Mock creation
+
+mock method inside Mockito
+mock the objects needed for test
+
+stubbing methods
+
+thenReturn
+
+when
+
+verify
+
+assertEquals
+
+--
+GITHUB
+UniqTestCaseDemo sir project in github
+--
+
+@SpringBootTest - class level annotation
+to mark as test class for the main application class
+
+@RunWith(SpringRunner.class)
+
+--
+vulnerabilities REFER MORE OF THIS ONLINE
+
+Cyber vulnerabilities
+SQL injection
+cross side scripting
+
+blocker/critical - does allow to build project
+sonar cube plugin configuration
+write rules to decide blockers and low
+
+---
+
+Interview:
+about Code coverage
+Mockito VS Junit
+
+
+---
+
+JPQL = Java Persistence Query Language
+write custom query by using JPQL insitead of Hibernate writing a query
+
+inside Student repository for Example
+
+@Query(" from Student")			//Student is Entity class name and not table name
+List<Student> findAllStudents();
+
+JPQUery class level
+
+
+Nativequery = true
+to consider as table (like writing a normal query in SQL DB)
+
+@Param annotation to get value as method parameter
+dynamic query
+
+--
+
+ManyToMany
+
+Example
+Many developers may work on many projects 
+Many projects
+
+when using @ManyToMany, we use @JoinTable
+
+@JoinTable
+(name = "programmers_projects",
+
+joinColumns = @JoinColumn(name="programmer_id", ...
+
+inverseColumns = ...
+
+private Set<Project> projects;
+
+
+--
+GITHUB
+inside rameshrepo
+project - SpringData JPA
+associations project name
+
+--
+
+@Transaction

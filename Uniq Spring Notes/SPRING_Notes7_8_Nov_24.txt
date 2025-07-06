@@ -1,0 +1,132 @@
+@RestController
+=> Spring Boot considers as REST service only
+=> by default message format JSON only
+
+@Controller can be used for both SOAP and REST
+
+Interview Questions :
+@RestController vs Controller
+@RequestBody vs ResponseBody
+@PathVariable vs RequestParam
+PUT VS POST
+Dependencies used in our project like Actuator,Validation,springdoc, check pom.xml
+Servcie defintion used in project - Swagger
+
+---
+
+Negative scenario in getting user details based on Id, if user is not found
+
+retrieveUSer method
+if(user == null)
+	throw new UserNotFoundException("id-"+id);
+
+Custom(User-defined) exception :
+
+public class UserNotFoundException extends RuntimeException{
+	public UserNotFoundException(String msg)
+	{
+		super(msg);
+	}
+}
+
+In SpringBoot, we need not handle exception using try catch
+instead SpringBoot will handle using global exception handling - @ControllerAdvice annotation marked class
+ResponseEntityExceptionHandler predefined class must be extended as it is going to handle our exception
+
+@ControllerAdvice
+allows to handle exceptions across the whole application in one global handling component
+
+we should create a method to handle our userdefined exception
+like
+handleUserNotFoundException() method
+that must use
+@ExceptionHandler annotation with our user defined exception class
+
+When customer reports an issue, they reach out to customer support
+who in turn reaches to Developer team
+Developer will first try to recreate the issue if it still persists, check the logs 
+if not check the logs during the time of issue when customer tried and got error.
+
+Spring Starters:
+
+from spring initialzr site
+
+we have used only Spring Web started so far.
+
+In a project we add certain things by default, like DB requisites, JDBC connector MySQL jar, 
+
+Starters we add:
+1. Spring Web 
+=> Web, RESTful, Spring MVC, Tomcat server
+
+2. SpringBoot Actuator 
+=> supports built in or custom endpoints to manage our application
+
+3. SpringBoot DevTools 
+=> when we do code changes it will automatically allow to reflect when we hit the URL. But not for configuration changes,properties file changes.We should restart manually if so.
+
+4. Validation 
+=> for server side validation(checking for null values, no.of characters,date check,etc in the details got from user). If we dont add this starter, we cannot use the annotations related to this.
+
+5. Spring HATEOAS
+
+
+Check in pom.xml for the dependencies of above starters
+
+DB related starters:
+-MySQL Driver
+-JDBC API
+
+Other than the starters provided by Spring, if we add any other, they are dpendencies 
+
+
+
+@Valid
+@Size
+@Past
+@NotNull
+
+Versions in Resolved dependencies are taken through EffectivePOM.xml
+
+To create a service defintion document for our REST service, we need Swagger for REST service
+
+search in google - spring doc open api
+
+artifact - springdoc-openapi-ui
+add this dependency tag(just a jar)
+
+Actuator
+built in endpoints
+/actuator
+
+/actuator/health - if status of service UP or not
+/actuator/env - environment details
+
+management.endpoints.web.exposure.include=*
+above configuration is added in application.properties so that it will create and show all the actuator endpoints
+
+Swagger
+/swagger-ui/index.html
+
+Hateoas
+/users/hateos/{id}
+
+used to create the response as a link 
+method return as EntityModel
+
+check these files in code from github - Restwebservice_Newcode:
+userresource
+userdaoservice
+usernotfoundexception
+exceptionresponse class
+pom.xml
+
+import the project
+check jdk
+build and run
+
+
+JDK 17+ : SpringBoot - 3+
+If JDK < 17 : SpringBoot < 3
+
+JDK 1.8 : SpringBoot 2.7+

@@ -1,0 +1,38 @@
+Spring Annotations
+===================
+
+@SpringBootApplication
+
+@SpringBootConfiguration
+
+@ComponentScan
+
+@AutoConfiguration
+
+@Component - stereotype annotation - like parent class
+only for Spring Bean (Component class) identification
+
+@Autowired - used for dependency injection
+-injecting the dependencies - allows injecting object of a class into another class
+-takes the object created in IOC container and provided to the code where object is needed
+
+Example 
+
+@component
+class Freefire {
+}
+
+@component
+class PubG {
+}
+
+@Autowired
+Freefire obj;
+
+@Autowired
+PubG p;
+
+@Primary add this annotation to the Spring Bean class which you consider as primary one.
+It tells spring, please use the primary one as your first choice
+
+@Qualifier mark this annotation where we used @Autowired and it finds two bean types (such as PubG and Freefire)

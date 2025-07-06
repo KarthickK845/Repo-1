@@ -1,0 +1,217 @@
+Database layer 
+==============
+
+- we use an API to connect to the database like RDBMS
+
+JDBC API 
+- is a low level API (involves boiler plate code)
+
+Hibernate framework [Most interview questions]
+- High level API
+- ORM's popular framework
+- we use objects,methods instead of queries to interact with DB
+
+ORM - Object Relational Mapping - Mapping Object based language and Relational language
+- Connect Java and DB
+
+@Entity 
+- class level annotation used in Bean class
+- responsible to create the table in DB if not created already
+
+We will focus on learning Spring Data JPA (High level API) - as it will involves less configurations manually than Hibernate and JPA
+
+Refer the layers for DB connectivity 
+Page 16 in ORM_Concepts document shared in github.
+
+Spring Data JPA
+===============
+-specification or interface
+
+(JPA - Java Persistence API)
+
+
+	App
+	|
+Spring Data JPA
+--------------
+	JPA 
+--------------
+  Hibernate
+--------------
+   JDBC
+	|
+ Database (RDBMS)
+ 
+--
+In Hibernate, there will not be Repository layer
+
+--
+
+Dependency for SpringData JPA in pom.xml
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+For DB below is used, in restfulwebservices project shared :
+
+<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+H2 Database (starter in Spring Initializr)
+
+--
+		
+In SpringData JPA we use Repository:
+		
+Repository:
+ 
+Required predefined interfaces to use:
+ CRUD Repository (Parent)
+ 
+ PagingAndSortingRepository (Child)
+ 
+ JPARepository (Child of PagingAndSortingRepository)
+ 
+ 
+Entity and Repository - both used to interact with DB
+Configuration - required Database Config in application.properties file like username, password, driver
+
+database-platform is to show that our service is Hibernate based
+
+To view in browser
+spring.h2.console.enabled=true
+
+Endpoint to view table in browser
+localhost:9090/h2-console 
+
+select Generic H2 (embedded) 
+and enter other DB config 
+and Connect
+
+It will open the DB
+
+resource folder - we have data.sql file
+already have insert queries in the file  but it will try to insert before creating table
+
+decides table creation required or not based on the config in .properties file
+
+spring.jpa.defer-datasource-initialization=true
+
+#setting to perform SchemaManagementTool actions automatically
+spring.jpa.hibernate.ddl-auto=none		//no action will be performed
+
+spring.jpa.hibernate.ddl-auto=create-only
+#whether DB is embedded(default create-drop) or not(default none)
+
+--
+
+interface @GeneratedValue
+strategy default AUTO
+
+---
+
+Refer these files:
+User.java
+UserResource.java
+UserRepository
+application.properties
+
+--
+Spring JPA :
+
+Create an Entity class
+
+@Entity
+public class User {
+
+//Below two annotations used for primary key field mandatorily
+	@Id		//denotes that id is primary key
+	@GeneratedValue		//denotes that id is auto-generated
+	private Integer id;
+	
+	private String name;
+	private Date dob;
+	
+	...
+	
+}
+
+Create a Controller
+
+@RestController
+class UserController{
+
+}
+
+Create a Service
+
+@Service
+class UserService{
+
+	@Autowired
+	UserRepository repository;
+	
+	//call the method inside UserRepository to interact with DB
+	repository.save(obj);		//JPA will take care of pre-required implementation of save method like Configuration,Session,etc
+
+}
+
+
+	
+Create a separate Repository to connect to the Entity class - User
+
+Create a userdefined interface for Repository :
+ 
+ @Repository
+ interface UserRepository extends JPARepository<User,Integer>		//In Generic, User is Table name and Integer is datatype of Primary Key value
+ {
+ 
+ }
+ 
+
+---
+
+Spring is called framework of frameworks
+
+---
+	Orders Table
+	
+Order ID |	Order Name
+-------- | ------------
+-------- | ------------
+	
+Relational DBMS Language
+
+Create an equivalent Bean class in Object Oriented Language for the table in DB.
+Classname and tablename must be same.
+Private fields names and column names must be same.
+
+If we didn’t create the table in DB, Hibernate will create based on the Bean class name and fieldnames.
+If we created, it will map the class fields and table columns.
+public class Orders{
+private OrderID;
+private OrderName;
+...
+}
+
+
+
+---
+ 
+Steps when using Spring Data JPA :
+1: Create the Entity class
+2: Create the Repository
+3: Configure the Data Source
+
+---
+
+findAll() 
+query - select written by JPA already
+
+in Object language - class
+in Relational language - table
+

@@ -1,0 +1,332 @@
+Maven
+
+tool used to manage/maintain required/needed dependencies (libraries) for our project
+
+parent jar ex: java is a parent package
+java.io, java.sql are sub packages
+
+we manually download the jars and add them to our project library
+
+when we add unwanted jars to our application, there is risk for vulnerability that a hacker could easily hack our code
+
+so, instead of updating jars each time, 
+
+when we need to pack our code and share with consumers which is easily done using Maven - build automation tool primarily used for Java projects
+
+pom - project object model xml file
+
+<dependencies> tag
+we can just add the required dependencies here
+like ObjectMapper dependencies
+
+normal project for Java, dynamic web project - we may have some predefined structure
+
+similary for Maven project we have
+
+pom.xml - where we specify how we should convert/package our project or file eg. to war or jar after Code building
+
+src/main/java = all out Java code
+src/main/resources = properties file, image,jsp files - required config files
+src/test/java = test cases
+
+target folder - application converted to jar file or war file and stored here
+
+target/my-app-1.0.jar
+
+Build lifecycles :
+
+validate,. .., compile,..., test, package,... etc
+
+maven build or maven install when you run your application
+
+Maven Central Repository
+
+URL - repo1.maven.org/.. #CHECK THIS and OPEN FROM INSIDE MVN CENTRAL REPO URL
+
+IT is remote repository from where our projects (our LOCAL REPO) downloads the required jars provided if we had added the dependencies
+
+groupId - similar to package name
+artifactId - similar to class name
+version - version of jar
+
+these are al parts of the URL from where jar starts downloading.
+
+95% companies use Maven, few others use Gradle
+slight differences in URL - refer Maven and Gradle of a dependency in MVN Cental Repository
+
+Nexus Repository
+-private company jars maintained and managed here 
+-we retrieve data/pick jars based on artifact id
+
+spring initializr
+
+start.spring.io - website for Spring Boot projects creation
+							==============
+
+For Spring Core project creation, we import spring-core jar latest version 6.1.14
+vulnerability also mentioned if any which if we use, might have loopholes that hackers could access
+
+Product based companies have a team to check and remove vulnerability jars 
+
+Spring Application
+==================
+Design pattern - a template - reusable solution for common problem
+
+Principles of Design Patterns
+1) Use Aggregation without Inheritance
+2) Write code for interface, not for class - Which is used in Spring
+
+questions may be from Spring Core, MVC
+but we mostly work on Spring Boot
+
+to make a Spring project (Spring Core,MVC) up - it will take min. 4 hrs (based on the added dependencies)
+created using Maven or Gradle mostly
+just we can update versions as and when required
+
+Maven  is specific to Java projects
+
+but Spring Boot project takes just few seconds/minutes.
+
+JSP Servlet projects - we configured using web.xml or Annotations
+
+similarly, in Spring we config using xml or annotations
+as a Java developer, annotations are easy to configure which we add directly on classes
+
+why Spring MVC to Spring Boot, as Java developers we must focus on Java logic dvelopment
+Spring Boot - by default config using annotations, Auto-Configured readymade application
+
+in that website Spring Boot, click Generate - zip file creates which is our project
+just import that into eclipse
+
+
+Spring Core - core functionality
+Spring MVC - client server architecture
+Spring Boot - auto configurations
+
+WE must understand Web Service  to use any of above
+
+SOAP and REST
+
+mostly companies use JSON format
+
+Why JSON in Spring ?
+backend language can be any lang - Java or Python
+but we convert the corresponding lang object to JSON object - readable and convertible by any other Lang
+
+JSON Datatypes:
+Object {"key":"value"}
+Array
+String "text"
+Number 314 or 3.14
+Boolean
+Null : null
+
+Installed JREs
+Add 
+Standard VM
+select JDK root folder
+
+shouldn't use defualt jre - if used considers a normal Java project compilation
+
+so update to JDK
+
+RightClick on Project - Properties - Java Build Path
+- Libraries - check jre version 
+edit javaSE 17 
+seelct workspace jdk 17
+
+
+Java Compiler - Compiler compliance level - should match the version selected above - jdk 17
+
+check each time before building
+
+After updating same JDK 17 at all places
+
+RC on Run As - Run Configurations - Maven Build double click - on the right, give the project name, select your workspace - your project
+Goals : clean install
+to deploy our project
+
+Apply, Run - Project starts to build
+
+BUILD SUCCESS else some error
+
+after building - jar file is ceted under target folder
+
+
+Afternoon class
+===============
+
+Create a BeanClass (like Employee,Student class) whenever we are given a JSON object or XML object
+When a client sends info with a request, it comes as JSON object which we should convert into Java object
+
+How an application knows the format of request and response?
+
+ToDoService - WebService (Producer)
+Application A (Consumer)
+
+Application A sends Request to Web Service
+Web Service sends the Response back to Application A
+
+Producers creates the Service and gives to Consumer
+
+				   ------------	Request/Response format
+Service Definition ------------ Request Structure
+				   ------------ Response Structure
+					------------ Endpoint
+
+http://localhost:8080/
+Tomcats 's default host address is localhost
+8080 port address 
+
+If we use different Server other than Tomcat, it will be different
+
+http://localhost:8080/login/validate goes to LoginController once hit the URL and maps to validate method
+http://localhost:8080/register/add goes to RegisterController once hit the URL and maps to add method
+http://localhost:8080/register throws 404 error
+
+below alos works but each is loaded and checked for the method
+http://localhost:8080/validate
+http://localhost:8080/add
+
+
+@RequestMapping("/login")
+class LoginController{
+
+@RequestMapping("/validate")	//Method level mapping
+public boolean validate(){
+return true;	//returns as object but response should go to consumer as JSON
+}
+}
+
+@RequestMapping("/register")
+class RegisterController{
+
+@RequestMapping("/add")	//Method level mapping
+public boolean add(){
+}
+}
+
+}
+
+Endpoint http://localhost:8080/login/validate
+
+JSON 
+
+Request:
+Backend we should have the bean class for the request
+
+{
+"username":"****"
+"password":"***"
+}
+
+Response:
+{
+"success":true
+}
+
+Service Provider
+Service Consumer
+Service
+
+Transport HTTP - communication thru network
+
+SOAP
+- Simple Object Access Protocol
+- supports only XML request and XML response
+SOAP-ENV Header and Body inside SOAP-ENV: Envelope
+
+mostly used are REST service in companies
+but in interview SOAP is asked
+
+SOAP Format
+-SOAP XML Request
+-SOAP XML Response
+Transport - SOAP over HTTP
+Service Definition - WSDL
+WSDL used in SOAP, .wsdl file
+content inside this file is xml only
+
+WSDL
+-Endpoint
+-All operations
+-Request Structure
+-Response Structure
+
+Key Terminoloygy in WSDL
+Request and Response
+XML and JSON
+
+SOAP is highly secure, by default security is provided
+
+REST
+-Representational State Transfer
+a web service model
+an architectural style that provides a set of guidelines and principles for designing and building distributed system, particularly web services
+
+HTTP
+makes best use of HTTP
+REST
+HTTP
+HTTP methods(Get,Post,Put,..)
+HTTP Status codes(200,404,..)
+
+Data exchange format - no restriction (advantage)
+JSON is popular
+Transport HTTP 
+Service Definition - WADL/Swagger
+Swagger - we will use mostly
+
+Resource :
+- has a URI
+- has different representations JSON, ...
+
+create a user - POST /users
+delete a user - DELETE /users/1
+get one user - GET /users/1
+get all users - GET /users
+we can use same endpoint from 2 methods
+but we differentiate based on the type of request
+
+As a Backend Developer, we focus on Business Layer - 3 layers
+
+Presentation Layer
+
+Controller Layer	- recieves request; acts as a Web Layer; sends response
+Service Layer		- handles business logic
+Data Access Layer
+
+DB
+
+Integration Layer - connects producer(AGS) and consumer(TicketNew) applications' controllers
+
+Spring Project Creation
+
+spring initializr
+
+Project - Maven
+Language - Java
+Spring Boot - version - 3.2.10 previous version, not latest version if asked in interview
+
+Spring core and Spring MVC versions above 6 only
+
+Spring Boot introduced after Java 8 only
+
+SNAPSHOT - under development code which can be recompiled multiple times
+each time it replaces previous file with new changes
+
+packaging  - choose jar
+Java 17 - use Spring JDK 17
+
+after download
+
+import existing maven project - import that downloaded jar
+
+Build Maven project before writing code 
+
+Comment the annotation - SpringBootApplication to work as a normal Java application
+
+Loosely coupled and Tightly coupled code - write in Spring Boot app class
+
+
+

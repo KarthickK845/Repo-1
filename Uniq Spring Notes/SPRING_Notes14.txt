@@ -1,0 +1,144 @@
+User class in SecurityProperties class
+
+@ConfigurationProperties
+
+application.properties
+username ${UDEV}
+password ${PDEV}
+
+scope of environment variables and VM arguments and differences between these two
+
+to pick from environment variables
+
+how to increase JVM space - check online
+fix using JVM arguments
+
+UsernamePasswordAuthenticationToken
+|	Authentication
+ProviderManager
+|
+DaoAuthenticationProvider
+|
+loadUserByUsername() method
+
+Example 
+Amazon Web service
+
+IAM service in AWS - authentication service
+IAM Identity Center
+EC2 to deloy particular service
+RDS data base
+S3 object store service
+Elastic Kubernetes Service
+Elastic container service
+
+--
+
+USER management - important class and interface
+
+flow with database
+
+
+--
+
+Encoding and Decoding
+Encryption and Decryption - 
+- Symmetric encryption
+- Asymmetric encryption => using public key and private key (must have both keys to maintain security)
+Hashing (only 1 way)
+- data as input and produce unique string of bytes in return
+
+--
+
+Official website
+jwt.io
+
+RFC 7519 document
+
+--
+
+Encoded data
+Token on the left
+
+Decoded
+
+Header (meta data information like hashing algorithm HS256 and type JWT)
+Payload (data used to create identity token like sub,name,iat(issuedAtTime))
+signature (add above json objects along with digital signature)
+
+--
+base64decode online open source decoder
+---
+
+project
+
+/hello
+was not allowed to access without token/security
+
+in postman
+Authorization =>
+Bearer Token => Token textbox - paste the token and send request
+
+some companies use cookies instead of tokens
+configure in postman
+Cookies - Manage Cookies - Add Cookie - add value,path
+
+/authenticate
+allowed to access with username and password RequestBody
+
+--
+
+INTERVIEW QUESTION
+read data from .properties/config files
+
+jwt.secret=Uniq@123
+
+@Value annotation used to read from application.properties file
+
+@Value("${jwt.secret}")
+private String secret;
+
+--
+
+authorization server as a separate service
+
+security as a service, part of AOP
+
+security in microservices
+
+--
+
+pom.xml
+jwt dependency is not part of spring starter
+so add from mvn central repo
+
+application.properties
+file config
+
+Configuration files
+WebSecurityConfig class
+
+@EnableMethodSecurity
+@PreAuthorize
+@PostAuthorize
+
+--
+
+/api/test/all
+
+/api/test/user
+
+Post request
+/api/auth/signup
+pass username,email,role,password in json data
+
+check with debug in eclipse
+
+/api/auth/signin
+username,password
+
+--
+
+INTERVIEW
+Spring Annotations
+Spring Security

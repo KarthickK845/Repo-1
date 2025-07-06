@@ -1,0 +1,269 @@
+Controller (only for processing request and response)
+|
+Service (business logic)
+|
+Repository (Interface - interacts with DB)
+
+@Service
+public class EmpService{
+
+EmpRepository empRepository;
+
+public Iterable<Employee> getEmpList() {
+	Iterable<Employee> empList = empRepository.findAll();
+	return empList;
+}
+
+
+Persistent Object
+
+--
+
+framework avoids repeated code and just uses the required things
+
+--
+
+Before ORM framework, Spring JDBC was used to simplify JDBC usage
+It provides JdbcTemplate and NamedParameterJdbcTemplate and avoids boilerplate code.
+
+--
+
+Hibernate 
+-is an ORM framework
+-simplifies DB programming by mapping Java objects to DB tables
+-generates SQL query and executes using JDBC
+
+To use Hibernate:
+-add Hibernate dependencies
+-configure Hibernate
+-create an entity class
+-use SessionFactory for obtaining a session
+
+SessionFactory
+-will have the list of session objects
+
+-Required configuration
+SessionFactory sessionFactory = new Configuration()
+                .configure("hibernate.cfg.xml")
+                .addAnnotatedClass(User.class)
+                .buildSessionFactory();
+				
+session methods and sessionFactory methods for transaction get,begin,close,etc
+
+Interview POV in Hibernate:
+What is session?
+SessionFactory?
+configuration or annotation?
+
+---
+
+Spring Data JPA is different from JPA
+
+---
+
+JPA - Java Persistence API - an interface, a specification
+
+To use JPA :
+-Set up your persistence.xml file for JPA configuration - driver,url,password
+-EntityManagerFactory - using this object - we commit,begin,close,etc transaction
+
+--
+
+Spring Data JPA - an abstraction layer on top of JPA
+
+- reduce the amount of boilerplate code required to implement DAO
+- we used Spring Data JPA in our Employee demo project
+
+App
+	|
+Spring Data JPA (Interface)
+--------------
+	JPA (Interface)
+--------------
+  Hibernate (Implementation)
+--------------
+   JDBC
+	|
+ Database (RDBMS)
+
+Interview POV:
+Hibernate vs JPA vs Spring Data JPA?
+Transaction?
+EntityManager?
+session object?
+
+--
+
+Entity name and Table name must be same
+Field name and Column name in Table must be same
+
+If different, use @Table class level annotation to refer the correct Table in DB
+@Column for field level annotation to pick the correct column in Table
+
+--
+
+@GeneratedValue
+for auto-generated
+
+GenerationType
+
+AUTO
+IDENTITY
+TABLE
+
+--
+
+To write a userdefined method similar to findAll(),findById(),etc of JpaRepository Interface
+
+Go to docs.spring.io
+
+Spring Data JPA / JPA / JPA Query Methods
+
+Keyword and Sample
+
+Sample - sample method names based on our columns
+
+finder methods 
+
+findBy
+existBy
+distinct
+
+Example :
+findByEmployeeNameAndID(String name,int id) 
+create in Repository
+
+Call this method from inside Service method
+
+--
+
+If we have two tables and those are related/associated (Aggregation/Association concepts)
+User and Post tables for example.
+
+Many Relationships:
+@OneToOne
+@OneToMany
+@ManyToOne
+@ManyToMany
+
+
+Example:
+One User in Facebook
+Shares Many Posts in their feed
+
+One User, Many Mobile numbers
+
+class User {
+
+Post post; //If only one post allowed per user
+
+@OneToMany
+List<Post> post; //multiple posts allowed per user
+}
+
+class Post {
+
+@ManyToOne
+User user;	//many posts belongs to one user only
+
+}
+
+
+
+1) Unidirectional relationship
+
+Related from either only one side
+Not related from both sides 
+
+"/author"
+
+class Author{
+@OneToMany
+List<Book> books;		//author is related to book
+}
+
+"/books"
+
+class Book{
+private Long Id;			//no reference for author, so book is not related to author. We cannot retrieve Author info.
+}
+
+2) Bidirectional
+
+
+Related from both sides 
+Mostly used in real time applications
+
+
+class Author{
+@OneToMany
+List<Book> books;		//author is related to book
+}
+
+class Book{
+private Long Id;			
+
+@ManyToOne
+private Author author;		//book is related to author
+
+}
+
+--
+
+for Post table, we have created PostRepository
+
+2 entities - we can create 2 repository 
+
+In UserJPAResource
+method for geting the posts based on user id 
+
+@GetMapping("/jpa/users/{id}/posts")
+	public List<Post> retrieveAllUsers(@PathVariable int id) {
+		Optional<User> userOptional = userRepository.findById(id);
+		
+		if(!userOptional.isPresent()) {
+			throw new UserNotFoundException("id-" + id);
+		}
+		
+		return userOptional.get().getPosts();
+	}
+	
+---
+
+In User Entity class
+
+@OneToMany(mappedBy="user")		//use of mappedBy ?  To define Ownership.  "user" is reference name used in Post class
+	private List<Post> posts;
+	
+In Post Entity class
+
+@ManyToOne(fetch=FetchType.LAZY)		//use of fetch ? FetchType - by default EAGER 
+	@JsonIgnore				//add this when using fetch
+	private User user;
+	
+--
+
+In Book Entity class
+
+@ManyToOne
+@JoinColumn(name = "author_id")	//Author and Book tables are related by author_id
+private Author author;
+
+owner Entity - Book  (foreign key author_id is in Book table, so Book is owner)
+inverse side (non-owner) - Author (mapped by="author" which is opposite side of foreign key)
+
+owner Entity - Post (foreign key user_id is in Post table, Post is owner)
+inverse side - User (mappedBy="user")
+
+--
+
+spring.jpa.show-sql=true
+
+above config is used to view the queries in console like below
+
+Hibernate: delete from employee where id=?
+Hibernate: select e1_0.id,e1_0.department,e1_0.name from employee e1_0
+
+--
+
+Cascading (to be explained later)

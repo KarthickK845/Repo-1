@@ -1,0 +1,207 @@
+Controller
+to receive request and send response
+
+code developed and converted to jar -- jar deployed in server -- we access using URL
+
+http://localhost:8080
+
+http://localhost:8080/sample
+http://localhost:8080/login
+http://localhost:8080/register
+
+DispatcherServlet - front controller
+redirects based on '/' in the URL
+
+HandlerMapping - 
+
+@Controller
+@RequestMapping("/sample")
+class SampleController{
+
+}
+
+@Controller
+@RequestMapping("/login")
+class LoginController{
+
+}
+
+@Controller
+@RequestMapping("/register")
+class RegisterController{
+
+}
+
+Spring use embedded server within it, that is Tomcat
+
+Web service
+Providers - PVR,AGS
+Consumers - TicketNew,Bookmyshow
+
+why REST service?
+bcoz it is developed based on HTTP methods
+
+
+Bean class must be an encapsulated class
+
+Service only should have the business logic
+
+@Service
+class SampleService{
+
+}
+
+SpringBoot supports REST by default
+
+---
+
+Use version of SpringBoot based on Spring's version
+RestController Introduced after Spring4
+
+@RestController = @Controller + @ResponseBody
+class level annotation
+no need to use responsebody at method level
+
+Interview Question - Diff bw @Controller and @RestController
+SpringBoot version - 
+Spring 2 - JDK 8+
+Spring Boot introduced after JDK 8 only
+
+Spring 4
+@GetMapping instead of @RequestMapping annotation - method="GET"
+that is, instead of @RequestMapping(value="/add",method=RequestMethod.GET)
+
+http://localhost:8080/course/100
+
+assign the value in URL to the method parameter
+we use @PathVariable annotation
+
+For dynamic endpoint working
+
+@GetMapping("course/{id}")
+public Course getCourseById(@PathVariable("id") Integer id)
+	{
+		return new Course();
+	}
+
+if pathvariable name is same as parameter name
+@GetMapping("course/{id}")
+public Course getCourseById(@PathVariable int id)	//no need to pass like @PathVariable("id")
+{
+return new Course();
+}
+
+if pathvariable name is different from parameter name
+@GetMapping("course/{id}")
+public Course getCourseById(@PathVariable("id") int a)	//must pass like @PathVariable("id")
+{
+return new Course();
+}
+
+@GetMapping("course/{id}/{value}")
+public Course getCourseById(@PathVariable int id,@PathVariable String value)
+{
+return new Course();
+}
+
+URL rewritten
+
+http://localhost:8080/api?id=1
+
+@GetMapping("api/")
+public Course getCourseById(@RequestParam int id)
+
+Interview question - Diff bw PathVariable and RequestParam
+
+http://localhost:8080/MyApp/user/1234/invoices?date=12-05-2013
+
+@GetMapping("/user/{userid}/invoices")
+public List<Invoice> listUsersInvoices(
+@PathVariable("userid") int user,
+@RequestParam(value="date",required=false,Date dateOrNull){
+}}
+
+required=false //works even if data is not passed,takes the default value for that requestparam
+required=true //data is mandatory
+
+--Afternoon--
+
+Use HTTP methods appropriately
+
+HTTP methods used in REST are
+
+GET - read/retrieve data
+POST create new resources/records, always creating a resource, doesn't matter it it was duplicated
+PUT update existing resources/records (checks everytime resource if exists,updates else creates new record)
+DELETE remove resource
+PATCH always updating a resource, partially update a resource
+
+Idempotent methods
+-> safe operation
+-> Methods that return same result repeatedly irrespective of number of times called by any user
+
+GET
+PUT
+DELETE
+
+Non-idempotent
+
+PATCH
+POST
+
+Interview questions :
+PUT VS PATCH
+POST VS PATCH
+
+Appropriate Status codes
+
+200 OK Success
+201 Created successfully created a resource
+204 No content success
+400 Bad request
+401 unauthorized
+404 not found
+500 internal server error
+
+@PostMapping
+
+GET - 255 characters only can be sent in a URL
+POST - Data security
+
+endpoints can be same for methods
+but method operation might be different
+
+Object to JSON and JSON to object is taken care by Spring using Jackson jars implicitly
+
+@RequestBody used in POST method request
+when request from user is attached to body
+JSON object is converted to User object and recieved in this method
+
+-> deserialize a request body into an object
+
+ResponseEntity used when we use @PostMapping
+-> returns complete HTTP response
+
+ResponseEntity meant to represent the entire HTTP response. You can control anything that goes into it : status code,headers and body
+
+ResponseEntity<Object>
+
+check ResponseEntity methods
+
+@PostMapping("/users")
+public ResponseEntity<Object>
+
+Download Postman tool
+
+@DeleteMapping("/users/{id}")
+
+
+---
+Task
+
+create two projects to run on different port addresses
+TicketNew project -  with Controller and Service
+PVR project -  with Controller and Service
+
+connect both the projects - get data from PVR project to display in TicketNew 
+

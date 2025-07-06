@@ -1,0 +1,84 @@
+In interview, they will ask about:
+-Real time experience in our project
+-steps involved in project and Production Maintenance
+
+SpringBoot - defaultly creates jar file
+other types of project build file :
+- WAR file
+- Image file - if there is Docker usage
+
+Cloud:
+======
+-Cloud is distributed system
+-more than one laptop/system connected over a network
+
+-if request process and response process are performed in single system, it will take more time.
+-cloud reduces the time of process as it involves multiple systems
+
+-single application deployed on one server - runs on a default port address
+-if we run same application on another system - we use different port address
+
+LoadBalancer 
+- identifies the system that is available to receive the request and process further
+- equaly distributes the load of requests to available systems
+
+Before there was Single server only - Monolithic - Legacy
+
+=>Public cloud - pay on use server (or) called as on-demand server
+=>On-premises cloud - company's own cloud server
+
+Interview question:
+=> Which server did we use in our project
+
+--
+
+DevOps - Operations team
+
+--
+
+Regions in an application:
+
+dev
+
+stage/test - QA/UAT/XAT/DEMO
+
+prod
+
+--
+
+developer must test the code after making changes
+testing team also tests the code
+application should not break, so we test in QA,UAT prior to dploying the code in PROD
+
+dev code taken to UAT
+code is tested properly UAT,XAT/DEMO
+then only taken to PROD
+
+--
+
+Cloud is a virtual machine
+Container - host OS (All microservice based applications will have this concept)
+Docker - containerization tool - converts application to image file and supports deployment of that file
+
+Webserver used for backend connections
+or Application server
+
+-- 
+
+we can also deploy the same application in multiple instances
+
+works only for monolithic architecture
+
+multiple instances in monolithic have challenges
+
+When we have multiple instances, user logs in with username and password, the request comes through Load Balancer which will look for an available server instance. The request comes to instance 2. It will create JSESSION for the user login info in the session table. Next time, when user gives another request i.e. if they click another link after login, if the Load Balancer forwards the request to a different server instance say instance 3, it will ask to Login again since this instance will not have the session info. 
+
+ways to tackle the challenges:
+stickiness=true - server configuration - all requests goes to same server instance
+for configuring that the request and response should be processed on same server only. Should not go to other available servers.
+
+redis cache - generic for all
+
+--
+
+

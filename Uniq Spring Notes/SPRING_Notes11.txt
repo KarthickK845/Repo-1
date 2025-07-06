@@ -1,0 +1,83 @@
+
+				TicketNew														PVR
+	
+																			FrontEnd
+
+FrontEnd --->	Controller ---->	Service	----------------------------------> Controller
+													
+																			Service
+													
+
+To connect two applications or two services, we use RestTemplate class (its a third party class)
+we can send request from one application to another using the methods inside RestTemplate class
+
+We do not create object generally using "new" keyword in Spring as it automatically creates an object by Spring Container
+
+@Bean
+But if we need to create object for Third party class, we can create using @Bean method level annotation
+that method returns a Spring Bean
+
+Customizing Third Party Beans
+
+to customize and config third party beans that you dont have control over
+
+create a config class to define a bean of a third party library and config it with custom settings
+ 
+@Configuration - class level annotation for Configuration class - when starting the application itself, it will help in creating the third part beans/objects (mostly used for this purpose)
+-we can have more than one @Bean annotations inside a Config class
+
+methods inside RestTemplate
+
+getForObject for GET HttpMethod
+-returns plain object
+
+getForEntity
+-returns full HTTP response
+
+exchange method for POST HttpMethod, etc
+
+@Nullable annotation requestEntity
+
+Generics And Type Erasure
+-Java uses a feature called Generics which allows you to specify the type in type-safe manner
+-during runtime, Java uses process - Type Erasure
+
+both List<Employee> and List<String> taken as just List at runtime
+
+ParameterizedTypeReference
+- allows to retain the generic
+
+requestEntity - add required HTTP headers, security token, etc
+
+
+
+ResponseEntity - returns complete HTTP response
+
+inside github rameshrepository, refer and execute the below projects
+
+WebServiceProject_A
+MyFirstRestService
+													
+--Project Task--
+
+BookMyShow consumer application
+
+2 theatres (producers)
+PVR
+AGS
+
+Use MySQL DB configurations
+
+if seat available, then only allow to book the tickets
+
+--
+
+topics to cover:
+
+security 1 - flow
+database jpa
+log4j 2
+schedulers 4
+cloud 3
+
+microservices
