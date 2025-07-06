@@ -1,0 +1,119 @@
+Class Vs Object
+
+Class is a template of object 					Object is an instance of class
+(a template or blueprint from 
+which objects are created)
+
+Class is a logical entity						Object is a physical entity
+
+Class is declared once							Objects are created many times as per requirement
+
+Class is declared using class keyword			Object is created using new keyword
+
+Class doesn't allocate memory when it is 		Object allocates memory when it is created
+created
+
+
+
+Class - is a logical entity, gives logical views, template of object
+Class is a group of similar objects.
+Object - is a physical entity, has state and behaviour, instance of class
+Object is a real world entity such as pen, laptop, mobile, bed, keyboard, mouse, chair etc.
+
+
+====================================================================================================================================
+
+We can return an array in a method
+also can return an Object type value in a method just like returning a String value
+
+We can declare a final variable only if we assign value to it using static block or a constructor
+
+We can declare class a private only if needed
+
+We can create object as final but we can't reassign value of the object like obj=ob;
+
+IllegalArgumentException thrown in thread priority while setting values other than 1 to 10
+
+We can call run method multiple times just like normal method but thread creation will not happen. If we need to create a thread and call run method, we can call start() method using Thread class object and pass the object reference of the class in which run() method is overridden. We can call start method multiple times using same object or diff objects 
+
+TOPICS WILL BE COVERED BY UNIQ
+Concurrent HashMap
+Collection Data Structure
+Try with resource   -- File Writer
+Serialization, deserialization -- collection
+
+ConcurrentModificationException - when adding or removing objects to a Map inside iterator - called as Fail Fast
+Iterator i=
+while(i.hasNext()){
+h.put(5,"G");
+}
+
+ConcurrentHashMap - util.Concurrent package
+If exception doesn't occur - it is Fail Safe
+
+create Map using ConcurrentHashMap to modify the map inside an iterator, to overcome the above exception
+ConcurrentHashMap h=new ConcurrentHashMap();
+
+Same exception thrown with List Collections as well
+ArrayList al=new ArrayList();
+Iterator i=
+while(i.hasNext())
+{
+al.add(40);
+}
+
+To overcome in ArrayList, create your List using CopyOnWriteArrayList - defined under java.util.concurrent package
+
+for Set try using CopyOnWriteArraySet - defined in same above package
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Data Structure in Collections
+==============================
+Collections are growable in size but each Collection may have a default capacity
+
+ArrayList - 10 is default capacity
+when 10 values are added, new size of arrylist calculated using below formula
+(old capacity * 3)/2 + 1
+
+LinkedList - no default capacity
+
+Vector - 10, once 10 is reached, size is doubled like 10*2 => 20, once 20 is reached, 20*2 => 40
+
+HashSet - 16 
+once load factor (CHECK THIS) is reached - i.e. 0.75
+so 16*0.75 = 12 - once 12 values are given
+once after that, 16 is doubled to 32
+
+LinkedHashSet - 16 (since it is based on HashSet)
+
+HashMap - 16
+LinkedHashMap - 16
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+finally - is for closing process in general
+if we use try block with file handling
+we can use close() method within finally block
+
+try with resource - to automate the closing process 
+
+whichever class if it has close method like FileWriter, that class would have implemented AutoClosable interface
+
+try with resource - used with classes which have implemented AutoClosable interface
+
+try(FileWriter fr=new FileWrit....();)
+{
+fr.write("Good");
+}
+
+above will write the file with "Good" and auto close the file. We need not call the fr.close() method explicitly.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Queue
+=====
+FIFO - First In First Out
+adds new element in Rear
+removes element from Front
+almost all methods same as other Collection

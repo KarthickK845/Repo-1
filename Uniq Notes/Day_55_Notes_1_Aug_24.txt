@@ -1,0 +1,69 @@
+Collectors class
+=================
+Collectors is a class used to mapping the values from the the stream.
+
+■ It is an immutable class coz its final. All methods in this class are static
+■ It is inside java.util.stream package.
+■ Must be used only on a stream of objects.
+■ Collectors is Terminal operation
+
+used for mapping purpose
+
+Methods:
+-------
+toList - convert to list, map, set
+string join
+maxby
+minby
+
+average methods
+---------------
+averagingInt
+averagingDouble - ToDoubleFunction interface
+averagingLong
+
+//Finding the average of product price in double
+Double avgprice = listOfProducts.stream().collect(Collectors.averagingDouble(p->pprice));
+
+averagingInt and averagingDouble also returns double value #CHECK THIS
+
+counting() method
+-----------------
+Long avgprice=d.stream().collect(Collectors.counting()); //returns total num of elements in stream as long value
+
+groupingBy() method
+-------------------
+Function functional interface
+returns as Map value only
+
+Map<Integer,List<Employee>> map=d.stream().collect(Collectors.groupingBy(p->p.uid));
+//groups by user id as keys and objects of Employee as values
+
+Map<Integer,Integer> map1=d.stream().collect(Collectors.groupingBy(p->p.uid,Collectors.counting()));
+
+summingInt method - ToIntFunction interface
+-------------------------------------------
+Map<String,Integer> map2 = d.stream().collect(Collectors.groupingBy(p->p.uname,Collectors.summingInt(p1-> p1.uname.length())));
+summingLong method
+Integer sumofprice = d.stream().collect(Collectors.summingLong(p->p.pprice));
+
+joining() method
+----------------
+String gname = d.stream().map(p->p.uname).collect(Collectors.joining()); //without parameter
+Collectors.joining(" ") //single parameter
+Collectors.joining("|","{","}")	//three paramters - delimiter,prefix,suffix
+
+maxBy method
+------------
+Optional max = d.stream().map(p->p.pprice).collect(Collectors.maxBy(Comparator.naturalOrder()));
+
+minBy() method
+--------------
+Optional min = d.stream().map(p->p.pprice).collect(Collectors.minBy(Comparator.naturalOrder()));
+
+toSet() method
+--------------
+Set pset = d.stream().map(f->f.ppname).collect(Collectors.toSet());
+
+toMap() method
+Collectors.toMap(p->p.pid,p2->p2.ppname)	Both paramters each are of Function functional interface type

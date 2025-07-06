@@ -1,0 +1,8 @@
+Task
+====
+Create a class Employee with fields id,name, salary. Print the 4th and 5th highest salaries only in a list of Employees.
+
+Convert Array to stream object
+Arrays.stream(a)
+
+Stream.boxed()

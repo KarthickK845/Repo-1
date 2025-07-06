@@ -1,0 +1,32 @@
+JVM, JRE, JDK - platform dependent - diff versions for diff OS
+Java - platform independent
+
+No complex concepts like Pointers in Java. So, its simple
+bytecode is not human readable, so while transfering it to diff platform for execution, if it is hacked, hacker will not know the program but can only view the output. Only JVM can understand and convert bytecode into machine code. Hence it is Secure.
+
+Polymorphism
+============
+A method can act in different ways
+Poly means many
+morphism means form
+so, many forms.
+
+Types :
+=======
+1) Compile time polymorphism or Overloading
+2) Run time polymorphism or Overriding
+
+Overloading
+===========
+-> can overload the method with same method name and passing different type of parameter or passing different number of parameter.
+-> overloading is done in the same class.
+
+Overriding
+==========
+-> can override the existing method with same return type, same method name and same parameters in different class.
+
+this
+super
+final
+
+#REFER WRITTEN NOTES

@@ -1,0 +1,12 @@
+Inner class
+===========
+=> Inner class is nothing but a class created inside a class is called inner class or nested class.
+=> Inner class is used to access the private data members.
+
+Types of inner class 
+======================
+1) Non static inner class
+	1) Member inner class
+	2) Method local inner class
+	3) Anonymous class
+2) Static inner class

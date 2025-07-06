@@ -1,0 +1,18 @@
+Static blocks or Static initializers
+
+Class is a blueprint for object
+Objects have state and behaviour that are represented by instance variables and methods
+
+Why finally executes mandatorily?
+Difference between String equals() and StringBuilder/StringBuffer equals() methods and '==' operator?
+In String, '==' operator compares only the address whereas equals() method compares only the values
+StringBuilder/StringBuffer did not override equals() and hashCode() methods in their respective classes, so using both methods with StringBuilder/StringBuffer will return false even if the values match, will return true only if the references are same.
+How to avoid exception/error without using any exception handling keywords?
+How to avoid deadlock in multithreading ? ANS : using join() method
+Why we cannot override the constructor ?
+What is hash collision ? same hashcode for key but "the actual values" of key are different. Eg. cat and act String keys
+Can we have main() method inside an abstract class ? inside an interface ? YES
+YES main() method allowed inside interface only since Java 8 version
+Why we cannot create object for abstract class even if all the methods inside it are non-abstract methods only. Not even a single abstract method ? Bcoz of the keyword abstract, we notify JVM that its an incomplete class. Objects must be created and can be used to access only complete members of a class / of a completed class.
+Can we declare a constructor as static ?
+A constructor cannot be static since static belongs to a class rather than the object of the class. A constructor is called when an object of a class is created, so making it as static is of no use.

@@ -1,0 +1,58 @@
+Iterating array using for each
+
+int a = {1,2,3,4,5};
+for(int b:a){
+	Sysout(b+" ");
+}
+
+Above snippet prints the elements of the array
+
+Pros:
+We can avoid ArrayOutofBound Exception using for each
+
+Arrays - predefined class
+Predefined methods like sort
+
+Arrays.sort(a) >>> MOSTLY USED
+Arrays.toString(a) method - prints the array elements as an array directly like [3,4,5] >>> MOSTLY USED
+
+copyOf method - copyOf(a,3) - creates a new array with elements from 0the index to n-1 here.. 3-1 => 2nd index
+copyOfRange(a,1,5) - creates a new array from the specified start index to end index n-1 the index i.e upto 4th index
+
+int x[]
+int y[]
+Arrays.compare(x,y) => returns int value 0 if x,y arrays are equal, else returns +ve or -ve values
+We will use this in sorting collections where we have diff types of elements
+We will see in comparator, comparable interface more detail during collections
+
+Arrays.equals(x,y) => returns boolean value -> true if two arrays are equal
+
+Arrays.mismatch(x,y) => returns the index of the array where mismatch happens between two arrays
+
+Arrays.binarySearch(x,2) => where x is array, 2 is the element to be found in the array => returns index of the value
+We have to sort the array before using binarySearch method since it may return negative values thinking that array is already sorted
+It splits the array into two and compares the given value with the left side elements
+
+Arrays.fill(x,100) => fill the x array with 100 value => it changes all the elements to 100 like [100, 100, 100]
+
+Arrays.fill(x,1,5,55) => where x is array, 1 is start index, 5 is 5-1th index, 55 is the value to be filled with, in the x array
+
+Printing a ref variable will return memeory address in hexadecimal value
+
+Tasks:
+======
+
+input : int a[] = {1,0,5,0,2,0,4,0,1,9};
+output : [1 5 2 4 1 9 0 0 0 0]
+
+input : String ar[] = {"a","b","c","a","b","c","a","e"}
+output : a-3
+		 e-1
+Print the string which is repeated odd number of times and the number itself
+
+input : String ar[] = {"a","b","c","a","b","c","a","e"}
+Get a string input from user and print the number of times its repeated in the string array
+
+input : int arr[]={1,4,6,8,9,10}
+Output : true
+Check if the given array is sorted 

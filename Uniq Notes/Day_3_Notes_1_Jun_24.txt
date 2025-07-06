@@ -1,0 +1,30 @@
+Control statements
+------------------
+
+to control the flow of the program
+
+1. Condition stmt
+simple if 
+if else
+if else if ladder
+Nested if (if inside if)
+
+Reading integer input from user in console
+Scanner sr = new Scanner(System.in);
+System.out.println("Enter the integer");
+int a = sr.nextInt();
+if(a%2 == 0)
+	System.out.println("Entered value " +a+ " is even");
+else	
+	System.out.println("Entered value " +a+ " is odd");
+	
+switch (decision making stmt)
+
+2. Looping
+■ for repeated execution needs
+while
+do while
+for
+3. Jumping
+break
+continue

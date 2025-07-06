@@ -1,0 +1,51 @@
+What is Hashing ?
+Hashing is a process of converting an object into integer form by using the method hashCode(). It’s necessary to write the hashCode() method properly for better performance of HashMap.
+
+public int hashCode()
+
+What is exception propagation?
+ANS : if an exception is not caught in the current method, JVM looks if exception is caught in the calling method, if not in the another calling method and finally handles the exception if try catch provided there.
+m()
+{
+int a = 50/0;
+}
+
+n()
+{
+m();
+}
+
+p()
+{
+try{ n(); }
+catch{ SYSOUT("Exception handled"); }
+}
+PSVM()
+{
+p();
+}
+
+Can we rethrow an exception ? YES.
+Practically for instance, if user enters String in mobile number field, user should be warned and asked to enter again as numbers only. So, catching that exception and throwing the error message and rethrow that exception to get the correct details.
+EXAMPLE :
+try{
+
+}
+catch(Exception e)	//handling the exception using catch clause
+{
+SYSOUT("Exception handled");
+throw e;	//Rethrowing the same exception
+}
+
+What is an API ? 
+ANS : Application Programming Interface with predefined methods and tools used for communication/interaction between two software applications/systems.
+
+Can a subclass overriding method declare/throw an exception if the parent class method doesnot throw an exception ? 
+ANS : YES but only unchecked exception but not checked. Method overriding happens during runtime therefore only unchecked/runtime exceptions can be thrown by subclass overriding method.
+
+Multithreading advantages
+allows an application to be always reactive for user inputs even already some tasks are running in the application background
+
+What is threadpool in Java?
+ANS : contains a group of worker threads
+https://www.geeksforgeeks.org/thread-pools-java/

@@ -1,0 +1,4 @@
+String tasks:
+=============
+Palindrome - Malayalam,Madam,Mam,Racecar,level,civic,noon,rotator,radar,kayak,refer,Hannah,peep,wow,...
+anagram - get two different words from user and check if both words have same characters only or not. Ex: file & life, who & how, race & care, tea & eat, ..

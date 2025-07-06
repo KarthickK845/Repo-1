@@ -1,0 +1,90 @@
+Methods
+=======
+
+- a block with set of instructions
+- for better readability and code reusability
+
+method names mostly will be acting verbs
+
+void - return type of below method
+method can be of any return type (datatype)
+
+void display(){
+}
+
+values passed in method's paranthesis are input parameters
+method name + input parameters = method signature
+
+access specifiers/modifiers: (optional)
+public
+private
+protected
+default
+
+specifiers: (optional)
+static
+final
+
+Types of methods :
+1. Built-in or pre-defined methods [Ex: Scanner class methods like nextInt(),System class methods print(), println(), String reverse method]
+2. User defined methods - methods which developer creates
+
+Static method : method with specifier 'static'
+Non-static or instance method : method without static
+
+Factory method
+Final method : method with specifier 'final'
+Default method
+
+public static void main(String[] args)
+
+String[] args - inputs given inside main method will be saved as collection of strings
+String args[] - also correct
+args - can be any other name
+
+public static void main() -- Error thrown ? CHECK !!!
+YES. 'Main method not found' error thrown.
+
+METHODS EXAMPLE:
+
+class A{
+void display(){
+	{
+	sout("HI");
+	}
+static void show(){
+	sout("HELLO");
+	}
+PSVM(String[] args){
+	A obj = new A();
+	obj.display();
+	show();
+	}
+}
+
+static variables can be accessed inside static methods directly
+instance variables can be accessed inside static methods only using objects
+static and instance variables can be accessed inside instance methods directly
+
+int or any other datatype methods with return value can be used in print stmt
+void methods cannot be used in print stmt
+
+static block
+- execution starts during compile time itself
+- executes first even before main method while running
+
+static{
+	sout("STATIC BLOCK");
+}
+
+2 classes class a and class b with main method in same file
+access members (variables and methods) of class a by creating an object of class a and call them in class b
+Run class b only
+
+We can call static variables/methods of class a in class b using classname only and not with objects
+
+Method recursion:
+------------------
+method definition - method calls same method
+number of iterations is handled by using conditional statement
+If not controlled by condition using control statement like if, the method will be called infinite times

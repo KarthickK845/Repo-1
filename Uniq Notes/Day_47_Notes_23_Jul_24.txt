@@ -1,0 +1,135 @@
+Lambda Expressions
+==================
+
+Comparator is a functional interface
+
+A functional interface can have one abstract method only and if needed any of the Object class methods only.
+
+In Comparator interface, we have two abstract methods such as equals() and compare() methods. Comparator is a functional interface. But, equals() is Object class's method.
+
+Even if we create a user-defined functional interface, we must have only one abstract method. Also, we can have any method of Object class.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Functional interface
+====================
+
+Advantage of functional interface :
+We need not create a user defined method which involves object creation to call that method, instead we can have a functional interface that perform one specific function/operation and also achieve code concise.
+
+We can directly override the predefined abstract method in our class by using these predefined functional interfaces.
+
+we can achieve different requirements like (testing/)setting return type, passing parameters, number of parameters, type of parameters, etc using predefined functional interfaces
+
+All these below predefined functional interfaces are inside java.util.function package
+
+1) Predicate functional interface
+
+class PredicateDemo{
+	PSVM()
+	{
+	Predicate<String> ref = (a) -> a.length()>5;	//must pass the argument (a) as the same type (String) of value mentioned in Predicate<T>
+	sop(ref.test("Uniq"));
+	}
+}
+
+In above example, we pass the condition directly in the implementation of test() method which returns boolean type value.
+
+2) BiPredicate functional interface
+
+test() method of this interface has two parameters. Both parameters can be same type or different types.
+
+class BiPredicateDemo {
+	PSVM()
+	{
+	BiPredicate<String,String> ref = (a,b) -> { return a.length()>b.length(); };
+	sop(ref.test("uniq","tech"));
+	}
+}
+
+3) Function functional interface
+
+apply(a) method with single parameter and can mention the return type of the method
+
+class FunctionDemo {
+	PSVM()
+	{
+	Function<String,Integer> ref = (a) -> a.length();
+	sop(ref.apply("uniq"));
+	}
+}
+
+4) BiFunction functional interface
+
+apply(a,b) method with two parameters and can mention the return type of the method
+
+class BiFunctionDemo{
+	PSVM()
+	{
+	BiFunction<Integer,String,Integer> ref = (a,b) -> {
+		int c = a+b.length();
+		return c;
+	};
+	sop(ref.apply(10,"uniq"));
+	}
+}
+
+5) Consumer functional interface
+
+class ConsumerDemo {
+	PSVM()
+	{
+	Consumer<Integer> ref = (a) -> sop(a);
+	ref.accept(10);
+	}
+}
+
+6) BiConsumer functional interface
+
+class BiConsumerDemo {
+	psvm()
+	{
+	BiConsumer<Integer,Integer> ref = (a,b) -> sop(a+b);
+	ref.accept(10,30);
+	}
+}
+
+7) Supplier functional interface
+
+class SupplierDemo {
+	PSVM()
+	{
+	Supplier<String> ref = () -> "Hello";
+	Sop(ref.get());
+	}
+}
+
+8) UnaryOperator functional interface
+
+apply(a) both input parameter type and this method's return type must be same.
+
+class UnaryDemo {
+	PSVM() {
+	UnaryOperator<String> ref = (a) -> a.concat("tech");
+	sop(ref.apply("uniq"));
+	}
+}
+
+In above example, both input parameter type and method's return type must be String.
+
+9) BinaryOperator functional interface
+
+apply(a) the input parameters types and this method's return type must be same.
+
+class BinaryDemo {
+	PSVM() {
+	BinaryOperator<String> ref = (a,b) -> a.concat(b);
+	sop(ref.apply("uniq","tech"));
+	}
+}
+
+In above example, both input parameters type and method's return type must be String.
+
+ArrayList<Integer> a
+
+for(Integer i:a) 	=> means for each integer in list a

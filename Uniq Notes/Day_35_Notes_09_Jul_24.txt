@@ -1,0 +1,31 @@
+##REFER WRITTEN NOTES
+
+Wrapper classes
+
+Collection
+
+Framework
+
+Homogeneous objects
+
+Heterogeneous objects
+
+Array Vs Collection
+
+Collection Hierarchy
+
+ArrayList
+
+predefined methods in ArrayList
+
+ArrayList Tasks
+===============
+
+1.program to find the sum of all elements in arraylist
+2.program to remove duplicates in arraylist
+3.program to find max and min element in arraylist
+4.program to check the element is exist or not in arraylist
+5.Write a Java program to copy one array list into another.
+6.program to find the average of all elements in an arraylist of doubles
+7.program to suffele the arraylist elements
+8.program to find second largest element in arraylist

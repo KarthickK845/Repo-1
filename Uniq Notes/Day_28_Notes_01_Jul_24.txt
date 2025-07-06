@@ -1,0 +1,131 @@
+Multitasking
+============
+
+Multitasking is the process of executing multiple tasks simultaneously.
+Multitasking is achieved by two ways.
+
+1) Process based multitasking
+2) Thread based multitasking
+
+Process based Multitasking or Multiprocess
+==========================================
+=> Process based multitasking is nothing but executing multiple tasks simultaneously where each task is separate process and separate memory.
+
+Example : Opening and operating multiple apps simultaneously at same time.
+Notepad, Eclipse, Chrome - multiple separate processes running at the same time but separate memory.
+
+Thread based Multitasking or Multithreading
+==========================================
+=> executing multiple tasks simultaneously where each task is the separate part of the process.
+=> shared memory.
+
+Example : Websites where our main content is being shown by a thread say t1; Ads playing on the side tab run by thread t2; Youtube video playing on other side tab run by thread t3. All these threads are parts of same process and share memory.
+
+Multithreading Examples :
+i. Gaming apps
+ii. cartoon/animation videos
+where multiple tasks should execute simultaneously.
+
+Thread
+======
+Each flow of execution is called Thread.
+
+Each Java program that we write contains only one thread i.e, executed by only one thread which is 'main' thread.
+
+There are two ways to define a Thread
+=====================================
+1) By implementing Runnable Interface
+2) By extending Thread class
+
+These are predefined in Java like below :
+
+interface Runnable
+{
+void run();
+}
+class Thread implements Runnable
+{
+public void start(){
+}
+}
+
+Thread class is not an abstract class
+
+- need to invoke start() method to create a new thread and execute.
+- cannot create new thread just by calling run() method directly inside main() method. In this case, run() method will be called by main thread only.
+
+##REFER WRITTEN NOTES FOR
+
+Thread Lifecycle
+Thread class pre-defined methods
+Priority of threads execution
+
+cannot predict output order
+main thread executes the statemnts inside main() method
+
+1) extending Thread class
+obj.start() //creates thread and executes run method, multithreading
+public void run()	//runs the thread, single thread
+{
+sout("run method");
+}
+
+2)implementing Runnable interface
+public void run()
+{
+sout("implementing runnable");
+}
+
+create object for Thread predefined class
+Thrd obj=new Thrd();
+Thread t = new Thread(obj);
+t.start();
+
+Have diff threads, check which tread is executing run method
+CHECK how call run method without calling run directly and must create thread and execute by only calling start method
+
+#CHECK SNIPPET 1
+
+class A implements Runnable
+{
+public void run()
+{
+
+}
+}
+psvm(){
+A obj = new A();
+Thread t = new Thread();
+Thread t1=new Thread(obj);
+obj.run();
+obj.start();
+t.run();
+t.start();
+t1.run();
+t2.start();
+}
+
+#CHECK SNIPPET 2
+
+class A implements Runnable
+{
+public void run()
+{
+
+}
+public void start()
+{
+
+}
+}
+psvm(){
+A obj = new A();
+Thread t = new Thread();
+Thread t1=new Thread(obj);
+obj.run();
+obj.start();
+t.run();
+t.start();
+t1.run();
+t2.start();
+}

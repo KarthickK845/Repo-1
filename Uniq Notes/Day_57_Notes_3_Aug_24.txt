@@ -1,0 +1,21 @@
+transient keyword in Serialization
+
+If we do not want to show/consider the value of a field which is private info, to the user during serialization/deserialization, declare that field as transient in the class to be serialized. 
+The value shown to the user after deserialization will be default value of the type of that field.
+
+Example : private info like password if declared in String, default value null will be shown after deserialization.
+
+volatile keyword in multithreading
+
+If the value of a variable common to two threads, needs to be used simultaneously after increment/decrement then declare that variable as volatile.
+
+What is Hash Collision?
+How to use 5/0 in program withou throwing any exception and without using any exception related keywords? ANS : use if else
+TreeMap algorithm - Balanced Tree algorithm #CHECK THIS
+Diff between HashMap and TreeMap.
+Which is faster ? HashMap or TreeMap ?
+
+Diff between while and for loop
+Why use finally -> used to close our resources like DB resources only
+
+Hello all, today we had our project review which is built on Core Java concepts. We got to know about transient keyword in serialization and volatile keyword in multithreading. We revised some of the Java concepts.

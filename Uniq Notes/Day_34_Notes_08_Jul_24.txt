@@ -1,0 +1,18 @@
+Collections 
+
+Wrapper classes -brief intro
+
+What is a framework?
+
+for loop vs enhanced for loop (for each)
+using for each - we cannot print the vales in reverse order
+
+3 ways to print the values inside the list
+1) using for loop
+2) usinf for each loop
+3) using iterate() method of Iterable interface
+
+Tasks:
+1) print the duplicate values in the arraylist
+2) print non duplicate values
+3) print the values in ascending order

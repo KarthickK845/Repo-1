@@ -1,0 +1,100 @@
+Tasks Java 8
+
+Using Stream API, lambda expressions, functional interface, method reference
+
+deepToString method in Arrays class - input Object Array to convert to String
+System.out.println(Arrays.deepToString(sl.toArray()));
+
+valueOf method of String class converts int or Integer value to String value
+chars() method of String class returns IntStream of a String where each stream value is ASCII value of corresponding number or character
+
+Integer ip = 1234217;
+int[] iarr = String.valueOf(ip).chars().toArray();	//ip converted to String, then converted to IntStream using chars(), then converted to Array
+System.out.println(Arrays.toString(iarr));  //Output - [49, 50, 51, 52, 50, 49, 55] - each value is corresponding ASCII value of each digit in ip
+
+ int[] iarr = ip.toString().chars().toArray();	//also converts Integer ip to String type
+
+String s = "ABCD";
+int[] sarr = s.chars().toArray();
+System.out.println(Arrays.toString(sarr));	//Output - [65, 66, 67, 68]
+
+boolean b=true;
+int[] iarr = String.valueOf(b).chars().toArray();
+System.out.println(Arrays.toString(iarr));	//Output - [116, 114, 117, 101]
+
+Integer p = 234567;
+int sum = p.toString().chars().map(Character::getNumericValue).sum();
+System.out.println(sum);
+
+SUM AND AVERAGE OF ELEMENTS IN AN ARRAY
+=======================================
+INT ARRAY
+
+int[] iir={2,2,2,2,2};
+        //Using sum and average methods of IntStream
+        int s = Arrays.stream(iir).sum();
+        double d = Arrays.stream(iir).average().getAsDouble();
+        System.out.println("Sum : "+s+" Average : "+d);
+
+
+INTEGER ARRAY
+
+Integer[] iar={1,1,1,1,1};
+	//SUM - Using reduce method and sum method of Integer
+        int sum = Arrays.stream(iar).reduce(0,(a,b) -> Integer.sum(a,b));
+    //AVERAGE - Using map and average method of IntStream
+        double avg = Arrays.stream(iar).mapToInt((a) -> a).average().getAsDouble();
+        System.out.println("1) Sum : "+ sum+", Average : "+avg);
+
+    //SUM & AVERAGE Using IntSummaryStatistics class
+        long summ = Arrays.stream(iar).mapToInt((a)->a).summaryStatistics().getSum();
+        double aveg = Arrays.stream(iar).mapToInt((a)->a).summaryStatistics().getAverage();
+        System.out.println("2) Sum : "+ summ+", Average : "+aveg);
+
+//Converting an integer into a List
+Integer in= 23457,rem=0,sum=0;
+        List<Integer> il = new ArrayList<>();
+        for(int i=0;i<5;i++) {
+            rem=in%10;
+            il.add(rem);
+            in=in/10;
+        }
+        System.out.println(il);
+		
+==========================================================================================================================
+
+Optional class
+==============
+
+Usage : mostly to check and avoid NullPointerException
+
+Optional.empty() method - empties the value - returns empty Optional class
+
+of method :
+Optional op = Optional.of("Hello");
+
+We cannot pass null value in of method. NullPointerException will be thrown.
+Optional op = Optional.of(null);  //NullPointerException
+
+ofNullable method :
+Optional op = Optional.ofNullable(null);	//Exception not thrown. Returns Optional.empty
+
+Optional op = Optional.ofNullable("Hello");
+op.get() - returns just Hello
+
+Learn Diff bw of and ofNullable methods
+
+Optional op = Optional.ofNullable("Hello");
+SYSOUT(op.isPresent()); 	//returns true if op is not empty, else false
+
+op.ifPresent((c) -> System.out.println(c));	//prints the value if present in op, if op has null, nothing will get printed
+
+SYSOUT(op.orElse("nothing"));	//prints the value in op. If op is empty, prints "nothing". We can just print the String value.
+
+SYSOUT(op.orElseGet(()-> "nothing"));	//prints the value in op. If op is empty, prints "nothing" . We can perform some operation in orElseGet()
+
+SYSOUT(op.orElseGet(()-> 10+5));		//We can perform some operation in orElseGet()
+
+SYSOUT(op.orElseThrow());	//throws predefined exception by default. In this case, NoSuchElement Exception if there is no value in op
+
+SYSOUT(op.orElseThrow(ArithmeticException :: new));	 //we can throw some other exception as well

@@ -1,0 +1,17 @@
+Cursors
+
+Iterator
+ListIterator
+Enumeration
+
+#Refer written notes
+
+Task
+====
+1) 5 printing statements inside main, call main() method but nothing should be printed in console. The program should terminate.
+2) Given array - int[] a={10,20,30,40,50,20,10}
+User gives the number of minimum values - say last 2 min values or last 3 minimum values
+Find the sum of those minimum values and print the sum, if there are any duplicate values consider that as one minimum value, but add the duplicate values also and print the sum.
+i.e. the last 3 min values in above array are 10,20,30 but 10 and 20 are repeated twice.
+10+10 +	20+20 +	30 => 90 should be returned as sum
+Note : i. Do not use sort method or sorting algorithm, ii. Do not override the original array or create copy of array

@@ -1,0 +1,170 @@
+March 2014 - Java 8 release
+
+JAva 8 - to wrtie code in functional ways without creating object
+
+functional style
+
+advantages of Java 8
+* code consize - to reduce the number of code lines
+* code coverage - views the code size and tries to avoid repeated tasks like looping statements. When in functional style - code coverage will be more than 90% (which it should be during junit testing qualifier)
+* applications will be fast running, efficient
+
+
+lambda expressions - very imp feature of Java 8
+
+in 2 years, Java 17 is going to be revolutionized like Java 8
+
+standardised version to be known by any Java developer
+
+Lambda expressions
+
+functional interface - an interface with only one abstract method like Runnable, Comparable interfaces
+
+Lambda expression is also called nameless function
+
+should be used to override only functional interface methods
+
+cannot be used with interfaces with more than one abstract method, error will be thrown
+
+
+Anonymous class
+
+- we create object and override the abstract methods of interface
+- can override multiple abstract methods of an interface
+
+interface Addition
+{
+void add();
+}
+
+class OverrideMethod implements Addition
+{
+
+PSVM()
+{
+OverrideMethod ovm=new OverrideMethod() {
+	public void add() {
+	 sop("I am add method");
+	}
+}
+}
+}
+
+OR
+
+Below example where we do
+- direct reference creation for Interface 
+- also override multiple abstract methods
+
+interface Addition
+{
+void add();
+void sub();
+}
+
+class OverrideMethod
+{
+
+PSVM()
+{
+Addition ovm=new Addition() {
+	public void add() {
+	 sop("I am add method");
+	}
+	
+	public void sub() {
+		sop("I am sub method");
+	}
+};
+ovm.add();
+ovm.sub();
+}
+}
+
+
+Lambda expression
+
+- we do not create object, we override abstract method in functional ways
+- can override only one abstract method of a functional interface
+
+1) NON RETURN ABSTRACT METHOD WITHOUT PARAMETERS
+
+interface Addition
+{
+void add();
+}
+
+class OverrideMethod
+{
+
+PSVM()
+{
+Addition ref = () -> sop("I am add");	//set braces {} not required if we have only one print stmt. but if we use return stmt or multiple statements, we need {}
+ref.add();
+}
+
+}
+}
+
+2) NON RETURN ABSTRACT METHOD WITH PARAMETERS
+
+interface Addition{
+void add(int a,int b);
+}
+
+class OverrideMethod{
+
+psvm() {
+Addition ref = (a,b) -> sop (a+b);	//variable names can be any like x,y etc.
+ref.add(10,20);
+}
+
+}
+
+3) NON RETURN ABSTRACT METHOD WITH PARAMETERS, MULTIPLE STATEMENTS INSIDE LAMBDA EXP
+
+interface Addition{
+void add(int a,int b);
+}
+
+class OverrideMethod{
+
+psvm() {
+Addition ref = (a,b) -> { int c=a+b; sop (c); };
+ref.add(10,20);
+}
+
+}
+
+4) RETURN TYPE ABSTRACT METHOD WITH PARAMETERS
+
+interface Addition{
+int add(int a,int b);
+}
+
+class OverrideMethod{
+
+psvm() {
+Addition ref = (a,b) -> { int c=a+b; return c; };
+Sout(ref.add(10,20));
+}
+
+}
+
+even if we use one return statement, we need to give that inside curly braces {}
+
+We can use lambda expression only for interface which must be a functional interface
+cannot be used for abstract classes
+
+We can use anonymous class for abstract class method implementation
+
+Annotation
+
+@FunctionalInterface
+interface Addition{
+	void add(int a,int b);	//if we add one more method here, error will be thrown saying that a functional interface
+}
+
+Below are marker interfaces. Do not have any methods.
+Cloneable
+Serialize

@@ -1,0 +1,23 @@
+String Buffer and String Builder
+
+##REFER WRITTEN NOTES
+
+Pre-defined methods
+
+Tasks using String methods
+==========================
+
+String s="Hii How are you?"
+
+1) Reverse the string (Note that the above is String and not StringBuffer/StringBuilder)
+O/P : ?uoy era woH iiH
+
+2) O/P: you?
+		are
+		How
+		Hii
+
+3) O/P: iiH
+		woH
+		era
+		?uoy

@@ -1,0 +1,23 @@
+Array
+
+-> Array is an object.
+-> Collection of similar data stored in a single variable is known as array.
+-> values are stored in contiguous memory.
+-> Array size is fixed.
+-> Array index starts from zero and length starts from one.
+-> We can retrieve the values using index of the array.
+
+Disadvantages of Array :
+-> size is fixed. We cannot increase the size and it allows only similar type of values. We can overcome this problem using collections framework.
+
+Array Tasks:
+============
+Input : 5 2 4 3 1 7
+Output : 1 2 3 4 5 7
+
+4 6 3 2 1
+min value - 1
+max value - 6
+
+Get a value from user, check if it is available in the initialised array
+If yes, print the given number is available. Else, no.

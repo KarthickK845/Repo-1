@@ -1,0 +1,34 @@
+static synchronization
+
+
+wait()
+join()
+sleep()
+all above three methods throw Interrupted Exception, it has to be handled while using.
+
+notifyAll() - checks for the threds that are in waiting state and starts executing them.
+
+wait() method releases the lock of the synchronized thread which needs updation, so that it allows other thread for execution.
+
+
+#CHECK HOW TO CALL A THREAD BASED ON ANOTHER THREAD'S OUTPUT - example : in the Pencil thread, we need not load if the pencils are available enough to give the customer. If so, I need not start load thread at all.
+
+#notifyAll() method - if there are many threads in waiting stage, which thread will be executed after calling notifyAll() method ? Is it the thread which moved to wait lastly ? or first thread that moved to wait ?
+ANS : Nothing like that notifyAll() will call all the threads in waiting stage in no particular order.
+
+====================================
+Task of the day:
+----------------
+Apply Interthread communication in the Multithreading Task OddNumber, EvenNumber 1 to 100.
+Use wait() and notify() methods. If OddNumber thread is called first, 1 should be printed and thread should go to waiting stage. Then EvenNumber thread should be called and 2 should be printed and thread should go to waiting stage. Continue the same upto 100.
+Output expected :
+(A)				(B)
+
+1				2
+2				1
+3				4
+4				3
+.				.
+.				.
+.				100
+100				99

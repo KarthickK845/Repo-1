@@ -1,0 +1,123 @@
+Stream API very very important feature in Java 8
+
+API - Application Programming INterface
+
+Stream - way of processing the data
+
+Stream API is a framework, an interface just like Collection
+
+used only for Collection objects
+
+convert the collection object to Stream object and use Stream methods for processing. But can process that Stream data only once using one Stream object.
+
+used to write code in functional way, achieve code concise.
+
+Source - converting collection object to Stream object is called Source
+Intermediate operation - whichever methods that return Stream object 
+Terminal operation - whichever methods that return object other than Stream object
+
+Must follow the Pipeline process only. Source to Intermediate operation to Terminal operation is allowed but Intermediate operation to Source is not allowed, Terminal to intermediate not allowed.
+
+Source and Terminal operations are mandatory. Intermediate operation is optional.
+
+convert to Stream source using stream() method
+stream method converts each element to Stream object in forward direction only
+parallelstream method converts in both forward and backward directions thereby reducing time complexity
+
+Stream methods will have used predefined functional interfaces as parameter types
+
+Stream s = l.stream();	//l is an ArrayList, converting it to Stream object (Source)
+
+s.forEach((c) -> Sout(c));	//forEach does the same as for each loop. This is Terminal operation as it is non return
+
+We cannot use this same stream object s for processing the collection again. Error will be thrown.
+
+We can create new object for Stream like Stream s1 = l.stream(); and process using the reference s1
+
+l.stream().forEach(c -> Sout(c));	//can call stream method like this as well. We need not mention type of c as it will take the Integer type of the list. CONSUMER interface
+
+Achieving output to get only even numbers in a list, in a purely functional way :
+l.stream().filter((a)-> a%2==0).forEach(System.out::println);	//all 3 process - Source, Intermediate and finally Terminal operations
+PREDICATE interface
+
+l.stream() - Source
+filter((a)-> a%2==0) - Intermediate - using lambda expression
+forEach(System.out::println) - Terminal - using method reference
+
+List<Integer> l1 = l.stream().filter((a)-> a%2==0).collect(Collectors.toList()) - calling toList method of Collectors class for converting the output to a List and storing that in the list l1
+
+l.stream().map((a)->a*2).forEach((c)->Sout(c));
+
+map - Function functional interface - returns the type that the user gives in the list
+filter - Predicate functional interface
+
+count - returns long - Terminal operation
+
+converting from List of Lists to a single list is called flattening process
+
+List<Integer> l2 = Arrays.asList(12,43,78,98,97,85);
+List<Integer> l3 = Arrays.asList(9,6,04,08,12,05);
+
+List<List<Integer>> fl = new ArrayList();
+fl.add(l2);
+fl.add(l3);
+
+Sout(fl.get(0).get(2));	//we use like this to get a particular integer from the list of lists
+
+flatMap - converts each element of the list of lists to a Stream object, returns Stream object
+
+List<Integer> list1 = fl.stream().flatMap((list) -> list.stream()).collect(Collectors.toList());
+
+list.stream() - converts each element into a Stream object
+
+distinct() - to remove duplicate elements in a Stream
+
+l.stream().distinct().forEach(c-> sout(c));
+
+l.stream().allMatch((a)->a%2==0); //Terminal operation - PREDICATE interface
+//return true only if all the elements in the Stream matches the given condition a%2==0, else returns false
+
+l.stream().anyMatch((a)->a%2==0); //Terminal operation - PREDICATE interface
+//return true only even if any one of the elements in the Stream matches the given condition a%2==0, else returns false
+
+Optional class methods :
+========================
+
+findFirst() and findAny() methods are in Optional class, returns Stream object
+
+findFirst() - always returns the first elemnt in the Source
+findAny() - mostly returns first element in the Source, very rarely returns any other element
+
+Optional op = l.stream().findAny();
+sout(op);
+
+Output will be :
+Optional[31]
+
+To get only the value, call like sout(op.get());
+
+Output will be :
+31
+
+Compare method based on BinaryTreeAlgorithm
+
+Using Integer class compare method - Method reference
+Optional<Integer> op = l.stream().min(Integer :: compare);
+
+Max value Using Integer class compare method - Method reference
+Optional<Integer> op = l.stream().max(Integer :: compare);
+
+Using Comparator compare method - Lambda Expression
+Optional<Integer> op = l.stream().min((o1,o2) -> {if(o1>o2) return 1; return -1;}); //two return statements 2nd one for else
+
+Using reversedOrder() method of Comparator interface
+Optional<Integer> op = l.stream().min((Comparator.reversedOrder());
+
+limit(arg) - limit(3) - returns only first 3 elements
+l.stream().limit(3).forEach(
+
+skip(arg) - skip(3) - skips the first 3 elements
+l.stream().skip(3).
+
+We can also use both limit() and skip() together
+l.stream().limit(5).skip(2).forEach(c -> Sout(c););

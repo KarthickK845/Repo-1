@@ -1,0 +1,62 @@
+Java Intro
+Java features
+-Platform Independent,Portable
+-Robust and secure
+Java comparison with C,C++
+JVM,JRE, JDK
+Sandbox
+Compiler vs Interpreter
+Java has both Compiler and Interpreter
+JVM - Classloader, Bytecode verifier
+Execution Engine - Interpreter, JIT(Just In Time) - Repeated code statements conversion, identified and taken care using Threshold limit in the Execution engine
+
+In general, in any lang, Compiler takes the whole file and reads and converts into machine level
+Interpreter reads line by line and converts into machine level
+
+Compiler does - High level lang to bytecode - Compile time
+Interpreter does - Bytecode to Machine lang and Run the code - Run/Execution time
+
+Class -logical view; blueprint of object; template
+Object - physical entity that has state and behaviour 
+
+Creating an object
+Memory is allocated to a class when creating an object
+
+Class Name - Pascal case
+Naming Conversion - later
+
+Variable - a container to store data
+Datatype - type of data to be stroed, allows cmplier to decide how much memory to be allocated
+
+Types of variable 
+instance variable or non static - declared within the class, outside the methods - int b;
+NON STATIC VARIABLE CANNOT BE DECLARED AND ASSIGNED VALUE IN DIFFERENT STATEMENTS OUTSIDE ANY METHOD.
+i.e.,
+class A{
+int a;
+a = 5; //THROWS ERROR DUE TO ABOVE REASON
+void display(){
+a = 10; //ASSIGNEMENT ALLOWED
+}
+}
+static variable - declared within the class, outside the methods - static int a = 20;
+local variable - declared within the method
+
+Types of datatypes
+Primitve - Fixed memory allocaed datatypes
+Non primitive - User defines memory 
+
+Typecasting
+Widen - small datatypes to large datatype
+Narrow - large to small
+
+Implicit
+Explicit
+
+Java - UTF-16 unicode system / ASCII code
+
+INTERVIEW QUESTION
+Is Java 100% OOP Language ?
+ANS : Since Java has Primitive data types, it is not 100% object oriented language, but to overcome this, we have wrapper classes.
+
+Wrapper classes in detail - later

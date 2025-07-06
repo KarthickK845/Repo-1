@@ -1,0 +1,37 @@
+Exception
+
+Exceptionhandling
+
+Types of Exceptions
+
+Classes and subclasses
+
+#REFER WRITTEN NOTES FOR ABOVE
+
+Keywords :
+-> try
+-> catch
+-> finally
+-> throw
+-> throws
+
+Cannot give parent exception catch first and then the child classes; error will be thrown in compile time anyway, since that child catches will be unreachable blocks.
+
+throw new ABCException() 
+while using throw keyword with a compile time exception, it should be handled either using try..catch else using throws in the method signature. If not, error shown that the exception is not handled
+But runtime exception is handled automatically
+
+Diff between try catch and throws
+Diff between throw and throws
+
+exception.SmallNumberException: Number is small -- print the message along with the exception
+-> should pass the msg as a String argument to the constructor of the user-defined exception class
+-> inside the user-defined exception class, parameterized constructor, call the super class parameterized constructor
+-> pass the parameter as an argument to super class constructor call
+
+throw new SmallNumberException("Number is small");
+
+Tasks:
+======
+1) a non return parameterized method with input parameter 'int a' passed. If a is even, print "Even number". Else throw User dfined exception called OddNumberException
+2) Get a string input from user and check if it contains any vowel. If vowel found, print "Vowel found".Else throw user-defined exception called VowelNotFoundException

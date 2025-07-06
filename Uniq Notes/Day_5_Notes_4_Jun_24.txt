@@ -1,0 +1,25 @@
+for loop
+
+-used when finite looping count is known
+
+syntax
+------
+for(initialize;condition;incr/decr)
+{
+}
+
+for(int i=1;i<10;i++)
+{
+sout("Hi");
+}
+
+1. Local variables must be initialized else error will be thrown.
+2. Static and instance variables may or may not be initialized. If not initialized, default value of that datatype will be taken.
+
+While and for loops can handle same logic. Both are different from do while loop.
+For loop is more effective than while loop.
+If we know the number of times our loop should iterate, we can use for loop.
+whereas, in while loop, we may or may not know how many times our loop should iterate.
+
+Program to check if a given number is prime using For loop
+Checking if the number is divisible by any other number starting from 2 i.e, 2 to n-1

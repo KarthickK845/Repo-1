@@ -1,0 +1,82 @@
+HIGHLY IMPORTANT CONCEPTS
+
+Serialization
+- convert object to bytestream
+
+Deserialization
+- convert bytestream to object
+
+Used during front-end(Angular/React) to backend connectivity and vice-versa
+
+SpringBoot,Hibernate - when we pass data or files in URL - how to pass and how data is being read by the user - bytestream won't be understandable so convert it to object again i.e. deserialize.
+
+Serializable - Marker interface like Cloneable interface
+
+Marker interface does not have any members inside it like below.
+
+public interface Serializable {
+}
+
+==========================================================================================================================================
+
+Serialization
+=============
+Serialization is a mechanism in Java to convert object into byte-stream. Using Serializable interface, we can achieve serialization. It is a marker interface.
+The class to which object is created and used, that class must implement the Serializable interface to achieive serialization.
+
+writeObject() method in ObjectOutputStream class
+FileOutputStream
+
+Deserialization
+===============
+Deserialization is a process of converting byte-stream into a object.
+
+readObject() method in ObjectInputStream class
+FileInputStream
+
+we serialize and store in temporary file and that temp file used for deserialize as well
+
+=====================================================================================================================================
+
+class Employee implements Serializable {	//notifying JVM that we are going to serialize Employee object, so implements Serializable
+	int id;
+	String name;
+	int salary;
+	
+	//constructor to initialize instance fields values
+	public Employee(){
+		...
+	}
+}
+
+// if we don't implement Serializable interface java.io.NotSerializableException: SerializeDeSerialization.Employee
+
+public class SerializeDemo {
+
+PSVM() throws IOException
+{
+Employee emp = new Employee(101,"uniq",40000);
+
+try{
+
+FileOutputStream ostream = new FileOutputStream("serialize.txt");	//this file is created temporarily only, we cannot view that file
+ObjectOutputStream out = new ObjectOutputStream(ostream);
+out.writeObject(emp); 	//serializes employee object in emp and stores in serialize.txt
+out.close();
+
+//FileOutputStream to create a new file
+//serialize.txt is created inside our Java project. It will have bytecode.
+//ObjectOutputStream to pass that file and serialize using writeObject method of ObjectOutputStream class
+
+
+public class DeSerializeDemo {
+
+PSVM() throws IOException,FileNotFoundException
+{
+
+try{
+FileInputStream istream = new FileInputStream("serialize.txt");
+ObjectInputStream ios = new ObjectInputStream(istream);
+Employee emp = (Employee) ios.readObject();	//deserializes bytestream into Object type object, so downcast to Employee type object 
+
+//deserialize using readObject method of ObjectInputStream class

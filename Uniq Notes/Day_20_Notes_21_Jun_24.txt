@@ -1,0 +1,18 @@
+Copy constructor
+
+Shallow copy
+
+#Refer the program shared and tasks
+
+Encapsulation
+
+#Refer written notes
+
+ATM TASK:
+
+Print below :
+Welcome to ATM
+List the options like withdraw, deposit, check balance, exit
+
+3 instance variables such as username, pin number, balance initialised with some values.
+While user selects an option, get username and pin number from user and compare with initialised values to check if they are equal. If equal, proceed with withdrawal/deposit accordingly, show success statement and update balance value. Once done, ask the user "Do you want to continue?" If yes, list the options again. If no, exit. If exit option is selected from the list, end the program.

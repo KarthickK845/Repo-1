@@ -1,0 +1,169 @@
+Task in Functional interface, override the method using lambda expression
+
+two lists 
+L1, L2
+
+get max num in L1 list and check if it is available in L2 list, return true else false
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Intellij IDE
+
+Console
+"C:\Program Files\Java\jdk-22\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3\lib\idea_rt.jar=52607:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "C:\Users\Karthick Kanagaraj\IdeaProjects\Uniq_FSD41\out\production\Uniq_FSD41" FunctionalInterface.LambdaListTask
+true
+
+Process finished with exit code 0
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Method reference
+================
+This is used only in functional interface
+mostly we use lambda expression in projects but in some cases, we use method reference as alternative for lambda expression
+since we might have to override multiple methods which may affect the readability
+
+We use method refernce for readability
+
+just like object reference, we can have references for methods of functional interface
+
+used for security purpose in projects, 
+
+1) Reference for static method :
+================================
+//WITHOUT PARAMETERS
+
+interface Demo		//functional interface
+{
+void show();
+}
+
+class MethodRef {
+public static void add()	//this method must have same return type and same parameter as the functional interface's method
+{
+int a = 10;
+int b = 10;
+int c = a+b;
+sop(c);
+}
+
+PSVM(){
+Demo ref = MethodRef :: add;  //since add() is a static method, we use class name 'MethodRef' to refer the method and no need to use () here
+ref.show();	//using the interface reference, we call the method show() of the functional interface
+}
+}
+
+//METHOD WITH PARAMETERS
+
+interface Demo		//functional interface
+{
+void show(int a, int b);
+}
+
+class MethodRef {
+public static void add(int a,int b)	//this method must have same return type and same parameter as the functional interface's method
+{
+int c = a+b;
+sop(c);
+}
+
+PSVM(){
+Demo ref = MethodRef :: add;  //since add() is a static method, we use class name 'MethodRef' to refer the method and no need to use () here
+ref.show(10,20);	//using the interface reference, we call the method show() of the functional interface
+}
+}
+
+//2 STATIC METHODS WITH PARAMETERS
+
+interface Demo		//functional interface
+{
+void show(int a, int b);
+}
+
+class MethodRef {
+public static void add(int a,int b)	//this method must have same return type and same parameter as the functional interface's method
+{
+int c = a+b;
+sop(c);
+}
+
+public static void sub(int a,int b)	//this method must have same return type and same parameter as the functional interface's method
+{
+int c = a-b;
+sop(c);
+}
+
+PSVM(){
+Demo ref = MethodRef :: add;  //since add() is a static method, we use class name 'MethodRef' to refer the method and no need to use () here
+ref.show(10,20);	//using the interface reference, we call the method show() of the functional interface
+Demo ref2 = MethodRef :: sub;
+ref2.show(30,10);
+}
+}
+
+2) Reference for instance method :
+===================================
+
+interface Demo		//functional interface
+{
+void show(int a, int b);
+}
+
+class MethodRef {
+public void add(int a,int b)	//this method must have same return type and same parameter as the functional interface's method
+{
+int c = a+b;
+sop(c);
+}
+
+public void sub(int a,int b)	//this method must have same return type and same parameter as the functional interface's method
+{
+int c = a-b;
+sop(c);
+}
+
+PSVM(){
+Demo ref = new MethodRef() :: add;  //since add() is a instance method, we use object of class 'MethodRef' to refer the method and no need to use () here
+ref.show(10,20);	//using the interface reference, we call the method show() of the functional interface
+Demo ref2 = new MethodRef() :: sub;
+ref2.show(30,10);
+}
+}
+
+3) Reference for Constructor
+=============================
+
+new keyword will refer the constructor automatically
+
+interface Demo {
+	void show();
+}
+
+class MethodRef {
+	public MethodRef() {
+		sop("I am a constructor");
+	}
+	
+	PSVM(){
+		Demo ref = MethodRef :: new;
+		ref.show();
+	}
+}
+
+Use the above method reference concept with those 9 predefined functional interfaces
+
+If the predefined functional interface method is non-return, then the reference method can be of non-return or return type. But if the predefined functional interface method is return type, then the reference method must be return type only, we cannot use non-return here. 
+
+Same applicable for user-defined functional interface as well.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+String - duplicate characters in a String
+find the count of duplicate characters
+Do not use for, while, do which loops
+Use for each loop allowed
+Use Method ref - Collections predefined methods
+
+-------------------------------------
+
+We did a task in Functional interface in the morning and we learnt about another feature of Java 8 that is Method Reference.Learnt about the types of Method reference. Reference for static method, Reference for instance method, Reference for constructor. Learnt how it is used  with functional interface. We practised each of the types and with predefined functional interfaces.

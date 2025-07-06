@@ -1,0 +1,71 @@
+Operators
+=========
+* Arithmetic
+* Unary - !(NOT), ~ Tilde, Increment(++), Decrement(--)
+tilde ~
+~6
+takes the 16 bit value of the number 6 and converts each bit to opposite bit value
+! NOT
+boolean d = false;
+!d => true
+Pre - inc/dec in first line itself
+int a = 90;
+++a;  //91
+Post - inc/dec happens in next line
+a++;  //91
+System.out.println(a++);  //92
+
+
+int x=10;
+System.out.println(++(++x)); --Throws error 'Unexpected Type' as only operand/variable can be used with Unary operator and not value directly
+
+Workout Decrement
+
+* Relational : for comparison of 2 operands
+==, !=
+* Assignment =
++=, -=, /=, %=
+
+* Logical
+■ To compare 2 conditions
+■ Returns Boolen value
+
+0 - false
+1 - true
+
+AND &&
+OR ||
+
+Short circuit concept aapplicable here. i.e when we have 2 conditions in an OR operation, if 1st condition is true, it does not check 2nd condition at all to return output.o
+
+* Bitwise
+■ Checks a condition
+■ Also checks the bitwise
+■ Returns Boolean and also bitwise value
+&
+|
+XOR ^
+
+Bitwise doesn't have short circuit feature. Checks both conditions irrespective of 1st condition's o/p.
+
+8 4 2 1
+0 0 0 0 => 0
+0 0 0 1 => 1
+. . . . => .
+0 1 0 1 => 5
+
+* Shift operator
+>> right shift - division /
+10>>3 => 10/2^3
+<< left - multiply *
+10<<3 => 10*2^3
+>>> unsigned shift; same as right shift for positive numbers but changes with negative numbers
+
+takes the 16 bit value and performs shift
+MSD/Priority bit based on sign
+
+To know the bg working of shift/bitwise operator
+Integer.toBinaryString(7)
+~7   => returns Int value of 
+
+Ternary, instanceof - later; after IF statement

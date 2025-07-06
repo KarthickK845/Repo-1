@@ -1,0 +1,37 @@
+Default methods in functional interfaces
+========================================
+
+We mostly use interfaces for security and loosely coupled in our projects involving SpringBoot
+
+upto version 1.7 Java, we can have only abstract methods. But from Java 1.8 i.e. Java 8, we can have default methods also in the interface.
+In functional interface as well, we can have default and static methods apart from single abstract method.
+
+We cannot override (overhide) static method in general. We can override the default method in a interface.
+We use default just as a keyword for default method in functional interface. It does not mean the actual default access modifer/visibility.
+The visibility of default method is public only. It is not default.
+
+Program
+=======
+interface Demo{
+	void add();
+	default void sub()
+	{
+	SOP("I am sub");
+	}
+	static void mul()
+	{
+	SOP("I am static");
+	}
+}
+class DefaultDemo {
+	PSVM(){
+		Demo d = () -> sop("I am add");
+		d.add();
+		d.sub();
+		Demo.mul();	//calling static method of functional interface 'Demo' using interface name
+	}
+}
+
+We can create object in six ways in Java.
+
+Remind sir to teach serializable, deserializable before Java 8 completion

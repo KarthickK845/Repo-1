@@ -1,0 +1,60 @@
+Diff b/w return and non return types
+
+value of local variable initialised inside a non return method cannot be taken outside the method. But with return type method, it can return the value and save it in another variable outside that method
+
+Can we overload and override main method ?	## CHECK THIS
+
+static method cannot be overridden since the memory is allocated during compile time. Same applies for main method as it is also static method.
+static methods can be overloaded. Main method can be overloaded.
+Overriding is run time.
+
+==============================================================================================================================================
+
+Abstraction continues...
+------------------------
+
+2) Interface
+============
+
+-> similar to class - can have methods, variables but no constructors
+-> 100% abstraction - we must have only abstract methods, cannot implement any method
+-> all the methods are public abstract by default - all the methods that are declared inside interface
+-> all the variables are public static final by default
+-> we cannot just declare the variable in interface but must initialise it
+-> using implements keyword
+-> we can achieve multiple inheritance
+-> we cannot create object for the interface
+
+class
+ |
+ |  extends
+ |
+class
+
+interface
+ |
+ | extends
+ |
+interface
+
+interface
+ |
+ | implements
+ |
+class
+
+■ the method which is declared inside interface, we should specify access modifier as public for that method to implement inside the child class
+
+■ If a class need to access members of parent class as well as the interface, we should give like below :
+class A extends B implements C
+
+should be in above order only
+where B is parent class
+C is interface
+
+■ Multiple inheritance is achievable in Java using interfaces
+class Homeloan implements Bank,Loan
+
+where Bank and Loan are interfaces.
+
+Diff b/w abstract class and interface -- MOST OFTEN ASKED INTERVIEW QUESTION

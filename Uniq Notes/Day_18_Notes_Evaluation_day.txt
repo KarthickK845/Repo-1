@@ -1,0 +1,34 @@
+Evaluation and revising old concepts
+
+class Alpha{
+	int a=5;
+	static int b;
+	/*Alpha(){
+		a=10;
+	}*/
+	static void display(Alpha obj){
+		//Alpha obj=new Alpha();
+		obj.a=11;
+		b=20;
+		//return obj.a;
+	}
+}
+
+public class Sigma {
+
+	public static void main(String[] args) {
+		Alpha alp=new Alpha();
+		alp.display(alp);
+		System.out.println(alp.a);
+		//System.out.println("a = "+ obj1.display()+", b = "+Alpha.b);
+	}
+
+}
+
+Say here, we have two unrelated classes Alpha, Sigma.
+Alpha class has two variables - one instance and one static; one static non-return method called display.
+1) Both the variables are just declared but not initialised. Assign values for those variables inside the display method and print those values in main method inside another class.
+2) Since display method is static, we have to create object to call instance variable 'a' inside the method to assign value whereas static variable 'b' can be called directly.
+3) If the static method is of int return type, we can create object and assign the value inside the method and call it in a print statement inside main method to print the returned value.
+4) Since the static method is of non-return type, we can pass a reference variable of the class (an object) as a parameter to the display method from main and assign the value to the correspoding instance variable, thereby assigning the value whenever that method is being called in main method with any object.
+5) Another way to assign value to instance variable is to use a constructor which can be called during object creation inside main method thereby assigning the value to instance variable.

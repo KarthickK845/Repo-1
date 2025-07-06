@@ -1,0 +1,65 @@
+Access modifiers class - 2
+
+if we use private in a constructor, we cannot create an object of that class inside another class
+
+Ternary operator
+? :
+
+int a=9, b=10;
+int result = (a>b) ? 5 : 11;
+boolean res = (a<b) ? true : false;
+
+instanceof operator
+-checking if an object is of mentioned class type
+- object_name instanceof class_name
+-this method returns boolean value
+
+Abc obj=new Abc();
+boolean res = obj instanceof Abc;
+
+TRY ONCE IN notepad++ and compile for both values - true and false
+
+ENUM - later while teaching Non primitive types, Arrays, etc
+Autobox, sandbox, wrapper classes - later after oops
+
+OOPS - Object Oriented Programming
+
+paradigm means methodology
+Example C follows procedure based paradigm
+Javascript follows object based paradigm. Does not support inheritance, polymorphism - CHECK THIS
+C++,Java follows object oriented programming paradigm
+
+4 concepts of OOPS
+-> Abstraction
+-> Encapsulation
+-> Inheritance
+-> Polymorphism
+
+Class - is a logical entity, gives logical views, template of object
+Object - is a physical entity, has state and behaviour, instance of class
+Why java simple? - no explicit pointers, garbage collector, sandbox
+Pointers - return memory address of a variable
+Sandbox inside JVM- checks for files from untrusted sources; profile mechanism - checks if it affects locally
+
+CHECK THIS :
+============
+WHAT ARE JAVA TOOLS
+WHERE JAVA
+WHY JAVA
+
+Task :
+(1)
+check if a number is duck number
+
+user passes a number for ex.,
+-> 3506, 3056, 3560 - duck number coz it has 0
+-> 0356, 356 - not a duck number
+
+(2)
+check if a number is Tech number
+
+user passes 2025
+20|25 - split into two
+20+25 = 45 - add both the splits
+square of 45 should be equal to input number 2025
+then 2025 is a Tech number

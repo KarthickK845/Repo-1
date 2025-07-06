@@ -1,0 +1,71 @@
+local variable cannot be just declared, it should be initialised
+
+switch - we cant use boolean; number of conditions are higher; does not allow duplicates; can pass values directly as well
+also checks the range of datatype passed as expression; looks for the same type range values
+
+while - cannot pass direct boolean value in condition; we can pass only condition with variables
+if a condition is always true - stmt outside loop is unreachable error thrown
+if a condition is always false - stmt inside loop is unreachable error thrown
+
+break - used in switch, loop
+continue - only in loop
+
+incr/decr - only variables allowed, not values directly
+++(++a) => throws error; since 'a' bcomes a value; we can't use ++ with values directly
+
+byte b=10;
+b=b+1;
+sout(b);
+
+above throws error since byte+int cannot be stored in byte variable
+
+b+=1; //does not throw error, as internal casting happens here as well
+
+Internal typecasting happens while using unary operator
+byte a=10;
+++a => means a + 1; and also means 
+a= (type of a)(a+1);
+a=(byte)11
+
+we can use conditions in ternary operator like
+(a>b) ? a : (b>a) ? b : a
+
+Packages
+types:
+user defined
+pre defined packages -> util, lang, etc
+
+import java.util.Scanner; is efficient and fast
+import java.util.*; increases execution time as it will check all the classes and try to find Scanner class 
+
+method signature -> method name + type of parameters if passed
+display(int a,int b)
+
+obj.display(a,b);
+calling a method using method signature
+
+method declaration
+method implementation
+method calling
+
+method signature gets stored inside class table
+
+method characteristics
+
+return type with arg
+return type without arg
+non return type with arg
+non return type without arg
+
+var/method		method
+instance 		instance   directly
+instance		static	   using object
+static			instance   directly 
+static			static
+
+
+abstract, static, final cannot be used in constructor - CHECK THIS
+
+values assigned to instance variables : 
+using method - only after calling
+using constructor - during object creation

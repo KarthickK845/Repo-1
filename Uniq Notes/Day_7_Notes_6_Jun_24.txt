@@ -1,0 +1,59 @@
+Table program - skip the ones ending with '5' and '7' in 3rd and 5th tables.
+
+Enter the number
+3
+1 * 3 = 3
+2 * 3 = 6
+3 * 3 = 9
+4 * 3 = 12
+6 * 3 = 18
+7 * 3 = 21
+8 * 3 = 24
+10 * 3 = 30
+
+Enter the number
+5
+2 * 5 = 10
+4 * 5 = 20
+6 * 5 = 30
+8 * 5 = 40
+10 * 5 = 50
+
+Pattern program - Diamond
+
+   *
+  * *
+ * * *
+* * * *
+ * * *
+  * *
+   *
+
+    *
+   * *
+  * * *
+ * * * *
+* * * * *
+ * * * *
+  * * *
+   * *
+    *
+
+Q&A
+
+primitive and non-primitive diff
+null value can be set for non-primitive datatypes but not for primitive
+
+static variables are allocated memory during - compile time; JVM is responsible for setting default value to static variables.
+instance variables are allocated memory during runtime; 
+A obj = new A();
+obj is called reference variable.
+object is created during 'new A();'
+
+class and object difference
+class 
+- logical
+- no memory
+object 
+- both physical and logical
+- has memory allocated

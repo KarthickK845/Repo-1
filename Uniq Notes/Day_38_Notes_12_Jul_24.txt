@@ -1,0 +1,116 @@
+Stack
+======
+
+-Stack is a subclass of Vector
+-Stack is used to process the elements in the order of LIFO - Last In First Out
+
+Stack<Integer> s=new Stack<>();
+
+Following are methods in Stack
+
+push()
+------
+-> is used to add the element in a Stack.
+
+s.push(10);
+
+pop()
+-----
+-> is used to remove the element from the Stack
+-> It will remove the top of the Stack element and also returns that element.
+-> removes only top element, it cannot remove any random elements
+
+s.pop();
+
+peek()
+------
+-> it will return the top of the Stack element.
+
+s.peek();
+
+search()
+--------
+-> it will return the Stack order of that element. The Stack order of lastly added element is 1.
+
+other methods
+
+s.firstElement() to get the first element
+s.setElementAt(33, 2);	//overrides the value of element at index 2 to 33
+
+also we can use same methods used in ArrayList,LinkedList like below methods in Stack.
+
+add
+addAll
+clear
+set
+get
+size
+contains
+
+Set
+===
+------------------------------------------------------------------------------------------------------------------
+		HashSet								LinkedHashSet								TreeSet
+------------------------------------------------------------------------------------------------------------------
+subclass of Set interface				subclass of Set interface				subclass of SortedSet interface
+
+duplicate values are not allowed		duplicate values are not allowed		duplicate values are not allowed
+
+it will not maintain insertion order	it maintains insertion order			it maintains ascending order
+
+only one null value is allowed			only one null value is allowed			null values are not allowed
+
+can store both homogeneous and 			can store both homogeneous and			can store only homogeneous objects
+heterogeneous objects					heterogeneous objects
+
+------------------------------------------------------------------------------------------------------------------
+
+Following methods are not supported in Set:
+
+add(index,element)
+addAll(index,element)
+indexOf()
+set()
+get()
+for loop
+listIterator()
+
+-*-
+
+All the Sets are in Util package
+
+Doesn't support any index based methods at all
+
+TreeSet doesn't allow null values since it maintains ascending order, so comparing a null value with Object value will result in null pointer exception.
+
+TreeSet doesn't allow heterogeneous objects since it maintains ascending order, so comparing an Object value with another Object value does not make sense.
+
+for each and Iterator are only supported in Set for iteration
+
+HashSet - underlying data structure is HashTable which is based on hashcode
+null does not have a hashcode
+
+#refer written notes
+
+Task - ArrayList
+================
+
+Create diff Arraylists for departments
+Create diff ArrayLists for the list of books of each department
+
+MECH 	ECE 	CSE 	EEE
+ebook1	ebook1	ebook1	ebook1
+ebook2	ebook2	ebook2	ebook2
+ebook3	ebook3	ebook3	ebook3
+
+Who are you?
+
+Student or Staff
+
+If staff give options
+1) Booklist -> Show booklist
+2) Add Book -> Which dept do you want to add the book to? -> Show the list of depts -> Select the dept and add the book to that dept list
+
+If student
+1) Take book -> Which dept? -> Select the dept -> Remove the bookname from that dept's booklist
+2) Return book -> Which dept? -> Select the dept -> Add the bookname to that dept's booklist

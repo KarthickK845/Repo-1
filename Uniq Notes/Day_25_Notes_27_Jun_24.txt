@@ -1,0 +1,39 @@
+Exception
+=========
+-> It is an abnormal condition
+
+Exception handling
+==================
+-> mechanism to handle exception
+
+try
+catch
+finally
+throw
+throws
+
+Project level/Applicationlevel topics that are important
+
+1) Exception
+2) Collections
+3) Multithreading
+
+Tasks:
+
+1) Get two numbers from user, divide 1st num by 2nd num, ArithmeticException occurs if 2nd num is 0, handle it and ask 2nd num again from user, ask again until 2nd num is >0, print output if so.
+
+2) Employee class
+Enter the email :
+input email should be string, 1st letter should be caps, should contain "gmail.com", lowercase
+Enter the password :
+input pwd should be integer
+Should throw exception - Inputmismatch - if String is entered. Get the password again from the user until only integer type entered
+
+Diff between Scanner methods .next() and .nextLine()
+
+===============================
+##CHECK THIS
+++a + a++ + a++ + ++a
+
+Quadratic equation
+5x2-2x+2=0

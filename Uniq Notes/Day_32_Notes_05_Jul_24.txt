@@ -1,0 +1,37 @@
+Daemon Thread
+
+clone() method
+must implement clonable interface
+
+clone creates a copy of original values of instance variables and does not affect the original object unless the value is reassigned using that object.
+
+finalize() method is called - garbage collector executed
+if method not called - garbage collector not executed
+
+since Garbage collector is a part of JVM
+we call using System.gc();
+
+Even when using above call statement, GC will be called only when there are unreferenced objects in the class
+============================================================================================================================================
+Task
+Write a program to occur deadlock
+
+class A
+{
+sync m1(){
+m4();
+}
+
+sync m2()
+}
+
+class B
+{
+sync m3(){
+m2();
+}
+
+sync m4()
+}
+
+create two threads to call m1 and m3

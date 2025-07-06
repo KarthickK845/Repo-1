@@ -1,0 +1,80 @@
+Constructors :
+==============
+
+
+==============================================================================================================================================
+
+Q&A
+===
+
+Why we are going for pre-defined/built-in methods ? CHECK THIS
+example when we have multiple loops in a class, execution time will be more. We can use built-in methods for such executions thereby reducing the execution time.
+CHECK MORE ON THIS QUESTION
+
+The use of pre-defined methods in our Java applications 
+■can improve efficiency, readability. 
+■enables code reusability since we can call them directly wherever common and basic functionalities are required. 
+■Consistent behaviour and reliable since these methods are already implemented and tested. 
+■Faster execution times compared to custom implementations. 
+
+==============================================================================================================================================
+
+What are the default values for the data types in Java ?
+for int, 0 is the default value
+
+Primitive Datatypes :
+byte: 0
+short: 0
+int: 0
+long: 0L	 
+float: 0.0f
+double: 0.0d
+char: '\u0000' (null character)
+boolean: false
+
+Non-primitive Datatypes :
+String : null
+ArrayList : null
+
+=> while printing uninitialised variable (Refer ChatGPT Notes)
+long prints 0
+float prints 0.0
+double prints 0.0
+char prints a box
+
+==============================================================================================================================================
+
+What is a package? What are the types of packages ?
+
+Package: a namespace that organizes a set of related classes and interfaces
+Benefits: Easy to manage and navigate large Java applications, provides a hierarchical structure to Java code, helps in avoiding naming conflicts, promotes code reusability, access control.
+Types:
+1) Predefined packages
+2) User defined packages
+
+Predefined : packages that are provided by Java as part of JDK. Ex: java.lang, java.util, java.io
+User defined : packages created by developers to organize their own classes and interfaces
+
+==============================================================================================================================================
+
+When will we use for loop and while loop ?
+
+For loop : Used when the number of iterations is known or can be determined in advance.
+While loop : Used when the number of iterations is not known beforehand, and the loop continues as long as a condition is true.
+
+==============================================================================================================================================
+
+Difference between Heap and Stack memory.
+
+
+
+Copy constructor :
+initializes an object using another object of the same class.
+
+A copy constructor is a special type of constructor in object-oriented programming that is used to create a new object as a copy of an existing object. It is particularly useful when you want to create a new instance of a class that is a replica of an existing instance.
+
+What are shallow copy and deep copy constructors?
+
+a shallow copy refers to copying the members of one object to another object without creating a new copy of referenced objects. Instead, it copies references to the objects. This means the copied object and the original object will still share the same referenced objects.
+
+a deep copy refers to creating a new object and recursively copying all fields of the original object and any referenced objects. deep copy ensures that each object is duplicated independently, including all objects referenced by the original object.

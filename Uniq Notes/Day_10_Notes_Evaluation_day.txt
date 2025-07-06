@@ -1,0 +1,8 @@
+Types of methods
+
+types based on return type and parameters
+
+void display() = non return non parameterized method
+void display(int a, int b) = non return parameterized method
+int add() = return type non parameterized method
+int add(int a,int b) = return type parameterized method

@@ -1,0 +1,81 @@
+Constructor overloading
+
+-same name with different parameters
+
+Copy constructor
+
+A.obj=new A();
+A.obj1=obj;	//shallow copy
+
+Shallow copy
+-copying the object directly i.e. assigning an existing bject to a new object
+-same memory address
+
+Deep copy
+-copying instance variables of one object to another object
+-instance variable wise assigning to other object's instance variable
+
+##REFER NOTES FOR EXAMPLES
+
+Clone constructor - explain later after interface
+
+Access specifiers
+
+private
+default
+protected
+public
+
+##REFER NOTES FOR DETAILS
+
+- access specifiers do not apply to local variables
+
+We cannot use access specifiers such as private and protected to a class.
+A class declared as final cannot be inherited i.e. cannot create a child class to that class.
+
+value of a final variable cannot be changed. If so, we can only assign a value once using below ways. No more re-assigning allowed.
+final int a; --blank final (only declaration)
+final static int b;
+
+We can assign a value to this blank final only inside a constructor
+Exconstructor(){
+a=90;   //allowed
+b=89;	//not allowed
+}
+
+void change(){
+a=91;	//not allowed inside method
+}
+
+static{
+b=99;	//allowed
+}
+
+Instance block
+- will execute with any object creation and with any constructor
+
+{
+ System.out.println("INSTANCE BLOCK");
+}
+
+if a class has static block, instance block and constructor. The blocks are executed in below order.
+1. static
+2. instance
+3. constructor during object creation
+
+
+strictFP - later
+
+Task pattern
+
+*  ****
+*  *
+*  *
+*******
+   *  *
+   *  *
+****  *
+
+int mid=8/2;
+
+if(i==1 && j>=mid) || if(j==7 && i>=mid)

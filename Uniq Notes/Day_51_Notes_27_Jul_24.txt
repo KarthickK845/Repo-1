@@ -1,0 +1,7 @@
+sorted - Intermediate operation
+by dfault - ascending order
+
+sorted(Comparator) - 
+can provide logic for ascending or descending order
+
+Today morning we practised and did some tasks on Stream API methods. We discussed few things about our mini project. We learnt about other few methods of Stream API such as sorted, sorted comparator, reduce

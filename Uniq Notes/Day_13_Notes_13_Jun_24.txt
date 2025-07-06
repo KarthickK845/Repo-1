@@ -1,0 +1,42 @@
+OOPs
+====
+4 core concepts
+-> Abstraction
+-> Encapsulation
+-> Inheritance
+-> Polymorphism
+
+Refer written  notes
+
+INHERITANCE
+
+class Parent {
+	int a = 10;
+	void display(){
+	sout("hi");
+	}
+}
+class Child extends Parent{
+	int z=9;
+	PSVM(){
+	 Child obj=new Child();
+	 obj.display();
+	 sout(obj.z);
+	 Parent obj1 = new Parent();
+	 sout(obj1.z);	//not allowed
+	}
+}
+
+obejct of parent class cannot access child class members
+
+File name same as class name
+class should be public to hold main method
+
+Parent - Employee
+Salary, String department
+
+Child- Software developer
+create object for child and print parent members
+
+Tasks shared in whatsapp
+Number to roman letter

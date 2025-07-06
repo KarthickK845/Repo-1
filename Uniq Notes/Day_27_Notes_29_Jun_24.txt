@@ -1,0 +1,70 @@
+File Handling
+=============
+to read and write files in Java
+
+We have predefined classes for file operations in java.io package
+
+File class - to create a file
+File obj = new File("C:\\Folder\\javafolder"); 	//creates a folder called javafolder in the path C:\Folder
+obj.mkdir();	\\creates a folder/directory; we can use in print stmt also, it returns boolean value. True if folder created. else false.
+File obj1 = new File("C:\\Folder\\javafolder\\foldr1\\foldr2"); 
+obj1.mkdirs();	\\creates multiple directories specified during object creation
+File obj2 = new File("C:\\Folder\\javafolder\\foldr1\\foldr2\\file.txt");	//must specify the extension of file as well
+obj2.createNewFile();	\\we can use this also in print stmt, it returns boolean value
+IO exception thrown if path is incorrect or folder is not found
+java.io.IOException: The system cannot find the path specified
+
+FileWriter class - to write inside a file
+FileWriter fr=new FileWriter(obj2);	//we can directly use the object that we created for file creation if we are writing inside the same file
+Else, pass the String - a new path of the file to be written
+fr.write("Hello...");
+fr.close();	//must close the file if we open and write. Else, the writing won't happen. The cursor will keep waiting.
+fr.flush();	//deletes the content inside the file
+
+if the file permission is Read-only
+Exception in thread "main" java.io.FileNotFoundException: E:\Java Uniq\Practice\FileHandling\javafolder\Folder1\Folder2\file1.txt (Access is denied)
+
+FileReader class - to read a file
+We can also use Scanner class to read a file
+Scanner sc=new Scanner("C:\\Folder\\javafolder\\foldr1\\foldr2\\file.txt");	//can specify the file path	(OR)
+Scanner sc=new Scanner(obj2);		//can also use the object directly 
+while(sc.hasNext())
+{
+sysoutln(sc.next());
+}
+
+hasNext() - checks if there is any next value/character
+next() - returns the next value/character
+
+FileReader
+FileReader fr=new FileReader(obj2);
+int a;
+while((a=fr1.read())!=-1)
+{
+	char b=(char)a;
+	System.out.print(b);
+}
+
+read() method return the character read in file, if no character, this method returns -1
+Prints the ASCII values of characters found in the file
+So, we need to convert to character before printing the file
+
+If we performed many operations like read, write on a file, we cannot delete that file. We can only delete empty file using delete() .
+obj2.delete();
+
+Mostly, these file operations behave like Linux commands.
+
+obj2.exists()	- returns true if file exists
+getAbsolutePath()  - to get the path of the file
+getName()	- to get name of the file
+canExecute()	- to check if we can execute the file, returns true if so
+canRead()	- to check if we can read the file, returns true if so
+canWrite() 	- to check if we can write the file, returns true if so
+
+Task:
+=====
+ATM with Exception handling
+
+diff between Scanner methods next() and nextLine()
+next() method helps to go to next iteration in a loop, retrieves last entered input value
+nextLine() method helps in getting input from the user - Ex. Get 3 input from user where 1st two are integers and 3rd is String. Before, getting the 3rd input i.e. String, we have to use nextLine() and then next() to get the String.

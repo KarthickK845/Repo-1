@@ -1,0 +1,106 @@
+Map
+
+Map is an interface.
+Not a sub interface of Collections interface
+
+all classes of Map are in java.util package
+
+pass two objects in generic
+HashMap<Integer,String> where Integer is key, String is value
+
+HashMap does not maintain insertion order
+
+Same differences like Set types
+
+key and value can be in any type of value
+HashMap<String,Integer>
+HashMap<Integer,Class>
+
+HashMap<Integer,String> h=new HashMap<>();
+
+1 "A"
+2 "B"
+1 "C"	//key 1 will override value "A" to "C"
+
+if keys are duplicated, values will be overridden
+But values can be duplicates
+
+Underlying Data Structure is HashTable (which is a class)
+default capacity of HashTable is 11
+
+cannot use index based methods like in Set
+but can use get, remove methods in Map
+
+h.get(2) //where 2 is a key
+above returns the value of key 2
+
+h.remove(2) //where 2 is a key
+above removes key=value pair of key 2
+
+cannot use for loop, but can use for each loop, iterator for Iteration
+
+HashMap h
+h.keySet() to print only the keys	-> returns set since it does not allow duplicates
+Set<Integer> s=h.keySet();
+h.values() to print only values	-> returns Collections
+
+h.entrySet() to print as key=value pairs in [] square brackets -> returns set since it returns all the entries, pairs which are not duplicates when seen as a pair(either keys or values are different)
+
+containsKey() - to check if the key is present in the Map
+h.containsKey(2) 
+
+containsValue() - to check if the value is present in the Map
+h.containsValue("morning")
+
+h.putAll
+
+h.putIfAbsent(1,"one");	//adds value to Map only if the passed key is not in that Map
+
+Entry is a sub interface of Map interface
+to store one key and value pair during iteration
+
+for(Entry<Integer,String> e:h.entrySet())	//entrySet to return the Set of key=value pairs
+{
+sout(e.getKey());
+sout(e.getValue());
+sout(e);
+}
+
+e.getKey() to get the key alone
+e.getValue() to get the value alone
+
+Iterate heterogeneous map using for each
+
+for(Object e:hm.entrySet())	//cannot use Entry interface to iterate heterogeneous objects
+		{
+			System.out.println(e); //prints each object as key=value pair, cannot use getKey(),getValue()
+		}
+		
+Iterate heterogeneous map using Iterator
+
+Iterator im=hm.entrySet().iterator();
+		while(im.hasNext())
+		{
+			System.out.println(im.next());
+		}
+		
+We can use Iterator directly with List and Set Collections. But with Map, we have to call iterator() with entrySet()
+
+Task
+====
+
+Create an ArrayList with Employee type fields like
+empid, name, salary, job
+1, Karthi, 30000, IT
+
+Create a Map with above empid as key and other fields as value like
+1=Karthi 30000 IT
+
+
+Voting system task
+==================
+create a map with 4 names (n1,n2,n3,n4) as keys, vote counts as values 
+default vote count as 0
+
+get votes from 5-6 users and increment the voting count of each candidate if name entered by user is equal to any key element of the Map
+print the entrySet with updated values

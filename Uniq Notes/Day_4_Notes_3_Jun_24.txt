@@ -1,0 +1,79 @@
+Switch stmt
+
+- to check an expression(variable)
+- we cannot use a condition as expression
+
+switch(exp){
+case 1:
+  statement;
+  break;
+case 10:
+  statement;
+  ..
+default:
+  statement;
+  break;
+}
+
+Example:
+String str = "Monday";
+switch(str){
+case "Monday":
+System.out.println("Monday blues");
+System.out.println("Monday awesome");
+break;
+case "Tuesday":
+System.out.println("Tuesday great");
+default:
+System.out.println("Great day");
+
+1) float or double can't be used as expression
+2) exp type is only value
+3) n number of cases can be given
+4) default is optional. If none of the cases match, default will be executed
+5) break statement is used to break the flow between the switch cases - falls through to next case statement if break is not used
+6) duplicate case values cannot be passed
+
+Nested switch statement
+- switch statement inside another switch case
+
+Example:
+String gender="male";
+String product="pant";
+switch(gender){
+	case "male":
+		switch(product){
+			case "pant":
+				...
+				break;
+			case "tshirt":
+				...
+				break;
+		}
+}
+
+Looping statement
+
+While
+while(i>=10){
+sysout("Hi");
+}
+Entry controlled
+Checks the condition first and acts based on the condition
+
+Do while
+do {
+sysout("hi");
+} while(a<3);
+Exit controlled loop
+Executes the block once and then checks the condition
+
+PROBLEMS USING LOOPS
+1. DISPLAY NUMBERS
+2. DISPLAY ALPHABETS (LOWER AND UPPER CASE)
+3. FIND THE FACTORIAL OF A GIVEN NUMBER
+4. FIND THE PRIME NUMBERS
+
+https://www.programiz.com/java-programming/examples/prime-number
+https://www.geeksforgeeks.org/java-prime-number-program/
+https://www.naukri.com/code360/library/prime-number-program-in-java

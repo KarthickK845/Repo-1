@@ -1,0 +1,57 @@
+1st Evaluation by Vimala mam
+
+Review below questions and appropriate usage :
+
+1) can we create an immutable class like String class ?
+2) can we overload and override main method ?
+ANS : main() method can be overloaded but it cannot be overridden bcoz it is a static method. static methods cannot be overridden as memory is allocated for static method during compile time itself.
+3) can we overload and override Constructor?
+ANS : Constructors can be overloaded but cannot be overridden as they are not members, so cannot be inherited by sub classes.
+Constructors cannot be overridden in Java because a constructor name is based on the class name, cannot be inherited in Java and Method overriding requires inheritance.
+4) Can we create constructor in abstract class ? If so, how to call that constructor?	
+ANS : Using super()
+5) Using Exception class in 1st catch and then ArithmeticException class in 2nd catch
+ANS : Compilation error thrown.
+6) Can we achieve Constructor recursion?
+ANS : We can achieve constructor recursion directly by calling "new Constructor();" inside Constructor() block. This will lead to StackOverflow error. We cannot use this() inside the same constructor for recursion.
+7) We cannot declare a variable inside interface. Must initialise it.
+8) Is there a default value for all the variables - instance, local, static
+ANS : Declare static and instance variables outside the methods. There are default values for instance and static variables declared. Using the variables in printing statements will print the default values of that variables. But local variables must be initialised before printing.
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Tasks of the day :
+
+(1)
+
+Create a class MyCalculator which consists of a single 
+method long power(int, int). This method takes two integers,
+n and ,p as parameters and finds n^p. If either n or p is
+ negative, then the method must throw an exception which 
+ says "java.lang.Exception: n and p should not be negative".
+Also, if both n and p are zero, then the method must 
+throw an exception which says "java.lang.Exception: n and p should not be negative".
+Complete the function power in class MyCalculator and return the 
+appropriate result after the power operation or an 
+appropriate exception as detailed above.
+
+(2)
+
+Given a string containing just the characters '(' and ')', return the length of the longest valid (well-formed) parentheses 
+substring
+
+
+Example 1:
+
+Input: s = "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()".
+Example 2:
+
+Input: s = ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()".
+Example 3:
+
+Input: s = ""
+Output: 0

@@ -1,0 +1,24 @@
+Evaluation questions based on Strings, Arrays mostly
+
+String Tasks
+============
+1) 
+Input :
+"/Name="Vimala"/Job="Soft"/Exp="5 years"";
+User Input : Name or Job or Exp
+Output :
+if Name, return "Vimala" (with double quotes)
+if Job, return "Soft" 
+if Exp, return "5 years"
+
+2)
+Input :
+String s="aaabbccccde"
+Output :
+a3b2c4d1e1
+
+3)
+Input :
+String s = "a2b3c1d4"
+Output :
+aabbbcdddd

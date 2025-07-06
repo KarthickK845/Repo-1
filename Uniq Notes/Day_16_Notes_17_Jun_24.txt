@@ -1,0 +1,25 @@
+Explain JVM architecture on Wednesday.
+Tmrw talk about something that you like.
+
+Interview question - What is your daily routine in your daily job?
+
+=============================================================================================================================================
+
+Abstraction : 
+
+-> Hiding the internal implementation and highlights the functionality to the user is known as abstraction.
+
+Ways to achieve abstraction :
+
+1) Abstract class
+2) Interface
+
+Abstract class :
+
+-> Abstraction 1 to 100%
+-> Abstract class can have both abstract method and non abstract methods
+-> Using abstract keyword we can make a method as abstract method. If a class has any abstract method then the class also must be abstract.
+-> We cannot create object for the abstract class
+-> Must give the implementation for abstract method
+-> Abstract method does not have method body
+-> We cannot declare abstract method as private

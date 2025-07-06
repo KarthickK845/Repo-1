@@ -1,0 +1,153 @@
+Memory management
+
+Memory in JVM
+3 main memory
+2 additional memory
+
+Heap 
+- dynamic memory - enlarges as we create new reference variables
+- members like object/reference variable created with new keyword
+- instance variables and instance methods are stored here
+- not stored in key value pair 
+A obj = new A();
+- a copy of instance variables and methods stored under each reference variable(object)
+- method calls using obj will create new links to method stack frame
+
+Garbage collection
+- if a copy of obj is unused or isolated, it will be garbage collected and added in heap.
+
+Stack 
+- fixed memory
+- LIFO - last in first out
+- all methods stored here
+- example of LIFO - in general, if we have inputs given as in the order 5,6,7,8. First value that will be returned is 8. So, values returned in the order 8,7,6,5.
+
+Every member of each method is stored as key value pair in stack under a stack frame
+address of main method stored in Class area
+members of main method stored as key value pair in stack frame
+like..
+variable z in key | value of z in value
+obj in key		  | value is address of obj in heap memeory
+method show in key| value is returned value of show method
+
+- everytime an instance method is called, new links to new stack frame will be created
+- if instance method is called infinite times, since stack memory is fixed memory, stackoverflow error will be thrown
+
+Class area - 
+is where references of class variables, static variables, static methods including main method, static block are stored
+
+If value of static variable is changed using any instance var or directly, the same copy will 
+
+Metaspace
+
+Metadata - data about data like jar, war, etc
+
+Method overloading
+-------------------
+Same method name
+different parameters
+same method name and signature not allowed
+
+void add(int a){
+	System.out.println(a);
+}
+void add(int a, int b){
+	System.out.println(a+b);
+}
+void add(){
+	System.out.println("no parameter");
+}
+void add(int a,double b){
+	System.out.println(a+b);
+}
+
+Naming convention
+-----------------
+
+class names 
+-proper noun
+-Pascal case
+examples:
+-EmployeeDetail
+-LogTransaction
+-MiddlewayeAuthentication
+
+method names
+-active verb
+-Camel case
+examples:
+-isValid()
+-getEmployeeCredential()
+
+variable
+-camel case
+-userName
+-can use _,$ symbol in name
+
+CONST
+-values have all letters in uppercase
+example
+MONDAY
+
+names of pre-defined classed and methods also follow same case
+
+Constructor
+used to initialise the object
+should be same as class name
+executed when reference variable(object) is created
+used to assign values to instance variables
+called as special type of method
+
+Types:
+1. Default/no argument constructor
+2. Parameterized constructor
+
+class EmpCrd{
+int a;
+int b;
+static{
+sout("Hi");
+}
+EmpCrd(){
+a=10;
+b=20;
+}
+EmpCrd(int x,int y){
+a=x;
+b=y;
+}
+PSVM(){
+EmpCrd obj=new EmpCrd();
+EmpCrd obj1=new EmpCrd(5,6);
+}
+
+Constructor overloading
+
+Calling a Constructor from inside another constructor //CHECK THIS
+-using this keyword
+
+ConstructorEx(int x, int y)
+{
+	this();  //to call default constructor
+	age = x;
+	e_id = y;
+}
+
+creating reference variable inside a static method other than main is not a recommended practice. Also, it will be waste of memory.
+so we can create inside main method and pass it as an argument to the other method and use inside
+
+class Example{
+
+int a = 12;
+
+static void ObjEx(Example x)
+{
+System.out.println(x.a);
+}
+
+public static void main(String[] args){
+Example obj = new Example();
+ObjEx(obj);
+}
+
+}
