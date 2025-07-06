@@ -1,0 +1,59 @@
+1.Cookies Login application
+
+Homepage jsp
+Welcome to Cookies...
+3 anchor tags - Login, Logout, Profile - 3 JSP pages
+Logout, Profile  - href directly to Servlets
+@WebServlet annotation
+
+Login Servlet
+If login is successful, we will add Cookie to the response
+
+if(name.equals("uniq") && pass.equals("123"))
+
+Cookie ck=new Cookie("cname",name);
+response.addCookie(ck);
+request.getRequestDispatcher("homepage.jsp").include(request,response);
+out.println("Login Successful");
+
+else
+
+request.getRequestDispatcher("login.jsp").include(request,response);
+out.println("Username or password is incorrect");
+
+Profilepage Servlet
+
+If name is present in cookie, show Profile
+
+doGet method
+
+setContentType
+PrintWriter out object
+
+Cookie[] ck=request.getCookies();
+if(ck!=null)
+{
+String name=ck[0].getValue();
+if(!(name.equals(null)) && !(name.equals("")))
+{
+out.println("Welcome "+name);
+}
+else
+{
+request.getRequestDispatcher("login.jsp").include(request,response);
+out.println("Please login first.");
+}
+
+We must delete the sessionID that gets created in Chrome by default before running our project
+else it prints that cookie when we click Profile page in our application
+
+Right click -> inspect -> cookies -> localhost link -> Application tab => we can view cookies as name and value pairs
+
+Logoutpage servlet
+
+Cookie ck=new Cookie("cname","");
+ck.setMaxAge(0);			//setting expiry as 0, so immediately expires
+response.addCookie(ck);
+
+request.getRequestDispatcher("homepage.jsp").include(request,response);
+out.println("Logout Successful");

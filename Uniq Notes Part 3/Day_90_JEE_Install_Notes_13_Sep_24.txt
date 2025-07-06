@@ -1,0 +1,49 @@
+Downloaded Java Enterprise Edition from online
+https://www.eclipse.org/downloads/packages/release/2019-12/r
+
+Eclipse IDE 2019-12 R Packages -> Eclipse IDE for Enterprise Java Developers Windows version 
+Zip file looks like eclipse-jee-2019-12-R-win32-x86_64
+
+Opened Eclipse JEE 2019
+File -> Create Dynamic Web Project
+Give a project name
+Target runtime -> New Runtime -> select Apache Tomcat v9.0 -> checkbox check create a new local server -> Apache Tomcat v9.0 as Name
+Error after selecting a path from Browse -> Unknown version of Tomcat
+So I downloaded Apache Tomcat separately and given the installation path
+JRE: selected jdk-22 and Finish
+
+Dynamic Web Module version -> selected 4.0
+
+C:\Users\Karthick Kanagaraj\Downloads\apache-tomcat-9.0.94-windows-x64\apache-tomcat-9.0.94
+https://tomcat.apache.org/download-90.cgi#9.0.94
+
+After creating new project
+
+Create new JSP file - Demo.JSP
+
+Save and Run using the created servers
+
+8080 Port already in use error
+
+Open Servers tab -> Right click on the server and Open 
+Under Ports HTTP/1.1 8080 to 8081
+Updated the port to 8081
+Tomcat admin port 8005 to 8006
+Save and Run
+
+
+Open Eclipse jee
+Open file ->
+Create dynamic web project (if doesn't show, go to others and select)
+Project name
+Target runtime - running server / deployment server
+
+Apache Tomcat server version based on eclipse version
+by default use 9 stable version
+check create a new local server
+
+Tomcat installation directory
+choose the location to install the server packages
+can use the same path of source files used in eclipse
+
+In springboot, embedded server automatically created

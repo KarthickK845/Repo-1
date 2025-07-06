@@ -1,0 +1,208 @@
+secured apps - built using Enterpise edtion
+
+client/local - private service netwrok
+
+server - public service network
+
+Websites
+
+static web application - no user interaction
+html + client side script lang 
+
+dynamic web application - depends on user input request
+html + client side + server side lang
+
+Any web application will have the below layers
+
+Presentation layer - UI
+Business layer - validate and redirect to corresponding page
+Data Layer - interact with DB and fetch data
+
+programming lang - write and compile
+markup lang - need not compile, tag based lang
+markup tag - open and close tag
+plain text + special symbols (tags) + embedded - markup lang
+
+markup - embedded lang
+inside html we can add more than 1 lang
+
+providing hyperlink to a text - hypertext
+
+only one lang can be added inside html that is scripting lang
+scipting lang - light weight prog lang
+
+1. client side scripting lang
+
+CSS - Cascade Style Sheets - to create styles, page design, background colors, animation, etc. 
+Framework of CSS used is Bootstrap
+
+Javascript - to do basic client side validation before sending request. Ex. restricting user based on input like blank input, checking special characters, required fields.
+Framework of Javascript are
+Ajax, jQuery, Dojo, Angular, React js, Vue js
+
+2. server side scripting lang
+
+JSP / Servlets - scripting languages for Java web application
+We use frameworks Spring
+
+Other languages (Python,.NET):
+php
+asp.net
+jang,flask
+
+------------------------------------------------
+
+JSP
+
+Presentation code separately and Business logic separately written
+
+
+Servlet - 5 methods - init - service - destroy
+
+Presentation + business layer in same file 
+
+GenericServlet - 6 methods
+
+HttpServlet + service method + http methods (format for client side request)
+GET request - doGet method should be overridden
+POST request - doPost
+HttpServlet - we can override only required methods
+
+getting user input through request object, send response through response object - Both are implicitly created
+throws - exception declaration, does not handle exception
+
+If we don't want to use catch block, we can use try with resource block
+We do not need finally block as it will auto close the resources/objects used.
+We can create any number of objects in try with resource using semicolon.
+
+try(PrintWriter out = response.getWriter())
+{
+
+}
+
+JDK-17+ use jakarta
+Apache Tomcat 9+ is compatible with jakarta
+
+Check same jdk version is configured in three places
+Eclipse -> Window -> Preferences -> 
+-> Java -> select which jdk is configured
+-> Java Build Path
+-> Java Compiler
+
+We can configure a servlet application using two ways
+1. xml based - deployment descriptor file
+web.xml file for servlet mapping purpose - mapping client page with servlet
+
+Extension of servlet file is .java
+index.html  <a href="MyFirstServlet">test</a>
+
+2. annotation based
+Mark annotation on the servlet class
+
+Whenever server starts, it will check for any of the files listed in welcome file list
+index.html
+
+All client side requests use HTTP protocols
+
+HTTP - request and response protocol, stateless protocol 
+state - identity of user
+asked everytime so treats each request as new request
+
+session - starting from login time till logout time
+
+http://
+https://
+
+init - initialize the request, allocate memory
+service - handle and process the request and send the response
+destroy - destroy the memory allocated for the request during init
+
+Sysout - prints in console
+out.println() - prints in browser
+
+
+HTML file
+
+head tag - declaration
+client side script is written inside head tag using <script> tag
+<script type="text/javascript">
+</script>
+meta - data about the data, keywords of data used in body
+title - title of the page
+
+Javascript ES5(object based) / ES6 (OOPS, typescript)
+
+ES5
+function myFunc(){
+alert("javascript calling");
+}
+
+calling a preefined function alert() just to check if the method is being called
+
+in form tag use onsubmit attribute to call the function
+<form ... onsubmit="myFunc()">
+
+function myFunc(){
+var user = document.getElementById("uname").value;
+var pswd = document.getElementById("upswd").value;
+if(user =="") {
+alert("Please enter the username");
+return false;
+}
+if(pswd =="") {
+alert("Please enter the password");
+return false;
+}
+}
+
+if the 
+
+breakpoint in Developer Tools to run line by line from the breakpoint and debug the error in our code in Sources
+
+<form ... onsubmit="return myFunc()">          returns false if username or password is empty
+
+document = predefined object
+variable type is only one var and it is global type, dynamic type. it auto converts based on the value given on the RHS
+5 datatypes in Javascript #CHECK THIS
+above method used to fetch the element by ID
+
+body tag - content of the webpage
+
+changes in html/jsp files - we can just refresh after making changes
+but changes in java/servlet files - must restart server
+
+default method - get method
+
+in Servlet, it must be doGet method only
+
+but there must be only one method overridden inside the servlet
+like 
+doGet or doPost
+
+Types of server:
+Application server - Apache
+Web Server - Tomcat
+default host address of Tomcat is localhost (local system's IP address)
+default port address of Tomcat is 8080
+
+convert the whole dynamic web project into a .war file - Web Archive File (like zip file)
+deploying the war file in localhost:8080 Tomcat webserver
+
+get - retrieve info from server; fetching existing record; request passed through URL
+post - submit info from server; creates a new record; request through body
+
+Ctrl+shift+I or F12 to open Developer Tools in browser to validate the rquest and debug front end errors
+client side script error shown in console
+Code in Sources
+Network tab 
+XHR - Network request only
+
+Headers if the Request is GET request
+-General
+-RequestHeaders
+-ResponseHeaders
+
+if the Request is POST, additionally body will be shown 
+
+Response
+shows the exact response to be printed if the request is hit

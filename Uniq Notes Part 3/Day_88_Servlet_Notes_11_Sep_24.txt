@@ -1,0 +1,6 @@
+JSP Servlet Introduction
+========================
+
+JSP servlet used as server side scripting language
+Javascript - client side scripting validation
+

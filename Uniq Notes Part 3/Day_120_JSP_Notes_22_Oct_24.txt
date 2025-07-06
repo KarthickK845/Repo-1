@@ -1,0 +1,69 @@
+ACTION TAGS
+
+JSP File - for Register
+firstRegister.jsp
+get inputs USername and Parameter
+ 
+
+JSP File for Login
+--
+
+inside scriptlet tag
+<% 
+getParameter uname and upass
+
+JDBC code = Class + Connection
+PreparedStatement - insert query
+
+1 way to create object inside JSP scriptlet tag
+create a new object by importing (<%@page import="module.Employee" %>) the class eg. Employee, Modal class,etc
+
+Inside scriptlet tag, we create object like 
+Modal m=new Modal();
+m.setName(name);
+m.setPass(pass);
+
+But we can't use this method in dynamic web applications
+
+2nd method- use Action tags
+Use useBean to create object
+
+<jsp:useBean id="obj" beanName="module.Modal"></jsp:useBean>	<!-- creating reference obj for bean(Object) and for module.Moal class -->
+<jsp:setProperty property="*" name="obj"/>			<!-- if set all properties such as name, pass use *. If set just one field, use only that field name like name, referring using object obj -->
+
+obj.setName(name);	//can refer the field directly using object reference (obj) which is given as id in useBean tag
+obj.setPass(pass);
+
+ps.setString(1,obj.getName());
+ps.setString(1,obj.getPass());
+
+int c = ps.executeUpdate();
+if(c>0)
+{
+response.sendRedirect("login.jsp");
+}
+else
+{
+out.println("Something went wrong");
+}
+
+validate.jsp
+
+have all the acion tags - useBean and 
+
+getParameter uname and upass
+
+JDBC code for select query where username is matching in DB
+
+ref.setName(name)
+ref.setPass(pass)
+
+ps.setString(1, ref.getName());
+
+ResultSet rs = ps.executeUpdate();
+
+if(rs.next())
+out print "Login successful"
+
+else
+out "Login Failed"

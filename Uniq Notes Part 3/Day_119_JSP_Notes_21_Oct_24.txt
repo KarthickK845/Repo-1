@@ -1,0 +1,154 @@
+Modal class 
+- is an Entity Class
+@Entity annotation - creates the table in DB for the Modal class automatically during runtime
+A MySQL table class
+instance variables are column names
+class name is tablename
+
+Using JSP - login and register using modal class
+
+Login JSP :
+-----------
+form action="Register"
+input text name="uname"
+input password name="upass"
+input submit
+
+Modal Class :
+-------------
+create as normal java class
+private instance variables for security reasons
+for setting and getting the data
+
+private String name;
+private String pass;
+
+add getters and setters
+
+Register Servlet :
+------------------
+doGet method
+setContentType html
+out object
+
+JDBC code
+getParameter uname and upass from JSP
+in String name and pass
+PreparedStmt insert query
+
+--> instead of pst.setString(1,name); directly
+--> create modal class object and set the Name  
+
+Modal m=new Modal();	//in Spring, this object creation also done automatically
+m.setName(name);		//if we have set the data of the request in the object, we can get them directly anywhere in the application using the object
+m.setPass(pass);
+pst.setString(1,m.getName());
+pst.setString(2,m.getPass());
+
+int c = ps.executeUpdate();
+if(c>0)
+{
+out.println("Register succesfully");
+}
+else
+{
+out.println("Register unsuccessful");
+}
+	
+	---	---	---
+	
+JSP:
+====
+=> Servlet's extension is JSP
+=> We can give the Servlet code inside JSP page itself
+=> Similar to Servlet's Lifecycle methods and flows only the names differ
+=> We can directly refresh the jsp page instead of restarting the server after altering the Java code in JSP files
+
+for printing they used jstyle tag, not used much currently
+lifecycle methods in jsp are like :
+jspinit()
+jspservice()
+jspdestroy()
+
+=> JSP (Java Server Page) is used to write our code in JSP file.
+=> If we change code in JSP, we don't need to recompile the server.
+=> It automatically updates the changes in browser.
+
+Scripting tags in JSP :
+=======================
+
+=> In JSP, there are three types of scripting tags.
+=> It is used to write our Java source code in JSP page.
+
+scriptlet - we can declare variables only but not methods
+expression
+declaration tags - for variables and mainly method declarations
+
+1.scriptlet tag 	- 	<%  %>
+2.expression tag 	- 	<%= %>
+3.declaration tag 	- 	<%! %>
+
+1.Scriptlet tag :
+-----------------
+=> It is used to write our Java source code.
+=> In this tag, we can declare the variables. But, we can't declare methods.
+=> In JSP, we can't create an explicit object.
+
+2.Expression tag :
+------------------
+=> It is used to print the statements if we print without implicit objects.
+
+3.Declaration tag :
+-------------------
+=> We can declare methods and variables.
+
+	--- 	---	 	---
+	
+DEMO :
+======
+
+JSP file
+inside body tag
+<% 
+String name="uniq";
+String pass="123";
+
+out.println("Welcome"+name+" "+pass);			
+//we need not create PrintWriter object out explicitly and use, instead we can directly use out object here in JSP
+
+%>
+
+<%= name +" "+pass %>
+//Inside Expression tag, we can print directly without using out object
+
+<%= Calendar.getInstance().getTime() %>
+//directly prints the Date and Time in browser
+
+<%!
+
+int a = 10;
+int b = 20;
+
+public int add(int a,int b)	//accepts method declaration inside declaration tag
+{
+return a+b;
+}
+
+%>
+
+<%= add(a,b) %>
+
+JSP Action tags :
+=================
+
+used when we need dynamic pages
+when we need to include in the response and send to another jsp page
+
+1.<jsp:forward>
+2.<jsp:include>
+3.<jsp:usebean>
+4.<jsp:setProperty>
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+

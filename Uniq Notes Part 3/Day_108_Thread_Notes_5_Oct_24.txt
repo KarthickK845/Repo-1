@@ -1,0 +1,16 @@
+Thread lifecycle
+
+NEW
+RUNNABLE
+RUNNING
+BLOCKED(WAIT,SLEEP)
+DEAD
+
+A ob=new A();			ob.start()		If thread  scheduler decides execution
+NEW ------------------> RUNNABLE -----------------------------------------------> RUNNING -------> DEAD
+							|														|
+							|														|
+							---------------------------------------------------------
+																		BLOCKED
+																		(WAIT,SLEEP)
+																		

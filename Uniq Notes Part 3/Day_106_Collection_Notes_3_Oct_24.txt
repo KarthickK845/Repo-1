@@ -1,0 +1,98 @@
+Collection interface - abstract methods, default, static methods
+Collections class - utility methods  -all methods are static
+
+Table 1 PrimaryData
+
+fields mobile number, name
+
+Table 2 SecondaryData
+
+fields mobile number, address
+
+2 bean classes for above tables 
+
+private fields
+constructor
+getters and setters
+toString
+
+DBResponse class for getting required values from DB here we dont use db for now
+so we will create objects for PrimaryData class with some values for mobile number and name
+
+getPrimaryDBResponse() method and getSecondaryDBResponse() method inside which we have created objects for PrimaryData and SecondaryData classes respectively
+
+Add the data retrieved from DB into any collection like list,set,map,queue
+
+we will add the objects in a list for now
+getPrimaryDBResponse() method returns the list of PrimaryData objects
+
+similarly getSecondaryDBResponse() method returns the list of SecondaryData objects
+
+we must have null checks to avoid NullPointerException
+
+and put into Map by getting mobilenumber of PrimaryData object as key
+
+HashMap
+
+put method
+internally calls 
+putVal method which 
+internally calls 
+hash(key) method that return hashcode value (hexadecimal) as first parameter and
+key 
+value and
+2 boolean type parameters false and true as other 4 parameters
+
+Eg. Key is "Uniq"
+(hashcode value of "Uniq" ) & (16-1) => 4
+& bitwise operation between hashcode value and 15. Result is taken as index 
+
+Map.Entry<K,V> subinterface of Map interface
+
+Node<K,V> inner static class inside HashMap class
+it is an array class - underlying Doubly LinkedList structure
+derived from Map.Entry<K,V> interface
+
+hashcode
+key
+value
+next
+
+are the elements of Node
+
+1st node
+hashcode of "Uniq"
+key "Uniq"
+value 1234
+null
+
+if same key =>same index returned for next value to put in HashMap
+Hash collision is avoided by creating a new node in the same index and the last element of Node replaced to next node address
+linkedlist or tree formed
+
+
+1st node
+hashcode of "Uniq"
+key "Uniq"
+value 1234
+next
+
+2nd node
+hashcode of "Tech"
+key "Tech"
+value 5678
+null
+
+ArrayList vs LinkedList
+ArrayList vs Vector
+HashMap internal working
+Hash collision
+HashMap vs HashTable vs SynchronizedMAp vs ConcurrentHashMAp
+
+Set Interface
+
+add method of Set internally calls map's put method
+
+SynchronizedMAp  - fail fast, whole capacity is locked
+
+ConcurrentHashMAp - fail safe, each bucket of the whole capacity is locked, segment by segment lock, no lock for read threads, lock only for write threads

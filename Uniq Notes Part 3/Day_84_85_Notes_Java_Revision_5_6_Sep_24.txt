@@ -1,0 +1,16 @@
+Java Revision
+
+String
+Java 8
+Multithreading
+Synchronization
+Collections
+Exception
+
+What is synchronized Map ?
+V Treeset or V Hashmap or weak hashmap?
+
+map.entry
+
+What is map ?
+What is an entry ?

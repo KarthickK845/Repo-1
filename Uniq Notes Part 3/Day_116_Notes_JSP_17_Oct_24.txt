@@ -1,0 +1,5 @@
+Tags in JSP
+<% scriptlet tag to write java code
+<%= expression tag to assign the value got thru java code
+<%@ directive tag with import attribute to import java classes used in java code in JSP
+<%! declaration tag

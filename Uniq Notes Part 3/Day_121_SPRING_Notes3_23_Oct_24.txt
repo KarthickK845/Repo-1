@@ -1,0 +1,252 @@
+SPRING Framework
+================
+=> Spring is a popular open-source framework for developing enterprise (security oriented) appplications.
+=> simplify app developments on popular Java EE technology
+=> Main advantage is use of the Dependency injection pattern
+=> DI allows to develop loosely coupled, more general classes
+
+Console App
+Standalone Web apps - Java based
+
+Why Spring ?
+Terminology required to understand Spring framework :
+Loose coupling & Tight coupling
+IOC container Inversion of Control - Interview important
+App Context & Bean factory
+Component Scan
+Dependency Injection
+Spring Beans
+Auto wiring
+AOP - Interiew important
+
+
+IOC - Inversion of Control
+As Java developers we wont create objects in Spring apps. Spring will create objects for us.
+Spring container creates the objects.
+IOC   - object control inversion
+
+Example:
+Component or Spring Bean 
+@component - annotation to let Spring Container know eligible that is a Spring Bean class (object creation for this class)
+above annotation - defaultly Singleton
+
+Component Scan
+scan the total no.of classes
+scans the classes checking which are all Spring Bean classes 
+This happens before starting our application.
+
+@component	// object created for PubG
+class PubG {
+
+}
+
+@component
+class Freefire {
+
+}
+
+Spring core - xml based mostly
+Spring MVC - we should mention when we need to create object.
+Manually using annotations or XML configurations
+Spring Boot - default
+
+Object creation scopes:
+Singleton - create object only once - default scope in SpringBoot - if nothing mentioned in the application, its Singleton
+prototype - create object only when required
+request - whenever request is incoming object is created
+session - one object per session
+global session - only one object for more than one user across all
+
+Objects created are stored in 
+injecting another class object inside a class
+
+
+Maven dependency are generic for any project - Java, JSP, Spring type projects. It is different from Dependency Injection.
+
+Dependency Injection - 
+Helps to develop loosely coupled apps
+Injecting dependency inside the application
+
+Application Context & Bean Factory
+- Application Context is derived from Bean Factory
+- Scope is SingleTon only by default in these two types.
+- Spring IOC container uses either of the above two to create objects
+
+Application Context - Eager initialization - used in Spring Boot by default
+creates objects readily when the application starts
+
+Bean Factory - lazy initialization
+created only when the class is invoked
+
+Annotation - metadata information
+comes with some behaviour which works during runtime
+
+since we have marked class level annotation over every class, each class is considered as Spring Bean
+
+@SpringBootConfiguration
+@EnableAutoConfiguration - enabling AutoConfiguration in Spring Boot so it takes care of required configurations
+@ComponentScan - scans the number of classes and checking which are all Spring Bean classes
+
+ConfigurableApplicationContext - required to get/return the object from IOC container
+
+Allow only one object creation to avoid memory leakage
+
+MAven build has to be done whenever we make changes in pom.xml file
+
+---	---		---	---			---	---
+
+Console Error as 2 beans found
+
+Field g in com.tightcoupling.TightCouplingApplication.GameRunner required a single bean, but 2 were found:
+
+Action specified in console
+
+Action:
+
+Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans, or using @Qualifier to identify the bean that should be consumed
+
+1st Action 
+@Primary add this annotation to the Spring Bean class which you consider as primary one.
+It tells spring, please use the primary one as your first choice
+Only one bean class must be used as Primary even when there are 100s of Spring Bean classes
+
+OR
+
+2nd Action
+@Qualifier mark this annotation where we used @Autowired and it finds two bean types (such as PubG and Freefire)
+that is like
+
+@Qualifier is considered and given preference even if @Primary is used
+no matter how many beans you have found, just use the one I tell you
+
+---
+
+Afternoon
+=========
+
+IoC
+object creation is shifted from application code to Spring where Spring takes care of object creation
+
+AOP - Aspect Oriented Programming
+
+AOP in Spring enables dvelopers to separate cross-cutting concerns (like Logging, Security, transaction management) from the business logic
+							========================================
+Why Controller layer and Service layer
+Controller - receive request and send response
+Service layer - Business logic
+
+AOP - improves code modularity and readability
+
+Repeatedly used code, commonly used code, general code for all other business code - is written separately
+and used whenever required only
+
+It is less used now-a-days since we have new different frameworks now for Logging, Security, transaction management requirements
+
+Logging - log4j
+Security - JWT
+Transaction Mgmt - ORM framework
+
+Data access with Spring Data
+
+-Spring provides support for data access using Spring Data project, simplifying database operations
+-Offers easy integration
+
+to access Data we use Spring Data JPI
+
+MVC architecture
+
+Model-View-Controller
+
+Spring MVC is a powerful web module that facilitates developments of clean and maintainable web applications
+
+Spring Security - framework for securing Java apps
+=>Offers features such as
+-authentication -> if we are able to access the app or nothing
+-authorization -> to allow access based on role
+-protection against common security vulnerabilities
+
+Spring MVC promotes loose coupling between different componenets of a web app
+
+--
+
+Dispatcher Servlet 
+==================
+
+Request comes first here
+
+localhost:8080
+
+acts as front controller
+
+localhost:8080/login
+
+Handler Mapping - responsible to identify and redirect to corresponding controller
+Controller 
+View Resolver - to identify and find the corresponding View (frontend) page (like JSP,ThymeLeaf,etc)
+View
+
+all the requests to above components recieved thru Dispatcher Servlet only
+all the responses also sent back thru Dispatcher Servlet only
+
+=> Central to the MVC framework
+=> handles incoming requests and redirects to corresponding controllers
+
+Flexible Handler Mapping
+
+Spring MVC - supports developments of RESTful web serice using annotations
+
+Exception Handling
+==================
+Spring MVC provides a centralized and customizable mechanism for exception handling
+
+Dependency Injection can be done using 3 ways
+
+1.Constructor based
+
+@Component
+public class GameRunner {
+
+	Game g;
+	
+	@Autowired
+	public GameRunner(Game g)
+	{
+		this.g=g;
+	}
+
+	
+2.Setter based
+
+	Game g;
+	
+	public Game getG() {
+		return g;
+	}
+
+	@Autowired
+	public void setG(Game g) {
+		this.g = g;
+	}
+
+3.Field based Injection
+
+@Component
+public class GameRunner {
+
+@Autowired
+Game g;
+
+CHECK EXAMPLES OnLINE for each type
+
+Spring team Recommends contructor based injection
+
+---
+
+Levels of Annotations
+=====================
+
+Class level annotation - @Component, @SpringBootApplication
+Method level annotation - @Autowired
+Field level annotation - @Autowired, @Qualifier
+
+few Class level annotations can be used for field or method level

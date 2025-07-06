@@ -1,0 +1,250 @@
+Spring MVC project structure
+
+src
+-main
+--java
+
+web.xml - deployment descriptor file - with all the required mappings
+
+XML based configurations
+
+pom.xml file
+
+each spring file is considered as Servlet in Spring Framework
+
+In Spring MVC, we will add the dependencies manually (But in Spring Boot we will have all these config by default)
+If we do XML based config, we must have these 2 xml files
+
+web.xml
+=======
+If we need to configure as XML based, we need web.xml
+Inside it, we add the required mappings
+DispatcherServlet - predefined class
+added as servlet-mapping
+
+Client request is mapped to this dispatcher servlet-mapping
+
+<servlet-mapping>
+
+dispatcher-servlet.xml file
+===========================
+Controller info and View Resolver info is given here
+
+
+2nd is if we annotation based config
+@Configuration
+We use annotation 
+
+We will have only web.xml
+
+MVC flow will be same for both Spring MVC and Spring Boot
+except that configurations is taken care in Spring Boot by default
+
+Layers in an Application
+
+Web Layer/Controller Layer - Receives the request from user - no business logic here
+
+Service Layer - contains business logic
+
+Data Layer 
+
+
+create readable filenames as per the functionality
+@Controller
+class LoginController{
+
+}
+
+@Service
+class LoginService{
+
+}
+
+@Repository
+interface LoginDAO{
+
+}
+
+mostly service and DAO - mostly used as interfaces and implementation
+
+Controller - class
+Service - class
+DataLayer - interface
+
+Class level annotations
+
+@Controller - Presentation Layer - a Spring Bean
+@Service - Service Layer - also a Spring Bean
+@Repository - Data Layer - also a Spring Bean
+
+
+						@Component
+					/		|		\
+		@Controller		@Service	@Repository
+		
+		Presentation	Service		DataAcessLayer
+		Layer			Layer		(DAO)
+		
+Spring Boot Introduction
+========================
+-a popular java based framework widely used for building scalable and robust web apps
+-provides a simplified way to develop production-ready apps with minimal configurations
+-by leveraging annotation and boilerplate configurations, the tool reduces the time it takes to develop apps
+
+DEV - Development stage
+QA - Functionality testing
+Production - Application made available to Live users
+
+KEY ADVANTAGES
+==============
+
+We can add Maven dependencies when we create spring boot app using spring initialzr - ADD dependencies
+or we can download from Maven Centrol Repository also
+
+We can use Production ready dependencies by default using Spring Boot
+
+Annotation based configurations - Spring Boot will provide
+Project based configurations - user can give
+
+Spring Boot eliminates need for complex XML configurations
+
+configurations must be overridden according to user
+configurations done thru properties file, YAML files or environment variables
+
+Auto-Configuration
+that automatically configure app componenets
+
+Embedded Web Server
+Spring Boot includes an Embedded Web Server (eg. Tomcat, Jetty, Undertow) that makes it easy to deploy apps as standalone JAR files
+no need for external  deployment of web servers
+
+Spring Boot Starters
+-Starters are prebuilt templates that contains common dependencies and configs for specific use cases(like web apps,data access,messaging)
+-Developers can use starters to quickly setup projects for specific needs
+
+Example MySQL Driver (SQL dependency), Spring Security (Security dependency)
+
+Spring Web dependency - provides RESTful as well as Tomcat dependency required
+
+pom.xml - it is in classpath where we have the required config files
+
+Dependency management:
+-Spring Boot includes powerful Dependency management system that simplifies the management of project dependencies
+
+Spring Web MVC - to create client server interactive application
+
+Web service jars inside JDK already
+jaxws - for SOAP
+jaxrs - REST 
+
+Microservices support-
+Spring Boot is well suited for building microservice applications
+
+Spring Ecosystem Integration
+-integrates with broader Spring Ecosystem
+
+Production-Ready features
+includes features like health-check, metrics,monitoring, etc
+
+Embedded Database support
+like H2 - an in-memory database (just like cache memory) - used for testing purpose
+making it easy for development and testing without requiring an external database setup
+
+Community and Documentation
+- has a large and active community
+- extensive Documentation and wealth of online resources for developers to find solutions to common problems
+
+Learn the differences between all these
+Spring framework
+Spring Core 
+Spring MVC - config types and how a request is processed
+Spring Boot - configurations provided by default
+
+most interview questions are theoritical in Spring Boot
+
+======================================
+
+Afternoon class
+===============
+
+@SpringBootApplication
+- SpringBootConfiguration
+- @SpringBootApplication annotation that decides which all classes to be scanned - ComponentScan
+- Enable AutoConfiguration 
+
+ComponentScan - scans all classes inside a main package and its subpackages
+but not from different package
+
+Example :
+package com.tightcoupling (main package)
+package com.tightcoupling.controller (subpackage)
+
+create new SpringBoot project
+add dependencies - add Spring Web starter only 
+and generate
+
+create two subpackages
+controller and service
+
+http://localhost8080/helloworld/method1
+
+@Controller
+@RequestMapping("/helloworld")
+class HelloWorldController{
+
+@Autowired
+HelloWorldService service;
+
+@RequestMapping(value = "/method1",method = RequestMethod.GET)	//we must mention the type of method GET or POST
+public String getHelloWorldService
+}
+
+@Service
+HelloWorldService class
+
+If we use HTTP as interactive medium, we should use HTTP methods
+
+
+@Controller
+@RequestMapping("/helloworld")
+public class HelloWorldController {
+	@Autowired
+	HelloWorldService service;
+	
+	@ResponseBody
+	@RequestMapping(value="/method1",method=RequestMethod.GET)
+	public String getHelloWorld1()
+	{
+		return service.getHelloWorldSvc1();
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/method2",method=RequestMethod.GET)
+	public String getHelloWorld2()
+	{
+		return service.getHelloWorldSvc2();
+	}
+}
+
+
+@Service
+public class HelloWorldService {
+	public String getHelloWorldSvc1()
+	{
+		return "HelloWorldService1";
+	}
+	public String getHelloWorldSvc2()
+	{
+		return "HelloWorldService2";
+	}
+}
+
+
+@SpringBootApplication
+public class MainpackageApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MainpackageApplication.class, args);
+	}
+
+}

@@ -1,0 +1,17 @@
+JAVA 8 in class
+
+Lambda
+Functional interface
+Default and static methods
+
+=======================================================================
+
+Some learnings offline
+
+* add method in Set,List returns boolean value. 
+
+SET : If the value is already present in the Set, it returns false since Set does not allow duplicates. If not, it will add the new element and returns true.
+LIST : add method of List returns true in both cases as List allows duplicates.
+
+* why do we need default and static methods in an interface
+* why do we need private constructor

@@ -1,0 +1,73 @@
+1) What is an interface ?
+
+An **interface** is a reference type, similar to a class, that can contain only constants, method signatures, default methods, static methods, and nested types. It cannot contain instance fields or constructors. Interfaces are used to specify a set of methods that a class must implement, providing a way to achieve abstraction and multiple inheritance.
+
+2) What is a framework?
+
+A **framework** in software development is a reusable set of libraries or tools that provides a foundation for building applications. It offers a structured approach to solving common problems and enables developers to focus on the specific logic of their applications rather than dealing with low-level details.
+A framework simplifies development by providing a structured environment and a set of tools to streamline common tasks, allowing developers to build robust applications more efficiently.
+
+3) What is a legacy class ?
+
+A legacy class refers to classes that were part of earlier versions of the Java platform before the introduction of the Java Collections Framework in Java 2 (JDK 1.2). These classes are considered "legacy" because they were replaced or supplemented by more modern and flexible APIs but are still present in Java for backward compatibility.
+Legacy classes in Java are older classes provided for backward compatibility with the Java Collections Framework. While they are still available and can be used, modern classes and interfaces from the java.util package generally offer better performance, more features, and greater flexibility.
+
+4) What is Vector ?
+
+Vector is a legacy class in Java that provides a dynamically resizable array with synchronized methods for thread safety. While it is still supported for backward compatibility, modern applications often use ArrayList for better performance in single-threaded contexts.
+
+5) Difference between ArrayList and Vector.
+https://www.javatpoint.com/difference-between-arraylist-and-vector
+
+ArrayList is not synchronized.							Vector is synchronized.
+
+ArrayList increments 50% of current array size 			Vector increments 100% means doubles the array size 
+if the number of elements exceeds from its capacity.	if the total number of elements exceeds than its capacity.
+
+ArrayList is not a legacy class. 						Vector is a legacy class.
+It is introduced in JDK 1.2.
+
+ArrayList is fast because it is non-synchronized.		Vector is slow because it is synchronized, i.e., in a multithreading 
+														environment, it holds the other threads in runnable or non-runnable state until current thread releases the lock of the object.
+
+ArrayList uses the Iterator interface to traverse 		A Vector can use the Iterator interface or Enumeration interface to 
+the elements.											traverse the elements.
+
+
+6) What is HashTable ?
+
+`Hashtable` is a legacy Java class that implements the `Map` interface using a hash table. It is synchronized, meaning it is thread-safe, but does not allow `null` keys or values. Due to its synchronization overhead, it is generally less performant compared to `HashMap`.
+
+7) Difference between HashTable and HashMap.
+
+Synchronization: Hashtable is synchronized (thread-safe), while HashMap is not.
+Null Handling: Hashtable does not allow null keys or values; HashMap allows one null key and multiple null values.
+Legacy vs. Modern: Hashtable is a legacy class; HashMap is part of the modern Java Collections Framework.
+Performance: HashMap generally offers better performance in single-threaded contexts due to lack of synchronization.
+
+In modern Java applications, HashMap is usually preferred unless you specifically need synchronization or are dealing with legacy code. For thread-safe operations with HashMap, consider using ConcurrentHashMap or wrapping it with Collections.synchronizedMap().
+
+8) What is NavigableSet?
+
+`NavigableSet` is an interface in Java that extends `SortedSet` and provides additional navigation methods for dealing with a sorted set of elements. It allows you to efficiently navigate through the set, including operations like:
+- **Finding the closest elements**: Methods like `lower()`, `floor()`, `ceiling()`, and `higher()` help find elements relative to a given value.
+- **Subsets**: You can obtain subsets of the set with `subSet()`, `headSet()`, and `tailSet()` methods that include bounds and are navigable.
+Implementations of `NavigableSet` include `TreeSet`.
+
+9) What is NavigableMap ?
+
+`NavigableMap` is an interface in Java that extends `SortedMap` and provides additional navigation methods for dealing with a sorted map of keys and values. It allows for efficient navigation and retrieval of key-value pairs, including:
+- **Navigating Keys**: Methods like `lowerEntry()`, `floorEntry()`, `ceilingEntry()`, and `higherEntry()` help find the closest key-value pairs relative to a given key.
+- **Submaps**: Methods such as `subMap()`, `headMap()`, and `tailMap()` provide views of the map within specified key ranges.
+Implementations of `NavigableMap` include `TreeMap`.
+
+10) What is red-black tree ?
+
+A **red-black tree** is a self-balancing binary search tree with additional properties to ensure balanced height and efficient operations. It maintains balance through color-coded nodes and specific rules, which ensure that the tree remains approximately balanced, leading to logarithmic time complexity for insertion, deletion, and search operations.
+These properties help maintain a balanced tree structure, ensuring that operations such as insertions, deletions, and lookups can be performed in O(log n) time, where n is the number of nodes in the tree.
+
+Collections.sort() or List.sort() method
+Collections.shuffle()
+Collections.binarySearch()
+Collections.synchronizedList(), Collections.synchronizedSet()
+

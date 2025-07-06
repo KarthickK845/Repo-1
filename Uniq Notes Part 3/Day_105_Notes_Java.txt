@@ -1,0 +1,51 @@
+Serialization and Deserialization
+
+diff bw serialized bytestream file and .class file
+.class - compiled bytecode of complete class file and no objects, no memory allocation, make it readable only after running the whole file again
+bytestream file - object stored, memory allocated, runtime, can be any extension, we can just deserialize the serailized oject directly for readability
+
+can we store mulitple objects' bytestream in a single file? YES we can store more than one object serialized in a single file. But the same order of objects must be followed during Serialization and Deserialization if we had used the same file for multiple objects/type of objects.
+f1.writeObject(obj);	//serialize and write in the same file referred in f1 
+f1.writeObject(obj1);	//obj1 is of type FirstClass
+
+SerlzDeslz ob=(SerlzDeslz) d1.readObject();
+SerlzDeslz ob1=(SerlzDeslz) d1.readObject();
+
+ClassCastException thrown since ob1 serialized object is of type FirstClass
+
+SerlzDeslz ob=(SerlzDeslz) d1.readObject();
+FirstClass ob1 = (FirstClass) d1.readObject();
+
+above snippet - successfully deserialized to correct types.
+
+If we donot know of which type, the deserialized object is, we should use instanceof method
+
+Object x = d1.readObject();	//since we do not know the type, we store in Object class reference
+Object y = d1.readObject();
+
+if(x instanceof SerlzDeslz)
+{
+	SerlzDeslz t=(SerlzDeslz) x;
+	Syso(t.a+" "+t.s);
+}
+else{
+	FirstClass t1 = (FirstClass) y;
+	Syso(t1.b+" "+t1.s1);
+}
+
+Use of serialization, Deserialization is that we can reuse any such objects in future since we have stored in files but normally the objects that we create are destroyed once the program execution terminates.
+
+transient keyword used only for variables
+transient int a = 10;
+
+can we use transient to all the variables - YES we can
+can transient use for static or final variables hides the original value - 
+static - No since transient keyword is used with respect to object Serialization. static is class reference. so prints the original value only.
+final - No since final is used for constants only, it will print the original value as it is.
+
+NotSerializableException thrown if the class does not implement Serializable interface
+
+Serializable is a marker interface
+marker interface - notifies JVM that the class is Serializable during runtime
+
+If I am creating an object of another class in a class outside any methods, we can only create as static object. Using transient here also is of no use, it will show only the original values. No default values.

@@ -1,0 +1,42 @@
+User-defined functions:
+
+We must define the return type of the user-defined functions in SQL
+
+2 keywords
+deterministic - irrespectve of number of times function is called, if it alwys return same output everytime, then its defined as deterministic
+non deterministic - if result differs each time.
+
+change the delimiter just like we do in stored procedure otherwise ';' considered as end of the function
+
+declare total int default 0;
+set total=a+b;
+
+end;
+
+so change delimiter
+
+-- 2 function to return if a number is odd or even
+delimiter &&
+create function oddoreven(a int)
+returns varchar(30)
+deterministic
+begin
+
+if a%2=0 then
+return 'even';
+else
+return 'odd';
+end if;
+
+end &&
+delimiter ;
+
+-- method call
+select oddoreven(11);
+
+drop function oddoreven;
+
+We can also write if logic and return in same statement
+using if function
+
+return if(a%2=0,'even','odd');

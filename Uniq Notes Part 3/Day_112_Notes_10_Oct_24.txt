@@ -1,0 +1,22 @@
+Optional Class
+Collectors
+DateAndTime API
+
+Collectors class:
+
+
+	Collectors is a class, it is inside the java.util.stream package.It is used to convert the stream elements into collection object.There are many useful methods in this class.
+
+	1.counting
+	2.summerizingInt
+	3.summerizingDouble
+	4.summerizingLong
+	5.groupingBy
+	6.toList
+	7.toMap
+	8.toSet
+	9.joining
+	10.maxBy
+	11.minBy
+	12.partioningBy
+	13.summingInt

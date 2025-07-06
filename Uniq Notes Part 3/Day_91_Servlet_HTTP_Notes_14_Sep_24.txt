@@ -1,0 +1,148 @@
+HTTP :
+=> Hyper Text Transfer Protocol
+=> It is the data communication protocol(set of rules).
+=> It is used to communicate between the client and server.
+=> HTTP is a link based protocol. It transfers the data through TCP-80 (Transfer Control protocol).
+=> It communicates through WWW(World Wide Web) URI (Uniform Resource Identifier).
+
+URL - Uniform Resource Locator
+
+HTTP Features :
+
+=> HTTP is a connection less protocol.
+=> HTTP is a state less protocol.
+=> HTTP is a Media Independent protocol.
+
+				- - - - -
+
+It is connection less (does not depend on the device or the application), state less
+=> Default port number - 8080 TCP.
+stateless Example - whenever we click Login button, new HTTP request is created
+
+just like fields/variables in Java
+
+Media Independent - any data image, audio, video any media can be transferred
+
+				- - - - -
+
+HTTP Request :
+
+1. get
+2. post
+3. put
+4. delete
+
+GET VS POST
+
+GET
+=> In get request, limited amount of data can be sent. Because, the data will be sent in header.
+=> GET request is not secured.
+=> It exposes the data in the URL.
+=> It is faster than post request.
+=> It is idempodent because it does not accept another get request until the last request is done.
+=> It is bookmarked.
+=> Data is stored in cache memory.
+
+POST
+=> In POST request, large amount of data can be sent as the data will be sent in body.
+=> POST request is secured.
+=> It does not expose the data in URL.
+=> It is slower than get request.
+=> It is non-idempodent because it accepts another post request when previous request is in process.
+=> It is not bookmarked.
+=> Data is not stored in cache memory.
+
+
+API - Application Programming Interface
+
+Servlet API :
+	=> Servlet API provides many classes and interfaces to create a request and generate response.
+	=> It has two packages.
+		=> javax.servlet
+		=> javax.servlet.http
+		
+javax.servlet package interfaces: (all imp)
+	1. Servlet
+	2. ServletRequest
+	3. ServletResponse
+	4. RequestDispatcher
+	5. ServletConfig
+	6. ServletContext
+	
+javax.servlet package classes: (1 is imp)
+	1. GenericServlet (Abstract class and Child class of Servlet interface)
+	2. ServletInputStream
+	3. ServletOutputStream
+
+javax.servlet.http package interfaces:(all 3)
+	1.HttpServletRequest
+	2.HttpServletResponse
+	3.HttpSession
+	
+javax.servlet.http package Classes: (1 & 2 imp)
+	1.HttpServlet (Child class of GenericServlet abstract class, doGet and doPost service methods)
+	2.Cookies
+	3.HttpServletRequestWrapper
+	4.HttpServletResponseWrapper
+	
+	- - - - -
+
+Most important concept - Design Patterns - SingleTon,...
+MVC - Modal View Controller flow in JSP - MVC pattern, Spring MVC
+
+	- - - - -
+	
+Servlet Interface :
+
+=> Servlet is an interface inside the javax.servlet package.
+=> Servlet is the parent interface of servlet technology.
+=> This interface implements in our class directly or indirectly (to use the servlet life cycle methods).
+=> This interface has 5 methods.
+=> 3 lifecycle methods and 2 non-lifecycle methods.
+
+Lifecycle methods:
+1. init();	-- creates objects
+2. service(); -- 2 parameters ServletRequest, ServletResponse
+3. destroy(); -- deletes objects
+
+Non-lifecycle methods:
+1. getServletConfig()
+2. getServletInfo()
+
+GenericServlet class:
+
+=> GenericServlet class is an abstract class that implements Servlet interface.
+=> This class is inside javax.servlet package.
+=> It overrides the Servlet lifecycle methods - init() and destroy().
+
+HttpServlet class:
+
+=> HttpServlet class that extends GenericServlet class and implements Serializeable interface.
+=> It has Http support methods that are doGet(),doPost(),doDelete() etc.
+
+	- - -	-	-  - -	- - 
+
+implements Servlet and extending GenericServlet supports all the protocols except Http request response.
+but extending HttpServlet supports Http request response
+
+1. Classloader loads all the required classes of servlet.
+2. create instances of servlet using WebContainer and calls init() method to instantiate(starts the Servlet). Both happens only once in one Servlet lifecycle.
+Waits for client request and then only class service() method only whenever client request received.
+3. deletes all the unwanted,cache memory and deletes the objects using destroy() method. This also happens only once.
+
+	- - -	-	-  - -	- - 
+
+Lifecycle of Servlet:
+
+1. Servlet class is loaded at runtime.
+2. Servlet instance is created.
+3. init() method is invoked.
+4. service() method is invoked.
+5. destroy() method is invoked.
+
+1. Servlet Classes :	Class loader is resposible for loading corresponding servlet classes.
+2. Servlet instance :	Once the servlet classes are loaded successfully, WebContainer creates an instance of the Servlet. The instance is created only one time in the lifecycle of servlet.
+3. init() method :	Once the object is created successfully, WebContainer calls the init() method to instantiate the servlet. This method is invoked only one time in the lifecycle of servlet.
+4. service method :	Whenever the request is coming from the client, the service() method is invoked by WebContainer.
+5. destroy() method : Once all the requests got their response, WebContainer calls the destroy() method to destroy the servlet object. This method is also invoked only one time in the lifecycle of servlet.
+

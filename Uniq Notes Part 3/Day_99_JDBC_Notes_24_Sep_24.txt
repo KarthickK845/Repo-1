@@ -1,0 +1,84 @@
+Yesterday class we did client side validation which is in the UI itself (HTML itself using JS)
+
+Server side validation
+
+HttpServlet - service methods + HTTP methods
+
+GET - 255 characters only can be sent
+
+POST - no limit in number of characters, secure requests
+
+request and response objects created in runtime
+
+finally is used for closing resources, closing connections
+which is replaced by try with resource
+
+default method type get
+method="get"
+
+If method mismatch happens between html and servlet, 404 error thrown
+
+form
+submit - carries all the data entered in a form, mainly for server side validation
+button - just any event for client side/JS validation
+
+input
+id - used for client side validation, referred in CSS, JS scripts
+name - used for server side validation, referred in Servlet
+
+connecting object oriented prog lang and structured query lang
+
+we use JDBC Java DataBase Connectivity
+
+OOP lang - Classes and objects
+SQL - DBs, Tables
+
+//JDBC
+
+//Below 3 lines are required to interact with DB from Java
+//Add the jar file in WEBINF->lib 
+
+//Registering Driver Manager
+Class.forName("com.mysql.cj.jdbc.Driver");			//accessing a class in another library other than jdk - creates an object
+//Class is a predefined class
+//forName is a static method
+
+JAR download
+https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.28
+
+//Connection between Java and DB
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname","root","admin");	//returns a connection
+//getConnection method creates connection
+//Connection URL with dbname, username, password
+//Need to check if the above URL is correct or not
+
+//SQL Query created using the createStatement() method of Statement class
+Statement st = con.createStatement();		//create Statement object
+
+ResultSet res = st.executeQuery("select * from tablename");		//execute the SQL query
+//This above query will select all the rows from the table, since we do not know how many records/limit, we use while loop
+
+next() method - cursor looks for next record, if cursor is at last row, returns false
+
+while(res.next())	//get each row from the table
+{
+String user=res.getString("username");
+String pass=res.getString("password");
+if(username.equals(user) && password.equals(pass))
+			{
+				out.println("Welcome USER");
+			}
+			else{
+				out.println("Sorry");
+			}
+}
+
+above logic will result in printing Sorry whenever user input doesnt match with the record, this may print multiple times 'Sorry'
+So we can create flag and based on that we can print the response
+
+res.getString("");	//getString() method to fetch the data from required columns using column index (0th index - 1st column) or column name(used in realtime mostly)
+
+Add the required catch blocks (ClassNotFound, SQL exceptions) to the try block
+JDBC - low level API
+SQLyog
+- in this application, no need to write query to create database and table, We have ready options provided by the application itself

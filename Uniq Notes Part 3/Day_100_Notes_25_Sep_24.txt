@@ -1,0 +1,53 @@
+SQL Subquery operators
+
+ALL
+ANY
+EXIST
+
+========================================================================================
+
+Servlet Class
+=============
+
+RequestDispatcher
+-----------------
+=> RequestDispatcher is an interface.
+=> It is used to send the same request (already sent by client) to another resource.
+=> That another resource can be any file jsp,html or servlet etc.
+=> It has two methods
+---- 1. forward();
+---- 2. include();
+
+forward vs sendRedirect 
+
+sendRedirect() - sends new request everytime
+forward(),include() - sends over already existing request
+
+forward() method cannot access response of servlet2 (access in other page only)
+servlet2 response can be accessed by include (access in same page and other page)
+
+client page eg. Login form
+validate using Servlet 1
+
+include() binds same page response and other page response
+
+---- 1. forward();
+
+It sends the same request to the another resource but it does not get the response back to the previous resources
+
+---- 2. include();
+
+It sends the same request to the another resource but it can get back the response from another resource to the previous resource
+
+if(name.equals(cname)&& pass.equals(cpass)){
+RequestDispatcher ref=request.getRequestDispatcher("Servlet2");	//sending the same request from current servlet to another servlet
+ref.forward(request,response);
+}
+else{
+out.println("Username or password is incorrect");
+RequestDispatcher ref=request.getRequestDispatcher("login.jsp");
+ref.include(request,response);	//binds the response of previous request and also response of current request
+}
+
+forward() - only returns the response of the last resource
+include() - returns all the responses of last resource, current resource and previous resource if any

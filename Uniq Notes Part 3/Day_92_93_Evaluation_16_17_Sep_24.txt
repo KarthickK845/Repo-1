@@ -1,0 +1,7 @@
+Core Java Evaluation
+
+What is HashTable ?
+isBlank() VS isEmpty()
+Object lock VS Class lock
+
+5 differences between Anonymous class and Lambda expression

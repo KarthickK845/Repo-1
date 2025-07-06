@@ -1,0 +1,40 @@
+Comparable and Comparator
+==========================
+Both are interfaces
+We use these to sort the collection of objects
+
+we have required methods to sort in Collections class
+
+Arrays disadvantage - sort method we can sort only similar type of objects
+
+Employee class
+
+Comparable - provides single sort - we can sort based on only one value like name or id or job or salary in same class only
+it provides compareTo() method with return type int for sorting - we can pass one object
+it is in java.lang package
+affects the original class as it sorts in the same single class
+Collections.sort(list); => called in the same class which in turn calls compareTo() method by default
+use when only user needs to sort in current class itself
+
+public int compare(Student s1, Student s2)
+{
+return a.name.compareTo(b.name);
+}
+
+to ignore case of first letter
+
+return a.name.compareToIgnoreCase(b.name);
+
+Comparator - multi sort - we can sort based on multiple values name and id and job and salary from same class or different classes
+it provides compare() method for sorting - we pass two objects
+other method is equals() of Object class inside this interface
+it is in java.util package
+does not affect the original class
+Collections.sort(list, class object); => class object of the class in which we have overridden the compare() method with sorting logic
+use when other users are allowed to sort the objects from different classes 
+
+
+TASK 
+     Comparators are used to compare two objects. In this challenge, you'll create a comparator and use it to sort an array.
+
+The Player class is provided for you in your editor. It has  2 fields: a name String and a score  integer.Given an array of  n Player objects, write a comparator that sorts them in order of decreasing score; if  2 or more players have the same score, sort those players alphabetically by name. To do this, you must create a Checker class that implements the Comparator interface, then write an int compare(Player a, Player b) method implementing the Comparator.compare(T o1, T o2) method.

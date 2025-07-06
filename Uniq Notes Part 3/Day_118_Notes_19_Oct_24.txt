@@ -1,0 +1,150 @@
+Browser independent 
+does not get stored in browser
+
+Hidden form field
+- text field is hidden, thru which data is transfered to other servlet
+- works only if form submission is done
+
+Only cookies stored in web browser. Other session tracking techniques do not store any data in browser.
+
+Hidden form field:
+==================
+=> Hidden form field is a concept of session tracking to maintain the state of the user.
+=> Using invisible field (hidden) input type, we can store the data into one servlet page to another servlet page.
+
+Advantage:
+==========
+1. Whether the cookie is allowed or not, hidden form field will work.
+2. It is browser independent.
+
+Disadvantage:
+=============
+1. If we use hidden form field, there must be form submission for each servlet page.
+
+Syntax:
+=======
+
+<input type="hidden" name="key" value="value">
+
+1st jsp page
+form action="Servlet1"
+Username input
+submit button
+
+	---
+
+Servlet1 java servlet
+response content type set to html
+out object PrintWriter
+
+getParameter username from jsp
+
+out.println("<form action='Servlet2'>");
+out.println("<input type='hidden' name='getname' value="+name+">");
+out.println("<input type='submit'>");
+
+'getname' will be hidden field, only submit button shown
+
+	---
+	
+Servlet2 java servlet
+response content type set to html
+out object PrintWriter
+
+getParameter getname from Servlet1
+
+out.println("Welcome "+name);
+
+--------------
+
+URLrewriting
+============
+Used in SPRING mainly
+key and value pair
+passing thru URL
+no need exta form submission
+it works irrespective of cookies enable/disable
+@RequestParameter annotation
+
+=> It is also one of the concepts of session tracking.
+=> It is used to maintain the state of the user.
+=>In this concept, we append the key and value in the url.
+
+Advantages of URL Rewriting
+============================
+
+1. Whether the cookies are enabled or not, URLrewriting will work.
+2. No need of extra form submission.
+3. It is browser independent.
+
+Syntax:
+=======
+url?key1=value1&key2=value2
+
+1st JSP
+form action="Servlet1" 
+inputs for username and password
+
+Servlet1
+getParameters username and password from JSP
+
+response content type set to html
+out object PrintWriter
+
+out.println("<a href='Servlet2?getname="+name+"&getpass"+pass+"'>Go</a>");			//URL Rewriting
+
+Servlet2
+getParameters getname in String name and getpass in String pass from JSP
+
+response content type set to html
+out object PrintWriter
+
+out.println("Name = "+name+" Password = "+pass);
+
+	---	---	---
+
+HttpSession:
+============
+
+It is an interface
+with methods like getSession()
+
+object created by webcontainer
+getting the object using getSession and setAttribute
+getAttribute
+
+=>HttpSession is an interface which is used to maintain the state of the user.
+=> A container creates the HttpSession object
+=>To get the session object and store the data using setAttribute() method.
+
+methods:
+========
+1.getSession(); - returns new HttpSession object each time
+2.getSession(boolean b); - returns new HttpSession object if true is passed, else returns existing HttpSession object when we pass false.
+
+JSP
+form action="Servlet1" 
+inputs for username and password
+
+Servlet1
+getParameters username and password from JSP
+
+response content type set to html
+out object PrintWriter
+
+HttpSession hs=request.getSession();
+hs.setAttribute("getname",name);
+hs.setAttribute("getpass",pass);
+
+out.println("<a href='Servlet2'>Click</a>");
+
+Servlet2
+response content type set to html
+out object PrintWriter
+
+HttpSession hs=request.getSession(false);
+
+String name=(String) hs.getAttribute("getname");
+String pass=(String) hs.getAttribute("getpass");
+
+out.println("Name ="+name+" Password = "+pass);

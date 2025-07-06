@@ -1,0 +1,75 @@
+MVC Pattern:
+
+	- - - - -
+
+Most popular design pattern to create web applications
+MVC - Model View Controller
+
+Model - DB layer
+View - Presentation layer; the page which client views
+Controller - business logic; backend
+
+	- - - - -
+
+=> Model View Controller layer is the important design pattern for creating web application
+=> It is used to create separate layers like database layer, controller layer and presentation layer for readability
+
+									WEB BROWSER <--------------------}
+										|			   				 |
+										| Request	                 | Response
+										|			                 |
+										V			                 |
+MODEL --------------------------	CONTROLLER -------------------- VIEW
+		get data from database					rendering data
+		
+=>Request sent from client through web browser. It hits the Controller first.
+@WebServlet annotation given to corresponding controller
+=> Required data alone is stored in Model layer instead of loading/searching the whole database
+=>Model - Encapsulated Bean class just to store the data
+
+Model Layer :
+
+=> Database layer which is used to store the data retrieved from the database. 
+=> It is called as Model class or Java bean class.
+=> It is used for encapsulation purpose(security).
+
+Controller Layer :
+
+=> Controller layer is the intercommunication layer between model and view.
+=> This layer is used to write business logic and do validations.
+=> It gets the data from the model layer and render the data through view layer.
+
+View Layer :
+
+=> View is also called as Presentation layer.
+=> Main work of this layer is to render the data from the controller layer and send response to the web browser through any of the view page(could be any page like HTML, JSP or any).
+
+Create a new dynamic web project
+
+To create servlet, under Java resources -> src/main/java create package and create servlet
+
+uncheck all the methods doGet,doPost,etc.
+
+class .. implements Servlet
+
+getServletConfig() returns ServletConfig object
+
+@WebServlet("/Login")
+
+above annotation given aboe the class which implements Servlet, to show the controller - Login is the controller name
+
+anchor tag in html/jsp file pointing to the controller
+
+<a href="Login">click</a>
+
+PrintWriter class has methods related to printing like println() method
+
+inside service() method we give below
+
+res.setContentType("text/html");
+PrintWriter out = res.getWriter();
+out.println("<html>");
+out.println("<body>");
+out.println("<h1>welcome to servlet</h1>");
+out.println("</html>");
+out.println("</body>");

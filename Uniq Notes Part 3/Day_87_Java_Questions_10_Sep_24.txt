@@ -1,0 +1,21 @@
+1) What is a garbage collector ?
+
+A garbage collector in Java automatically reclaims memory by identifying and removing objects that are no longer reachable or needed by the application. It helps manage memory efficiently, preventing memory leaks and optimizing resource usage. The garbage collector runs in the background, reducing the need for manual memory management by developers.
+
+2) What is finalize() method ?
+
+The `finalize()` method in Java is called by the garbage collector before an object is removed from memory, allowing the object to perform cleanup tasks, such as releasing resources. It is inherited from the `Object` class and can be overridden to implement custom finalization logic. However, its use is discouraged in favor of modern resource management techniques like `try-with-resources`.
+
+3) Is there a predefined implementation for finalize method ?
+
+Yes, the `finalize()` method in Java is defined in the `Object` class and has a default implementation. The default implementation in `Object` is empty and does nothing:
+
+```java
+protected void finalize() throws Throwable {
+    // Default implementation does nothing
+}
+```
+
+When you override `finalize()` in a subclass, you can provide custom behavior that will be executed when the garbage collector determines that the object is no longer reachable. However, because `finalize()` is deprecated as of Java 9 and its use is discouraged, it's generally recommended to use other resource management techniques instead.
+
+4) 

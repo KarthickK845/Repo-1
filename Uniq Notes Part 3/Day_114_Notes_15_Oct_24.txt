@@ -1,0 +1,47 @@
+15/10/24
+
+Attributes:
+In servlet attrbute is an object that can be set,get or remove from the scopes.
+1.Request scope.
+2.Session scope.
+3.Application scope.
+
+we can write java code directly in jsp page but we can't write in html page
+
+Attributes object is used to pass some additional info to other servlet.It has some methods :
+setAttribute()
+
+* any page, any servlet can access the attributes object, so it is application level access
+* we can set attributes only one time for an entire application
+* we can use/get any number of times, from different servlets also
+
+ServletContext class 
+- getServletContext() method to create an object for ServletContext class
+- setAttribute() method is used to set the values entered from server side
+
+just like we need a default value or common value for a field for any user which we provide from the servlet side itself
+
+HTML pge which gets name and password as inputs
+on submit, the data entred should be passed to other servlet
+
+We use doGet method which exposes the user information in URL
+
+
+
+The difference of Attributes obj from Request dispatcher is that - only same sevlet can access the page
+
+executequery used while using result set
+only use when SELECT query is used
+
+executeUpdate method while using preparedStatement
+use for INSERT, UPDATE
+
+We can perform CRUD operations using both Statement and PreparedStatement classes. But PreparedStatement is easy-to-use.
+
+JDBC connectivity - INSERT operation performed
+
+We can also set and get attributes using HttpSession class
+
+HttpSession hs=request.getSession();
+		hs.setAttribute(email, hs);
+		hs.setAttribute(pincode, hs);

@@ -1,0 +1,10 @@
+Day 101 - 26 Sep 2024 - SQL + JDBC Task to join two tables orders and products without using SQL join query. Use Java Collections.
+Product table product ID name desc
+Order table order id name desc product ID
+combine both the tables based on project ID
+
+Day 102 - 27 Sep 2024 - Java Evaluation by Ramesh
+Refer Find_Learn and Interview_Questions
+
+Day 103 - 28 Sep 2024 - SQL 
+Day 104 - 30 Sep 2024 - SQL

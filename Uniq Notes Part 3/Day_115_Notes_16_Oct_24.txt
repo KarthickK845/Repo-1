@@ -1,0 +1,185 @@
+
+1. UPDATE operation through JDBC
+2. DELETE operation
+3. User should be restricted from entering duplicate values
+
+1.UPDATE
+
+Update the password of existing user
+JSP FILE :
+Input fields - Username, Password, Confirm password
+Submit button
+
+SERVLET : (For UPDATE logic)
+doGet method used
+setContentType HTML
+PrintWriter object creation
+getParameters for username, password(pass1), confirm password(pass2)
+Check if pass1 equals pass2
+JDBC steps inside if logic
+try catch block
+i. set Driver class
+ii. establish connection - DBname, username, password to connect to DB
+iii. PreparedStatement - UPDATE query - "update UserDet set upass=? where uname=?"
+iv. setString confirm password - ps.setString(1,pass2);
+v. setString name next - ps.setString(1,name);
+vi. int check = ps.executeUpdate();- to execute the above UPDATE query, it returns 1
+vii. if check==1 print "Update successful", else print "Update failed"
+
+else
+RequestDispatcher -> update.jsp (UPDATE Password jsp)
+include method call
+out.println("Password and Confirm Password mismatch");
+
+Run the application from JSP page always, dont run from servlet page
+
+2. DELETE operation
+
+Delete an existing user details from DB
+if check > 0 print "Delete successful"
+else "Delete not successful"
+
+We can use doGet and doPost in same class.
+For understanding purpose for now, we use doGet method alone here.
+
+3. RESTRICT DUPLICATE USER DETAILS
+
+We could use primary key constraint to SQL field in DB table.
+
+But here we are writing logic in the servlet itself to restrict duplicate user.
+
+In Register servlet, wrtie another preparedStatement to select the records where if username is present.
+
+use java.sql - ResultSet
+
+If (!(rs.next())
+insert operation to register the user details
+
+else 
+username is already in DB, do not allow registration, print "Username already exists"
+
+doPost method inside Register servlet
+
+
+
+PROJECT Task :
+
+Home page with options tag (drop down list)
+select tag
+add user - Add user page
+update user - Update jsp page
+view user - show all details in table format in webpage
+view user by name - show only details of the given name
+delete user - delete page
+
+
+=================================================
+
+Afternoon class :
+
+cookies, session - maintained, used to check if a user is existing or new user 
+
+HTTP is stateless, to maintain the state we use session
+
+Session tracking or Session management
+
+whenever we open some page, we will be asked if we should accept cookies or not
+if we accept, it wont consider as new user everytime
+it considers as existing user, it wont ask to login
+
+Session:
+--------
+* Session means particular time interval
+* Session tracking is a way to maintain the state(data) of the user
+* HTTP protocol is a stateless process so we need to maintain the state of the user
+* Each time user give request to the server, the server treats the request as a new request (since HTTP Protocol is stateless).
+* So we maintain the state of the user in four ways of session tracking techniques.
+
+1. cookies
+2.hidden form fields
+3. HTTPSession
+4. URLrewriting
+
+1.COOKIES:
+
+<<
+once logged in, it will consider as existing user until we logout
+
+If we do not accept cookies, it wont store our data and considers as new user
+
+It will be stored only for a particular time period
+
+We as developer give the name and set attributes for the cookies. We can set any value.
+
+part of the user request stored in cache memory in the web browser
+>>
+
+* A cookie is a small piece of information that is persisted between multiple client requests.
+* A cookie has a name and a single value like (key and value pair).
+* There are two types of cookies.
+
+1. persistent cookies
+2. non-persistent cookies
+
+Difference bw above two is that persistent cookies are maintained for the whole session.considers as existing user only (maintains state) when reopened each time. multiple sessions.
+
+non-persistent cookies gets deleted if we close the web browser. considers as new user when we reopen. single session.
+
+PERSISTENT COOKIES:
+
+=> It is valid for multiple sessions.
+=> It is not removed each time when the user close the browser.
+=> When we perform logout, only then the cookie will be removed.
+
+NON-PERSISTENT  COOKIES:
+
+=> It is valid only for single session.
+=> It is removed when the browser is closed.
+
+Advantages of cookies:
+
+1. it is maintained in the client side
+2. maintains the state of the user
+
+Disadvantage of cookies:
+
+1. Only text info can be stored in a cookie
+2. It works only when the user allows cookies
+---
+We can store username and password in cookie
+
+servlet - CookieDemo
+doGet method
+
+getParameters uname and upass
+
+Cookie is a predefined class in Java
+in javax.servlet.http
+
+We will create an object and use to add the data (key and value pairs)
+
+To add a cookie :
+
+if(!(name.isEmpty()) &&
+Cookie ck=new Cookie("name",name);
+response.addCookie(ck);
+
+both key and value will get stored
+
+getCookies() method return Cookie array of objects
+
+we can get using request only
+
+Cookie ck[]=request.getCookies();
+
+getName() and getValue() methods of Cookie class to get key and value
+
+
+for(Cookie c:ck)
+{
+out.println(c.getName()+" "+c.getValue());
+}
+
+we can store upto 10MB only in  a cookie
+
+sessionID created by browser by default
