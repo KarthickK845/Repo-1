@@ -1,1 +1,35 @@
 Practice Questions Here
+
+//TwoSums
+
+package java8uniq.Tasks26;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+
+public class TwoSum {
+	public static List<Integer> findIndicesOfSumTarget(int[] arr,int target){
+		Map<Integer,Integer> mapOfNumsAndIndices = new HashMap<>();
+		for(int i = 0;i < arr.length ;i++) {
+			for(int j = i+1;j<arr.length;j++) {
+				if(arr[i]+arr[j]== target) {
+					mapOfNumsAndIndices.put(arr[i], i);
+					mapOfNumsAndIndices.put(arr[j], j);
+				}
+			}
+		}
+		return mapOfNumsAndIndices.values().stream().toList();
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr = {1,2,3,4,5};
+		int target = 6;
+		System.out.println(findIndicesOfSumTarget(arr, target));
+	}
+
+}
