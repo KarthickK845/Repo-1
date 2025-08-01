@@ -1,0 +1,67 @@
+TEMPLATE DESIGN PATTERN :
+=========================
+
+package com.logic.session1.Template;
+
+abstract public class DataProcessor {
+	public final void processData() {
+		readData();
+		validateData();
+		transformData();
+		writeData();
+	}
+	
+	abstract void readData();
+	abstract void validateData();
+	abstract void transformData();
+	abstract void writeData();
+}
+
+
+public class CSVDataProcessor extends DataProcessor{
+
+	@Override
+	void readData() {
+		System.out.println("Reading data from CSV file");
+	}
+
+	@Override
+	void validateData() {
+		System.out.println("Validating CSV data");
+	}
+
+	@Override
+	void transformData() {
+		System.out.println("Transforming CSV data");
+	}
+
+	@Override
+	void writeData() {
+		System.out.println("Writing data");
+	}
+	
+}
+
+public class DatabaseDataProcessor extends DataProcessor{
+
+	@Override
+	void readData() {
+		System.out.println("Reading Data from Database");
+	}
+
+	@Override
+	void validateData() {
+		System.out.println("Validating Database Data");
+	}
+
+	@Override
+	void transformData() {
+		System.out.println("Transforming DB Data");
+	}
+
+	@Override
+	void writeData() {
+		System.out.println("Writing DB data to output");
+	}
+
+}
