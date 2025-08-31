@@ -2,5 +2,7 @@ Maven
 Spring Boot
 Jenkins
 Servlet
+Spark
+Python
 IntelliJ
 Java
